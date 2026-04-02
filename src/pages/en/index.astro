@@ -1,0 +1,24 @@
+---
+import Slider from "../../components/homes/slider.astro";
+import Navbar from "../../components/navbar.astro";
+import Layout from "../../layouts/Layout.astro";
+import About from "../../components/homes/about.astro";
+
+import { getLangFromUrl, useTranslations } from "../../../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<Layout>
+    <Navbar lang={lang} t={t} />
+    <script
+        is:inline
+        src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"
+    ></script>
+    <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <Slider />
+    <About lang={lang} t={t} />
+
+</Layout>

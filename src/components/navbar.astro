@@ -1,0 +1,346 @@
+---
+import "../../public/assets/style/navbar.css";
+const { lang, t } = Astro.props;
+const l = (path) => `/${lang}${path}`;
+const currentPath = Astro.url.pathname.replace(/^\/(en|es)/, "");
+---
+
+<svg class="svg-filters">
+    <defs>
+        <filter id="gooey-filter">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur"
+            ></feGaussianBlur>
+            <feColorMatrix
+                in="blur"
+                mode="matrix"
+                values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -10"
+                result="goo"></feColorMatrix>
+        </filter>
+    </defs>
+</svg>
+
+<!-- TOP INFO BAR -->
+<div class="top-bar">
+    <div class="top-bar-inner">
+        <!-- Left: Contact Info -->
+        <div class="top-left">
+            <a href="mailto:info@expolukus.com">📧 info@expolukus.com</a>
+            <a href="tel:+123456789">📞 +1 234 567 89</a>
+        </div>
+
+        <!-- Right: Social + CTA -->
+        <div class="top-right">
+            <div class="socials">
+                <a href="#" aria-label="Facebook">
+                    <i class="fa-brands fa-facebook"></i>
+                </a>
+                <a href="#" aria-label="Instagram"
+                    ><i class="fa-brands fa-instagram"></i></a
+                >
+                <a href="#" aria-label="LinkedIn"
+                    ><i class="fa-brands fa-linkedin"></i></a
+                >
+            </div>
+
+            <div class="lang-switcher">
+                <a
+                    href="/"
+                    class={`lang-btn ${lang === "es" ? "active" : ""}`}
+                    data-lang="es">ES</a
+                >
+                <a
+                    href={`/en${currentPath}`}
+                    class={`lang-btn ${lang === "en" ? "active" : ""}`}
+                    data-lang="en">EN</a
+                >
+            </div>
+
+            <a href="/contact" class="cta-button"> Solicitar presupuesto </a>
+        </div>
+    </div>
+</div>
+
+<header id="expo-lukus-header">
+    <!-- Centered Logo -->
+    <div class="logo">
+        <a href="/">
+            <img src="/assets/images/logo expo.svg" alt="Expo Lukus" />
+        </a>
+    </div>
+
+    <!-- Desktop Nav with Spacer -->
+    <div class="desktop-nav" id="desktopNav">
+        <div class="goo-wrapper">
+            <div class="pill" id="activePill" style="height:100%;"></div>
+            <div class="pill" id="desktopPill" style="height:100%;"></div>
+        </div>
+
+        <ul class="nav-list white-layer">
+            <li class="nav-item active">
+                <a href={l("/")}>{t("nav.home")}</a>
+            </li>
+            <li class="nav-item"><a href={l("/about")}>{t("nav.about")}</a></li>
+            <li class="nav-spacer"></li>
+            <li class="nav-item">
+                <a href={l("/products")}>{t("nav.products")}</a>
+            </li>
+            <li class="nav-item">
+                <a href={l("/contact")}>{t("nav.contact")}</a>
+            </li>
+        </ul>
+
+        <div class="black-mask" id="desktopMask">
+            <ul class="nav-list">
+                <li class="nav-item active">
+                    <a href={l("/")}>{t("nav.home")}</a>
+                </li>
+                <li class="nav-item">
+                    <a href={l("/about")}>{t("nav.about")}</a>
+                </li>
+                <li class="nav-spacer"></li>
+                <li class="nav-item">
+                    <a href={l("/products")}>{t("nav.products")}</a>
+                </li>
+                <li class="nav-item">
+                    <a href={l("/contact")}>{t("nav.contact")}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Burger Icon -->
+    <div class="burger" id="burger">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+    </div>
+</header>
+
+<!-- Mobile Overlay -->
+<div class="mobile-overlay" id="mobileOverlay">
+    <div class="desktop-nav" id="mobileNav" style="display: block;">
+        <div class="goo-wrapper">
+            <div class="pill" id="mobilePill" style="width: 100%;"></div>
+        </div>
+        <ul class="nav-list white-layer">
+            <li class="nav-item active">
+                <a href={l("/")}>{t("nav.home")}</a>
+            </li>
+            <li class="nav-item">
+                <a href={l("/about")}>{t("nav.about")}</a>
+            </li>
+            <li class="nav-item">
+                <a href={l("/products")}>{t("nav.products")}</a>
+            </li>
+            <li class="nav-item">
+                <a href={l("/contact")}>{t("nav.contact")}</a>
+            </li>
+        </ul>
+        <div class="black-mask" id="mobileMask">
+            <ul class="nav-list">
+                <li class="nav-item active">
+                    <a href={l("/")}>{t("nav.home")}</a>
+                </li>
+                <li class="nav-item">
+                    <a href={l("/about")}>{t("nav.about")}</a>
+                </li>
+                <li class="nav-item">
+                    <a href={l("/products")}>{t("nav.products")}</a>
+                </li>
+                <li class="nav-item">
+                    <a href={l("/contact")}>{t("nav.contact")}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    window.addEventListener("DOMContentLoaded", () => {
+        /* =========================
+        DESKTOP NAV
+    ========================= */
+
+        const dPillActive = document.getElementById("activePill");
+        const dPillHover = document.getElementById("desktopPill");
+        const dContainer = document.getElementById("desktopNav");
+        const dItems = document.querySelectorAll("#desktopNav .nav-item");
+
+        const dActiveItem =
+            dContainer.querySelector(".nav-item.active") || dItems[0];
+
+        function setDesktopPills(target) {
+            const rect = target.getBoundingClientRect();
+            const contRect = dContainer.getBoundingClientRect();
+
+            const x = rect.left - contRect.left;
+            const w = rect.width;
+
+            gsap.set(dPillActive, { left: x, width: w, opacity: 1 });
+            gsap.set(dPillHover, { left: x, width: w, opacity: 0, scaleX: 1 });
+        }
+
+        function moveHoverPill(target) {
+            const rect = target.getBoundingClientRect();
+            const contRect = dContainer.getBoundingClientRect();
+
+            const x = rect.left - contRect.left;
+            const w = rect.width;
+
+            gsap.timeline({ overwrite: true })
+                .to(dPillHover, {
+                    left: x,
+                    width: w,
+                    opacity: 1,
+                    duration: 0.7,
+                    ease: "elastic.out(1, 0.75)",
+                })
+                .fromTo(
+                    dPillHover,
+                    { scaleX: 1.5 },
+                    { scaleX: 1, duration: 0.9, ease: "elastic.out(1, 0.75)" },
+                    0,
+                );
+        }
+
+        dItems.forEach((item) => {
+            item.addEventListener("mouseenter", () => {
+                moveHoverPill(item);
+            });
+
+            item.addEventListener("mouseleave", () => {
+                gsap.to(dPillHover, {
+                    opacity: 0,
+                    scaleX: 1,
+                    duration: 0.25,
+                    ease: "power2.out",
+                    overwrite: true,
+                });
+            });
+        });
+
+        dContainer.addEventListener("mouseleave", () => {
+            gsap.to(dPillHover, {
+                opacity: 0,
+                scaleX: 1,
+                duration: 0.4,
+                ease: "power2.out",
+            });
+        });
+
+        /* =========================
+        MOBILE NAV
+    ========================= */
+
+        const burger = document.getElementById("burger");
+        const overlay = document.getElementById("mobileOverlay");
+        const mContainer = document.getElementById("mobileNav");
+        const mPill = document.getElementById("mobilePill");
+        const mItems = document.querySelectorAll("#mobileNav .nav-item");
+        const lines = document.querySelectorAll(".line");
+
+        let isOpen = false;
+        let isAnimating = false;
+
+        function moveMobilePill(target, animate = true) {
+            const rect = target.getBoundingClientRect();
+            const contRect = mContainer.getBoundingClientRect();
+
+            const y = rect.top - contRect.top;
+            const h = rect.height;
+
+            gsap.to(mPill, {
+                top: y,
+                height: h,
+                opacity: 1,
+                duration: animate ? 0.8 : 0,
+                ease: "elastic.out(1, 0.75)",
+            });
+
+            if (animate) {
+                gsap.fromTo(
+                    mPill,
+                    { scaleY: 1.6 },
+                    { scaleY: 1, duration: 1, ease: "elastic.out(1, 0.75)" },
+                );
+            }
+        }
+
+        function toggleBurger() {
+            if (isAnimating) return;
+            isAnimating = true;
+
+            isOpen = !isOpen;
+
+            gsap.to(overlay, {
+                clipPath: isOpen
+                    ? "circle(150% at 90% 5%)"
+                    : "circle(0% at 90% 5%)",
+                duration: 1,
+                ease: "expo.inOut",
+                onComplete: () => {
+                    isAnimating = false;
+                },
+            });
+
+            gsap.to(lines[0], {
+                rotate: isOpen ? 45 : 0,
+                y: isOpen ? 7 : 0,
+                duration: 0.3,
+            });
+            gsap.to(lines[1], { opacity: isOpen ? 0 : 1, duration: 0.3 });
+            gsap.to(lines[2], {
+                rotate: isOpen ? -45 : 0,
+                y: isOpen ? -8 : 0,
+                duration: 0.3,
+            });
+
+            if (isOpen) {
+                const active =
+                    mContainer.querySelector(".nav-item.active") || mItems[0];
+                setTimeout(() => moveMobilePill(active, false), 400);
+            }
+        }
+
+        burger.addEventListener("click", toggleBurger);
+
+        // Use pointerdown to avoid double firing (touch + click)
+        mItems.forEach((item) => {
+            item.addEventListener("pointerdown", () => moveMobilePill(item));
+        });
+
+        /* =========================
+        INIT / RESIZE
+    ========================= */
+
+        function init() {
+            setDesktopPills(dActiveItem);
+        }
+
+        window.addEventListener("load", init);
+        window.addEventListener("resize", init);
+
+        const langButtons = document.querySelectorAll(".lang-btn");
+
+        langButtons.forEach((btn) => {
+            btn.addEventListener("click", () => {
+                // remove active state
+                langButtons.forEach((b) => b.classList.remove("active"));
+
+                // set active
+                btn.classList.add("active");
+
+                const lang = btn.dataset.lang;
+
+                // store selection
+                localStorage.setItem("lang", lang);
+
+                // optional: trigger language system hook
+                console.log("Selected language:", lang);
+
+                // 👉 here you can later call your translation system
+                // changeLanguage(lang);
+            });
+        });
+    });
+</script>

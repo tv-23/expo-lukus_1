@@ -1,0 +1,409 @@
+body {
+    margin: 0;
+    background: var(--bg);
+    font-family: 'Poppins', sans-serif;
+    color: var(--white);
+}
+
+/* --- HEADER --- */
+header {
+    position: initial;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--white);
+    /* Center everything */
+    padding: 0 40px;
+    box-sizing: border-box;
+    z-index: 2000;
+}
+
+/* --- LOGO --- */
+.logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-62%);
+    z-index: 3000;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.logo img {
+    height: auto;
+    width: 200px;
+    transition: 0.3s;
+}
+
+/* --- DESKTOP NAV --- */
+.desktop-nav {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.nav-list {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-item {
+    padding: 12px 28px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    white-space: nowrap;
+    color: var(--black);
+}
+
+.nav-item  a{
+    color: var(--black);
+text-decoration: none;
+padding: 0;
+}
+
+/* This creates the space for the logo in the middle of the list */
+.nav-spacer {
+    width: 180px;
+    /* Adjust this to fit your logo width */
+    pointer-events: none;
+}
+
+/* Liquid Logic */
+.goo-wrapper {
+    position: absolute;
+    inset: 0;
+    filter: url('#gooey-filter');
+    z-index: 1;
+}
+
+.pill {
+    position: absolute;
+    background: var(--primary);
+    border-radius: 30px;
+    transform-origin: center;
+}
+
+/* Make inactive items slightly transparent */
+.white-layer .nav-item {
+    transition: opacity 0.3s;
+}
+
+/* Keep the hover pill hidden until mouse enters */
+#hoverPill {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Dim all text to 50% */
+.nav-item {
+    transition: opacity 0.3s ease;
+    color: #fff;
+    z-index: 10;
+}
+
+/* Brighten Active or Hovered items to 100% */
+.nav-item.active,
+.nav-item:hover {
+    opacity: 1;
+    font-weight: 800; /* Recommended for readability on yellow */
+}
+
+/* Normal state: Dimmed white for better contrast */
+.nav-item {
+    color: var(--black);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 5;
+    font-family: var(--font-main);
+}
+
+/* Hover or Active state: Bright white */
+.nav-item:hover a,
+.nav-item.active a {
+    color: var(--white);
+    font-weight: 800;
+}
+
+
+
+/* Make Hovered or Active items full White */
+.white-layer .nav-item:hover,
+.white-layer .nav-item.active {
+    opacity: 1;
+}
+
+/* The text inside the pill (Black layer) should always be full opacity */
+.black-mask .nav-item {
+    opacity: 1;
+}
+
+.white-layer {
+    position: relative;
+    z-index: 2;
+    color: var(--white);
+}
+
+.black-mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    color: var(--black);
+    pointer-events: none;
+    clip-path: inset(0 100% 0 0);
+}
+
+/* --- MOBILE --- */
+.burger {
+    position: absolute;
+    right: 40px;
+    width: 30px;
+    height: 18px;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    z-index: 3000;
+}
+
+.line {
+    width: 100%;
+    height: 3px;
+    background: var(--primary);
+    border-radius: 2px;
+}
+
+.mobile-overlay {
+    position: fixed;
+    inset: 0;
+    background: var(--white);
+    z-index: 2500;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    clip-path: circle(0% at 90% 5%);
+}
+
+.mobile-overlay .nav-list {
+    flex-direction: column;
+    gap: 25px;
+}
+
+.mobile-overlay .nav-item {
+    font-size: 24px;
+}
+
+.mobile-overlay .nav-spacer {
+    display: none;
+}
+
+/* No spacer on mobile */
+
+/* SVG FILTERS */
+.svg-filters {
+    position: absolute;
+    visibility: hidden;
+    width: 0;
+    height: 0;
+}
+
+
+@media (max-width: 1024px) {
+    .desktop-nav {
+        display: none;
+    }
+
+    .burger {
+        display: flex;
+    }
+
+    .mobile-overlay {
+        display: flex;
+    }
+
+    .logo {
+        left: 40px;
+        transform: none;
+    }
+
+    /* Logo to the left on mobile */
+    .logo img {
+        height: 45px;
+    }
+}
+
+
+
+/* Top Bar */
+.top-bar {
+    width: 100%;
+    background: var(--primary);
+    color: white;
+    font-size: 13px;
+    padding: 8px 20px;
+}
+
+.top-bar-inner {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Left side */
+.top-left {
+    display: flex;
+    gap: 20px;
+}
+
+.top-left a {
+    color: #fff;
+    text-decoration: none;
+    opacity: 1;
+}
+
+/* .top-left a:hover {
+    color: 1;
+} */
+
+/* Right side */
+.top-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Socials */
+.socials {
+    display: flex;
+    gap: 10px;
+}
+
+.socials a {
+    color: white;
+    text-decoration: none;
+    opacity: 1;
+}
+
+.socials a:hover {
+    color: var(--secondary);
+}
+
+/* CTA Button */
+.cta-button {
+    background: #ffffff;
+    color: var(--black);
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.cta-button:hover {
+    transform: translateY(-1px);
+    opacity: 0.9;
+    background-color: var(--secondary);
+    color: var(--white);
+}
+
+.lang-switcher {
+    display: flex;
+    gap: 6px;
+    background: rgba(255,255,255,0.1);
+    padding: 4px;
+    border-radius: 999px;
+}
+
+.lang-btn {
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 12px;
+    padding: 4px 10px;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: 0.2s ease;
+    text-decoration: none;
+    border-radius: 999px;
+}
+
+.lang-btn:hover {
+    opacity: 1;
+}
+
+.lang-btn.active {
+    background: white;
+    color: black;
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
+
+    .top-bar-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 10px;
+    }
+
+    /* hide email/phone */
+    .top-left {
+        display: none;
+    }
+
+    .top-right {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        gap: 8px;
+        min-width: 0;
+    }
+
+    /* SOCIALS */
+    .socials {
+        display: flex;
+        gap: 8px;
+        flex-shrink: 0;
+    }
+
+    /* LANGUAGE */
+    .lang-switcher {
+        display: flex;
+        gap: 4px;
+        flex-shrink: 0;
+    }
+
+    .lang-btn {
+        font-size: 11px;
+        padding: 3px 7px;
+        white-space: nowrap;
+    }
+
+    /* CTA FIX (IMPORTANT) */
+    .cta-button {
+        flex-shrink: 0;
+        white-space: nowrap;
+        padding: 6px 10px;
+        font-size: 12px;
+
+        /* prevent cut */
+        max-width: 45%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
