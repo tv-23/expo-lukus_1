@@ -77,32 +77,32 @@ const currentPath = Astro.url.pathname.replace(/^\/(en|es)/, "");
 
         <ul class="nav-list white-layer">
             <li class="nav-item active">
-                <a href={l("/")}>{t("nav.home")}</a>
+                <a href="/">{t("nav.home")}</a>
             </li>
-            <li class="nav-item"><a href={l("/about")}>{t("nav.about")}</a></li>
+            <li class="nav-item"><a href="/about">{t("nav.about")}</a></li>
             <li class="nav-spacer"></li>
             <li class="nav-item">
-                <a href={l("/products")}>{t("nav.products")}</a>
+                <a href="/products">{t("nav.products")}</a>
             </li>
             <li class="nav-item">
-                <a href={l("/contact")}>{t("nav.contact")}</a>
+                <a href="/contact">{t("nav.contact")}</a>
             </li>
         </ul>
 
         <div class="black-mask" id="desktopMask">
             <ul class="nav-list">
                 <li class="nav-item active">
-                    <a href={l("/")}>{t("nav.home")}</a>
+                    <a href="/">{t("nav.home")}</a>
                 </li>
                 <li class="nav-item">
-                    <a href={l("/about")}>{t("nav.about")}</a>
+                    <a href="/about">{t("nav.about")}</a>
                 </li>
                 <li class="nav-spacer"></li>
                 <li class="nav-item">
-                    <a href={l("/products")}>{t("nav.products")}</a>
+                    <a href="/products">{t("nav.products")}</a>
                 </li>
                 <li class="nav-item">
-                    <a href={l("/contact")}>{t("nav.contact")}</a>
+                    <a href="/contact">{t("nav.contact")}</a>
                 </li>
             </ul>
         </div>

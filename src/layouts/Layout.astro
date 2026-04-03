@@ -5,7 +5,7 @@ const lang = getLangFromUrl(Astro.url);
 ---
 
 <!doctype html>
-<html lang={lang}>
+<html lang="{lang}">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
@@ -32,10 +32,13 @@ const lang = getLangFromUrl(Astro.url);
 		--primary: #01954b;
 		--secondary: #e02927;
 		--white: #ffffff;
+		--card-inner: #f9f9f9;
+		--card-glass
 		--font-main: "Poppins", sans-serif;
 		--font-heading: "Playfair Display", serif;
 		--bg: #0a0a0a;
 		--black: #000000;
+		--soft-gray: #f4f7f5;
 	}
 	html,
 	body {
@@ -43,7 +46,6 @@ const lang = getLangFromUrl(Astro.url);
 		padding: 0;
 		width: 100%;
 		height: 100%;
-		/* overflow: hidden; */
 		background: #ffffff;
 		font-family: var(--font-main);
 	}

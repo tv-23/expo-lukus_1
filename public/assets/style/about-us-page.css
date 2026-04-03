@@ -1,0 +1,160 @@
+:root {
+    --primary: #00964b;
+    --white: #ffffff;
+    --black: #0a0a0a;
+    --soft-gray: #f8f8f8;
+}
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: var(--white);
+    overflow-x: hidden;
+    color: var(--black);
+}
+
+/* --- THE MASTER WRAPPER --- */
+.odyssey-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+/* Large Parallax Background Text */
+.parallax-bg-text {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 18vw;
+    font-weight: 900;
+    color: rgba(0, 150, 75, 0.04);
+    z-index: 1;
+    white-space: nowrap;
+    pointer-events: none;
+    text-transform: uppercase;
+}
+
+.container-70 {
+    width: 70%;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+}
+
+/* --- THE PINNED STORYTELLING SECTION --- */
+.story-section {
+    height: 500vh; /* Extra height for 4 stages */
+    position: relative;
+}
+
+.sticky-content {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 80px;
+}
+
+.text-column {
+    flex: 1.2;
+    height: 100vh;
+    position: relative;
+}
+
+.story-block {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.story-block h2 {
+    font-size: clamp(32px, 4vw, 55px);
+    font-weight: 900;
+    margin: 0;
+    line-height: 1;
+    color: var(--black);
+}
+
+.story-block p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #444;
+    max-width: 550px;
+    margin-top: 25px;
+}
+
+/* --- THE PORTAL --- */
+.portal-column {
+    flex: 0.8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.portal-frame {
+    width: 480px;
+    height: 480px;
+    position: relative;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 12px solid var(--white);
+    box-shadow: 0 40px 100px rgba(0,0,0,0.08);
+    background: var(--soft-gray);
+    will-change: transform, border-radius;
+}
+
+.portal-img-wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 400%; /* 4 images */
+    display: flex;
+    flex-direction: column;
+}
+
+.portal-img-wrap img {
+    width: 100%;
+    height: 25%;
+    object-fit: cover;
+}
+
+/* --- FINAL REVEAL --- */
+.final-reveal {
+    min-height: 100vh;
+    background: var(--black);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 0;
+    position: relative;
+    z-index: 20;
+}
+
+.final-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    text-align: left;
+}
+
+/* --- MOBILE --- */
+@media (max-width: 1024px) {
+    .container-70 { width: 90%; }
+    .sticky-content { flex-direction: column; justify-content: center; gap: 0; }
+    .portal-frame { width: 280px; height: 280px; order: -1; margin-bottom: 20px; border-width: 8px; }
+    .text-column { height: 50vh; width: 100%; text-align: center; }
+    .story-block { align-items: center; }
+    .final-grid { grid-template-columns: 1fr; text-align: center; }
+}

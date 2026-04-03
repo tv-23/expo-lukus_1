@@ -1,0 +1,29 @@
+---
+import "../../public/assets/style/section-title.css";
+const { title } = Astro.props;
+---
+
+<section class="section-title">
+    <div class="mask-wrap">
+        <h2 class="expo-lukus-title" set:html={title} />
+    </div>
+</section>
+
+<script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.utils.toArray(".section-title").forEach((section) => {
+        const title = section.querySelector(".expo-lukus-title");
+
+        gsap.from(title, {
+            y: 200,
+            duration: 1.5,
+            ease: "expo.out",
+            scrollTrigger: {
+                trigger: section,
+                start: "top 85%",
+                toggleActions: "play none none none",
+            },
+        });
+    });
+</script>
