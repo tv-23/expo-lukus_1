@@ -1,0 +1,184 @@
+.container-70 {
+    width: 70%;
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* --- SECTION 1: THE SPLIT HERO --- */
+.contact-hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+}
+
+.hero-title {
+    z-index: 10;
+    pointer-events: none;
+}
+
+.hero-title h1 {
+    font-family: var(--font-main);
+    font-size: clamp(40px, 8vw, 110px);
+    line-height: 0.8;
+    margin: 0;
+}
+
+.coordinates {
+    position: absolute;
+    font-size: 12px;
+    letter-spacing: 5px;
+    color: var(--primary);
+    font-weight: 800;
+    opacity: 0.5;
+}
+
+/* --- SECTION 2: THE INTERACTIVE FORM --- */
+.main-contact-area {
+    padding: 100px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+}
+
+.larache-info h2 {
+    font-family: var(--font-main);
+    font-size: 50px;
+    color: var(--primary);
+    margin: 0 0 20px 0;
+}
+
+.larache-info p {
+    font-size: 18px;
+    line-height: 1.8;
+    opacity: 0.7;
+    max-width: 400px;
+    color: var(--bg);
+}
+
+.contact-card-wrap {
+    background: var(--soft-gray);
+    padding: 50px;
+    border-radius: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 15px 0;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--black);
+    color: var(--bg);
+    font-size: 16px;
+    outline: none;
+}
+
+.focus-border {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary);
+    transition: 0.4s;
+}
+
+.form-group input:focus~.focus-border {
+    width: 100%;
+}
+
+.form-group label {
+    position: absolute;
+    top: 15px;
+    left: 0;
+    opacity: 0.4;
+    pointer-events: none;
+    transition: 0.3s;
+    color: var(--bg);
+}
+
+.form-group input:focus+label, .form-group input:valid+label {
+    top: -15px;
+    font-size: 12px;
+    opacity: 1;
+    color: var(--primary);
+}
+
+.submit-btn {
+    background: var(--primary);
+    color: var(--white);
+    border: none;
+    padding: 20px 50px;
+    border-radius: 50px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    width: 100%;
+}
+
+/* --- SECTION 3: THE MAP PORTAL --- */
+.map-section {
+    padding: 100px 0;
+    text-align: center;
+}
+
+.map-portal {
+    width: 100%;
+    height: 600px;
+    border-radius: 50px;
+    overflow: hidden;
+    position: relative;
+    transform: scale(0.9);
+    opacity: 0;
+    border: 10px solid var(--soft-gray);
+}
+
+/* --- FOOTER INFO --- */
+.hub-footer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    padding: 100px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.hub-item h4 {
+    color: var(--primary);
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.hub-item p {
+    margin: 10px 0 0 0;
+    opacity: 0.6;
+    color: var(--bg);
+}
+
+@media (max-width: 1024px) {
+    .container-70 {
+        width: 90%;
+    }
+
+    .main-contact-area, .hub-footer {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+
+    .hero-title h1 {
+        font-size: 60px;
+    }
+}

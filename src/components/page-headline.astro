@@ -1,0 +1,57 @@
+---
+import "../../public/assets/style/page-headline.css";
+const { title } = Astro.props;
+---
+<section class="hero-wrapper" id="hero">
+    <div class="hero-bg"></div>
+
+    <!-- BOTTOM LAYER: WHITE TEXT -->
+    <div class="text-container layer-base" set:html={title}/>
+
+    <!-- TOP LAYER: MASKED CONTENT (GREEN BG + BLACK TEXT) -->
+    <div class="layer-mask" id="maskLayer">
+        <div class="text-container" set:html={title}>
+            
+        </div>
+    </div>
+
+</section>
+
+<script>
+    const maskLayer = document.getElementById('maskLayer');
+    const hero = document.getElementById('hero');
+
+    // Initial position (center)
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+
+    // Follow Mouse Logic
+    window.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+
+        // Use GSAP for butter-smooth movement
+        gsap.to(maskLayer, {
+            // We update the CSS clip-path to follow the mouse
+            clipPath: `circle(180px at ${mouseX}px ${mouseY}px)`,
+            duration: 0.6,
+            ease: "power2.out"
+        });
+    });
+
+    // Simple Entrance Animation
+    gsap.from(".main-title", {
+        y: 100,
+        opacity: 0,
+        duration: 1.5,
+        ease: "expo.out",
+        stagger: 0.1
+    });
+
+    // Mobile Fix: Center the circle if no mouse is present
+    if (window.innerWidth < 1024) {
+        gsap.set(maskLayer, {
+            clipPath: `circle(120px at 50% 50%)`
+        });
+    }
+</script>

@@ -1,0 +1,170 @@
+---
+import "../../public/assets/style/contact-page.css";
+import Navbar from "../components/navbar.astro";
+import Layout from "../layouts/Layout.astro";
+import SectionTitle from "../components/section-title.astro";
+import PageHeadline from "../components/page-headline.astro";
+
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<Layout>
+    <script
+        is:inline
+        src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"
+    ></script>
+
+    <script
+        is:inline
+        src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"
+    ></script>
+    <Navbar lang={lang} t={t} />
+
+    <PageHeadline title='<h1 class="main-title">DIRECT<br>ACCESS</h1><p class="tagline">Reminds the customer that you are the "Chetouan Bridge" between the soil and their market.</p>' />
+        
+    <!-- FORM AREA -->
+    <section class="container-70">
+        <div class="main-contact-area">
+            
+            <div class="larache-info">
+                <h2>Our Heart <br>is in the South.</h2>
+                <p>Based in the fertile plains of Larache, we connect Morocco's agricultural heritage with the global demand for excellence.</p>
+                
+                <div style="margin-top: 50px;">
+                    <div class="hub-item" style="margin-bottom: 30px;">
+                        <h4>Direct Call</h4>
+                        <p>+212 (0) 539 000 000</p>
+                    </div>
+                    <div class="hub-item">
+                        <h4>Headquarters</h4>
+                        <p>Avenue Mohamed V, <br>Larache, Morocco</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-card-wrap" id="formCard">
+                <form>
+                    <div class="form-group">
+                        <input type="text" id="name" required>
+                        <label>Your Name</label>
+                        <div class="focus-border"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" required>
+                        <label>Email Address</label>
+                        <div class="focus-border"></div>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="msg" rows="4" required></textarea>
+                        <label>Message</label>
+                        <div class="focus-border"></div>
+                    </div>
+                    <button class="submit-btn" id="submitBtn">Send Inquiry</button>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- MAP PORTAL -->
+    <section class="map-section">
+        <div class="container-70">
+
+            <SectionTitle title="Find Us in the<br>Fields" />
+                <br><br>
+            <div class="map-portal" id="mapPortal">
+                <!-- Google Map centered on Larache, Morocco -->
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d51945.1633534954!2d-6.183333!3d35.183333!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd0bc0da3d100001%3A0x280547072534570!2sLarache%2C%20Morocco!5e0!3m2!1sen!2s!4v1710000000000!5m2!1sen!2s" 
+                    width="100%" 
+                    height="100%" 
+                    style="border:0; " 
+                    allowfullscreen="" 
+                    loading="lazy">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- HUB FOOTER -->
+    <div class="container-70">
+        <div class="hub-footer">
+            <div class="hub-item">
+                <h4>Sourcing</h4>
+                <p>sourcing@isbofrutas.com</p>
+            </div>
+            <div class="hub-item">
+                <h4>Logistics</h4>
+                <p>logistics@isbofrutas.com</p>
+            </div>
+            <div class="hub-item">
+                <h4>Quality Control</h4>
+                <p>quality@isbofrutas.com</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        // 1. Hero Reveal Animation
+        gsap.from("#heroText", {
+            y: 100,
+            opacity: 0,
+            duration: 1.5,
+            ease: "expo.out"
+        });
+
+        // 2. Form Card Stagger
+        gsap.from("#formCard", {
+            x: 100,
+            opacity: 0,
+            duration: 1.2,
+            scrollTrigger: {
+                trigger: "#formCard",
+                start: "top 80%"
+            }
+        });
+
+        // 3. Map Portal Expansion
+        gsap.to("#mapPortal", {
+            scale: 1,
+            opacity: 1,
+            borderRadius: "50px",
+            duration: 1.5,
+            ease: "power4.out",
+            scrollTrigger: {
+                trigger: "#mapPortal",
+                start: "top 90%",
+                end: "top 40%",
+                scrub: 1
+            }
+        });
+
+        // 4. Parallax Coordinates
+        gsap.to(".coordinates", {
+            y: -100,
+            scrollTrigger: {
+                trigger: "body",
+                scrub: 2
+            }
+        });
+
+        // 5. Magnetic Button
+        const btn = document.querySelector('#submitBtn');
+        btn.addEventListener('mousemove', (e) => {
+            const rect = btn.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            gsap.to(btn, { x: x * 0.4, y: y * 0.4, duration: 0.3 });
+        });
+        btn.addEventListener('mouseleave', () => {
+            gsap.to(btn, { x: 0, y: 0, duration: 0.6, ease: "elastic.out(1, 0.7)" });
+        });
+
+    </script>
+
+</Layout>

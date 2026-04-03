@@ -5,6 +5,7 @@ import Navbar from "../components/navbar.astro";
 import SectionTitle from "../components/section-title.astro";
 import ProductsDisplay from "../components/products-display.astro";
 import Certifications from "../components/home/certifications.astro";
+import CTA from "../components/home/cta.astro";
 import Layout from "../layouts/Layout.astro";
 
 import { getLangFromUrl, useTranslations } from "../../i18n/utils";
@@ -37,4 +38,5 @@ const t = useTranslations(lang);
     <SectionTitle title="Certifications" />
     <br /><br />
     <Certifications/>
+    <CTA/>
 </Layout>

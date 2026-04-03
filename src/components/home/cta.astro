@@ -1,0 +1,99 @@
+---
+import "../../../public/assets/style/cta.css";
+---
+
+<section class="cta-section" id="ctaSection">
+    <!-- Floating Parallax Fruit -->
+    <img src="https://pngimg.com/uploads/strawberry/strawberry_PNG2595.png" class="parallax-fruit" id="fruitLeft" style="left: 5%; top: 20%;">
+    <img src="https://pngimg.com/uploads/apple/apple_PNG12439.png" class="parallax-fruit" id="fruitRight" style="right: 5%; bottom: 10%;">
+
+    <div class="container-70">
+        <!-- Left Side: The Hook -->
+        <div class="cta-text">
+            <span style="color:var(--primary); font-weight:800; letter-spacing:5px; text-transform:uppercase; font-size:12px;">Partnership</span>
+            <h2>Ready to grow<br>your <i>harvest</i>?</h2>
+            <p>From Larache to the world. Reach out today to secure your direct bridge to high-end Moroccan produce.</p>
+        </div>
+
+        <!-- Right Side: The Form -->
+        <div class="cta-form-wrap" id="formReveal">
+            <form>
+                <div class="form-group">
+                    <input type="text" id="name" required>
+                    <label>Full Name</label>
+                    <div class="liquid-line"></div>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" required>
+                    <label>Business Email</label>
+                    <div class="liquid-line"></div>
+                </div>
+                <div class="form-group">
+                    <textarea id="message" rows="3" required></textarea>
+                    <label>Tell us about your needs...</label>
+                    <div class="liquid-line"></div>
+                </div>
+                <div style="text-align: right;">
+                    <button type="submit" class="submit-btn" id="magBtn">Submit Inquiry</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    const section = document.querySelector("#ctaSection");
+
+    // 1. BACKGROUND COLOR BLEED (The Vibe Shift)
+    ScrollTrigger.create({
+        trigger: section,
+        start: "top 60%",
+        onEnter: () => section.classList.add("dark-vibe"),
+        onLeaveBack: () => section.classList.remove("dark-vibe")
+    });
+
+    // 2. FORM STAGGER ENTRANCE
+    gsap.from("#formReveal", {
+        y: 100,
+        opacity: 0,
+        duration: 1.2,
+        ease: "power4.out",
+        scrollTrigger: {
+            trigger: "#formReveal",
+            start: "top 85%"
+        }
+    });
+
+    // 3. PARALLAX FRUITS
+    gsap.to("#fruitLeft", {
+        y: -200,
+        rotate: 15,
+        scrollTrigger: {
+            trigger: section,
+            scrub: 1
+        }
+    });
+
+    gsap.to("#fruitRight", {
+        y: -300,
+        rotate: -15,
+        scrollTrigger: {
+            trigger: section,
+            scrub: 1
+        }
+    });
+
+    // 4. MAGNETIC BUTTON
+    const btn = document.querySelector('#magBtn');
+    btn.addEventListener('mousemove', (e) => {
+        const rect = btn.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        gsap.to(btn, { x: x * 0.3, y: y * 0.3, duration: 0.4 });
+    });
+    btn.addEventListener('mouseleave', () => {
+        gsap.to(btn, { x: 0, y: 0, duration: 0.6, ease: "elastic.out(1, 0.7)" });
+    });
+</script>
