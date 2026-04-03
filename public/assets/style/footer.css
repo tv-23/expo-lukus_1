@@ -1,0 +1,157 @@
+/* --- THE FOOTER --- */
+#expo-footer {
+    background-color: var(--black);
+    color: var(--white);
+    position: relative;
+    padding: 120px 0 60px 0;
+    overflow: hidden;
+}
+
+#expo-footer .container-70 {
+    width: 70%;
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+}
+
+/* --- TOP BRANDING --- */
+#expo-footer .footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-bottom: 80px;
+    border-bottom: 1px solid var(--soft-gray);
+    margin-bottom: 80px;
+}
+
+#expo-footer .footer-brand h2 {
+    font-family: var(--font-heading);
+    font-size: 50px;
+    margin: 0;
+    line-height: 1;
+}
+
+#expo-footer .footer-brand p {
+    font-size: 14px;
+    opacity: 0.5;
+    margin-top: 15px;
+    max-width: 300px;
+}
+
+/* --- GRID LINKS --- */
+#expo-footer .footer-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+}
+
+#expo-footer .footer-col h4 {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--primary);
+    margin-bottom: 30px;
+    font-weight: 800;
+}
+
+#expo-footer .footer-col ul { list-style: none; padding: 0; margin: 0; }
+#expo-footer .footer-col ul li { margin-bottom: 15px; }
+
+#expo-footer .footer-col ul li a {
+    text-decoration: none;
+    color: var(--white);
+    font-size: 16px;
+    opacity: 0.6;
+    transition: 0.3s;
+    position: relative;
+    display: inline-block;
+}
+
+/* Liquid Underline Effect */
+#expo-footer .footer-col ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    width: 0;
+    height: 1px;
+    background: var(--primary);
+    transition: 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+    transform: translateX(-50%);
+}
+
+#expo-footer .footer-col ul li a:hover { opacity: 1; }
+#expo-footer .footer-col ul li a:hover::after { width: 100%; }
+
+/* --- HUB CARDS --- */
+#expo-footer .hub-tag {
+    display: block;
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 5px;
+    opacity: 0.3;
+}
+
+/* --- FOOTER BOTTOM --- */
+#expo-footer .footer-bottom {
+    margin-top: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    opacity: 0.4;
+}
+
+/* --- SOCIALS --- */
+#expo-footer .footer-socials { display: flex; gap: 20px; }
+
+#expo-footer .social-circle {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: var(--soft-gray);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.4s;
+    cursor: pointer;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+#expo-footer .social-circle:hover {
+    background: var(--primary);
+    border-color: var(--primary);
+    transform: translateY(-5px);
+}
+
+/* --- GIANT WATERMARK --- */
+#expo-footer .footer-watermark {
+    position: absolute;
+    bottom: 2%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12vw;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.02);
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 1;
+    line-height: 1;
+}
+
+/* --- MOBILE --- */
+@media (max-width: 1024px) {
+    #expo-footer .container-70 { width: 90%; }
+    #expo-footer .footer-grid { grid-template-columns: 1fr 1fr; }
+    #expo-footer .footer-top { 
+        flex-direction: column; 
+        align-items: flex-start; 
+        gap: 30px; 
+    }
+}
+
+@media (max-width: 480px) {
+    #expo-footer .footer-grid { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,126 @@
+---
+import "../../public/assets/style/footer.css";
+---
+
+<footer id="expo-footer">
+    <div class="footer-watermark" id="watermark">EXPO LUKUS</div>
+
+    <div class="container-70" id="footerReveal">
+        <div class="footer-top">
+            <div class="footer-brand">
+                <h2>Expo Lukus</h2>
+                <p>
+                    Rooted in the fertile soil of Larache, bridging the gap to
+                    global excellence since the Chetouan Legacy.
+                </p>
+            </div>
+            <div class="footer-socials">
+                <div class="social-circle">In</div>
+                <div class="social-circle">Ig</div>
+                <div class="social-circle">Wa</div>
+            </div>
+        </div>
+
+        <div class="footer-grid">
+            <!-- Navigation -->
+            <div class="footer-col">
+                <h4>Explore</h4>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about">About Us</a></li>
+                    <li><a href="/products">Our Harvest</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Morocco Hub -->
+            <div class="footer-col">
+                <h4>Morocco Hub</h4>
+                <span class="hub-tag">Sourcing & Packaging</span>
+                <ul>
+                    <li><a href="#">Chetouan Import Export</a></li>
+                    <li><a href="#">Larache, Morocco</a></li>
+                    <li><a href="tel:+21200000000">+212 (0) 539 000 000</a></li>
+                </ul>
+            </div>
+
+            <!-- Spain Hub -->
+            <div class="footer-col">
+                <h4>Spain Hub</h4>
+                <span class="hub-tag">Logistics & Distribution</span>
+                <ul>
+                    <li><a href="#">Expo Lukus Spain</a></li>
+                    <li><a href="#">Madrid, Spain</a></li>
+                    <li><a href="tel:+3400000000">+34 91 000 000</a></li>
+                </ul>
+            </div>
+
+            <!-- Legal -->
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Export Licenses</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div>© 2024 Expo Lukus. All Rights Reserved.</div>
+            <div style="text-transform: uppercase; letter-spacing: 2px;">
+                From Earth to the World
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    // 1. FOOTER CONTENT REVEAL
+    // Everything inside the 70% container rises smoothly
+    gsap.from("#footerReveal", {
+        y: 100,
+        opacity: 0,
+        duration: 1.5,
+        ease: "power4.out",
+        scrollTrigger: {
+            trigger: "footer",
+            start: "top 90%",
+        },
+    });
+
+    // 2. PARALLAX WATERMARK
+    // The big background text moves at a different speed
+    gsap.from("#watermark", {
+        y: 200,
+        opacity: 0,
+        duration: 2,
+        ease: "power3.out",
+        scrollTrigger: {
+            trigger: "footer",
+            start: "top bottom",
+            scrub: 1,
+        },
+    });
+
+    // 3. MAGNETIC SOCIAL ICONS
+    const socials = document.querySelectorAll(".social-circle");
+    socials.forEach((icon) => {
+        icon.addEventListener("mousemove", (e) => {
+            const rect = icon.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            gsap.to(icon, { x: x * 0.5, y: y * 0.5, duration: 0.4 });
+        });
+        icon.addEventListener("mouseleave", () => {
+            gsap.to(icon, {
+                x: 0,
+                y: 0,
+                duration: 0.6,
+                ease: "elastic.out(1, 0.7)",
+            });
+        });
+    });
+</script>

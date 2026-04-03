@@ -101,15 +101,16 @@ html {
     position: relative;
     width: 100%;
 }
-
+#mainTitle{
+    font-family: var(--font-heading) !important;
+}
 .main-title {
-    font-family: var(--font-heading);
     font-size: 85px;
     color: var(--white);
     margin: 0;
-    line-height: 1;
+    text-transform: uppercase;
     text-align: center;
-    font-weight: 900;
+    /* font-weight: 900; */
 }
 
 .subtitle {
@@ -179,5 +180,6 @@ html {
 
     .main-title {
         font-size: 75px;
+
     }
 }

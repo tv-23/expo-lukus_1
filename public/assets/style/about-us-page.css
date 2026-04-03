@@ -1,160 +1,164 @@
-:root {
-    --primary: #00964b;
-    --white: #ffffff;
-    --black: #0a0a0a;
-    --soft-gray: #f8f8f8;
-}
+ /* --- THE 70% ARCHITECTURE --- */
+ .container-70 {
+     width: 70%;
+     max-width: 1400px;
+     margin: 0 auto;
+     position: relative;
+     z-index: 10;
+ }
 
-body {
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-    background: var(--white);
-    overflow-x: hidden;
-    color: var(--black);
-}
+ /* --- THE SECTION --- */
+ .story-section {
+     width: 100%;
+     background: var(--white);
+     position: relative;
+     /* We do NOT set a height here. ScrollTrigger will create the space dynamically */
+ }
 
-/* --- THE MASTER WRAPPER --- */
-.odyssey-wrapper {
-    position: relative;
-    width: 100%;
-}
+ .sticky-wrapper {
+     height: 100vh;
+     /* Viewport height */
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     overflow: hidden;
+ }
 
-/* Large Parallax Background Text */
-.parallax-bg-text {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 18vw;
-    font-weight: 900;
-    color: rgba(0, 150, 75, 0.04);
-    z-index: 1;
-    white-space: nowrap;
-    pointer-events: none;
-    text-transform: uppercase;
-}
+ .content-flex {
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     width: 100%;
+     gap: 60px;
+ }
 
-.container-70 {
-    width: 70%;
-    margin: 0 auto;
-    position: relative;
-    z-index: 10;
-}
+ /* --- TEXT COLUMN --- */
+ .text-column {
+     flex: 1.4;
+     height: 400px;
+     /* Locked height so it doesn't push sections down */
+     position: relative;
+ }
 
-/* --- THE PINNED STORYTELLING SECTION --- */
-.story-section {
-    height: 500vh; /* Extra height for 4 stages */
-    position: relative;
-}
+ .story-block {
+     position: absolute;
+     /* IMPORTANT: They overlap in code, so NO white space is created */
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     opacity: 0;
+     /* Hidden by default */
+     transform: translateY(20px);
+     pointer-events: none;
+ }
 
-.sticky-content {
-    position: sticky;
-    top: 0;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 80px;
-}
+ /* FIX: Ensure Chapter 1 is visible on load */
+ #block1 {
+     opacity: 1;
+     transform: translateY(0);
+     pointer-events: auto;
+ }
 
-.text-column {
-    flex: 1.2;
-    height: 100vh;
-    position: relative;
-}
+ .story-block h2 {
+     font-size: clamp(32px, 4vw, 55px);
+     font-weight: 900;
+     margin: 0 0 15px 0;
+     line-height: 1;
+     letter-spacing: -2px;
+ }
 
-.story-block {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    opacity: 0;
-    pointer-events: none;
-}
+ .story-block p {
+     font-size: 16px;
+     line-height: 1.8;
+     color: #444;
+     max-width: 550px;
+ }
 
-.story-block h2 {
-    font-size: clamp(32px, 4vw, 55px);
-    font-weight: 900;
-    margin: 0;
-    line-height: 1;
-    color: var(--black);
-}
+ .mini-grid {
+     display: flex;
+     gap: 30px;
+     margin-top: 20px;
+     border-top: 1px solid #f0f0f0;
+     padding-top: 20px;
+ }
 
-.story-block p {
-    font-size: 16px;
-    line-height: 1.8;
-    color: #444;
-    max-width: 550px;
-    margin-top: 25px;
-}
+ .mini-stat h4 {
+     font-size: 24px;
+     color: var(--primary);
+     margin: 0;
+     font-weight: 800;
+ }
 
-/* --- THE PORTAL --- */
-.portal-column {
-    flex: 0.8;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+ .mini-stat span {
+     font-size: 11px;
+     text-transform: uppercase;
+     letter-spacing: 1px;
+     opacity: 0.6;
+     font-weight: 700;
+ }
 
-.portal-frame {
-    width: 480px;
-    height: 480px;
-    position: relative;
-    border-radius: 50%;
-    overflow: hidden;
-    border: 12px solid var(--white);
-    box-shadow: 0 40px 100px rgba(0,0,0,0.08);
-    background: var(--soft-gray);
-    will-change: transform, border-radius;
-}
+ /* --- THE PORTAL --- */
+ .portal-column {
+     flex: 0.8;
+     display: flex;
+     justify-content: center;
+ }
 
-.portal-img-wrap {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 400%; /* 4 images */
-    display: flex;
-    flex-direction: column;
-}
+ .portal-frame {
+     width: 480px;
+     height: 480px;
+     border-radius: 50%;
+     overflow: hidden;
+     border: 12px solid var(--white);
+     box-shadow: 0 30px 80px rgba(0, 0, 0, 0.08);
+     position: relative;
+     background: #f9f9f9;
+ }
 
-.portal-img-wrap img {
-    width: 100%;
-    height: 25%;
-    object-fit: cover;
-}
+ .portal-img-wrap {
+     position: absolute;
+     top: 0;
+     width: 100%;
+     height: 400%;
+     display: flex;
+     flex-direction: column;
+ }
 
-/* --- FINAL REVEAL --- */
-.final-reveal {
-    min-height: 100vh;
-    background: var(--black);
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 100px 0;
-    position: relative;
-    z-index: 20;
-}
+ .portal-img-wrap img {
+     width: 100%;
+     height: 25%;
+     object-fit: cover;
+ }
 
-.final-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: center;
-    text-align: left;
-}
+ /* Background Text */
+ .bg-label {
+     position: fixed;
+     top: 55%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+     font-size: 20vw;
+     font-weight: 900;
+     color: rgba(0, 150, 75, 0.03);
+     z-index: 1;
+     white-space: nowrap;
+     pointer-events: none;
+     text-transform: uppercase;
+ }
 
-/* --- MOBILE --- */
-@media (max-width: 1024px) {
-    .container-70 { width: 90%; }
-    .sticky-content { flex-direction: column; justify-content: center; gap: 0; }
-    .portal-frame { width: 280px; height: 280px; order: -1; margin-bottom: 20px; border-width: 8px; }
-    .text-column { height: 50vh; width: 100%; text-align: center; }
-    .story-block { align-items: center; }
-    .final-grid { grid-template-columns: 1fr; text-align: center; }
-}
+ /* --- FINAL VISION (No Gaps) --- */
+ .final-vision {
+     min-height: 60vh;
+     background: var(--black);
+     color: white;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     text-align: center;
+     position: relative;
+     z-index: 50;
+     margin-top: 0;
+ }

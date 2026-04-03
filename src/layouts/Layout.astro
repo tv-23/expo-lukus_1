@@ -1,7 +1,6 @@
 ---
 import { getLangFromUrl } from "../../i18n/utils";
 const lang = getLangFromUrl(Astro.url);
-
 ---
 
 <!doctype html>
@@ -22,6 +21,10 @@ const lang = getLangFromUrl(Astro.url);
 			referrerpolicy="no-referrer"
 		/>
 
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders:opsz,wght@10..72,100..900&display=swap" rel="stylesheet">
+
 		<style>
 			:root {
 				--primary: #01954b;
@@ -29,10 +32,12 @@ const lang = getLangFromUrl(Astro.url);
 				--white: #ffffff;
 				--card-inner: #f9f9f9;
 				--font-main: "Poppins", sans-serif;
-				--font-heading: "Playfair Display", serif;
+				--font-heading: "Big Shoulders", cursive;
 				--bg: #0a0a0a;
 				--black: #000000;
 				--soft-gray: #f4f7f5;
+				--font-size-heading: 80px;
+				--font-weight-heading: 900;
 			}
 			html,
 			body {
@@ -49,5 +54,3 @@ const lang = getLangFromUrl(Astro.url);
 		<slot />
 	</body>
 </html>
-
-

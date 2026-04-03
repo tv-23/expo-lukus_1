@@ -1,5 +1,6 @@
 ---
 import "../../public/assets/style/products-display.css";
+const { lang, t } = Astro.props;
 ---
 
 <section class="products-section">
@@ -7,20 +8,23 @@ import "../../public/assets/style/products-display.css";
         <div class="section-header">
             <div class="filter-wrapper">
                 <button class="filter-btn active" data-filter="all"
-                    >All Produce</button
+                    >{t("products.filter.all")}</button
                 >
-                <button class="filter-btn" data-filter="seasonal"
-                    >Seasonal Only</button
+                <button class="filter-btn" data-filter="fresh-herbs"
+                    >{t("products.filter.fresh-herbs")}</button
                 >
-                <button class="filter-btn" data-filter="year-round"
-                    >Year-Round</button
+                <button class="filter-btn" data-filter="fresh-vegetables"
+                    >{t("products.filter.fresh-vegetables")}</button
+                >
+                <button class="filter-btn" data-filter="fresh-fruits"
+                    >{t("products.filter.fresh-fruits")}</button
                 >
             </div>
         </div>
 
         <div class="product-grid" id="productGrid">
             <!-- 12 PRODUCTS -->
-            <div class="product-card" data-category="year-round">
+            <div class="product-card" data-category="fresh-vegetables">
                 <div class="card-inner">
                     <div class="image-box">
                         <span class="badge">Year-round</span>
@@ -41,7 +45,7 @@ import "../../public/assets/style/products-display.css";
                 </div>
             </div>
 
-            <div class="product-card" data-category="seasonal">
+            <div class="product-card" data-category="fresh-herbs">
                 <div class="card-inner">
                     <div class="image-box">
                         <span class="badge">Apr - Jun</span>
@@ -66,7 +70,7 @@ import "../../public/assets/style/products-display.css";
                 </div>
             </div>
 
-            <div class="product-card" data-category="year-round">
+            <div class="product-card" data-category="fresh-vegetables">
                 <div class="card-inner">
                     <div class="image-box">
                         <span class="badge">Year-round</span>
@@ -90,7 +94,7 @@ import "../../public/assets/style/products-display.css";
                 </div>
             </div>
 
-            <div class="product-card" data-category="seasonal">
+            <div class="product-card" data-category="fresh-herbs">
                 <div class="card-inner">
                     <div class="image-box">
                         <span class="badge">Nov - Mar</span>
@@ -112,7 +116,7 @@ import "../../public/assets/style/products-display.css";
                 </div>
             </div>
 
-            <div class="product-card" data-category="year-round">
+            <div class="product-card" data-category="fresh-vegetables">
                 <div class="card-inner">
                     <div class="image-box">
                         <span class="badge">Year-round</span>
@@ -133,7 +137,7 @@ import "../../public/assets/style/products-display.css";
                 </div>
             </div>
 
-            <div class="product-card" data-category="seasonal">
+            <div class="product-card" data-category="fresh-herbs">
                 <div class="card-inner">
                     <div class="image-box">
                         <span class="badge">Jun - Aug</span>

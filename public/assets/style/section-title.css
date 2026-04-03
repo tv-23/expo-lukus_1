@@ -1,9 +1,19 @@
 .section-title h2.expo-lukus-title {
     margin: 0;
     line-height: 1.1;
-    font-size: 80px;
-    font-weight: 900;
+    font-size: var(--font-size-heading);
+    font-weight: var(--font-weight-heading);
     color: var(--bg);
+    font-family: var(--font-heading);
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.section-title p {
+    margin: 0;
+    font-size: 18px;
+    color: var(--bg);
+    font-family: var(--font-main);
     text-align: center;
 }
 

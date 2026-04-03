@@ -1,7 +1,7 @@
-.cta-section {
+#ctaSection {
     position: relative;
     padding: 150px 0;
-    background: var(--white);
+    background: var(--primary);
     transition: background 1s ease;
     overflow: hidden;
     display: flex;
@@ -9,8 +9,8 @@
 }
 
 /* The 70% Constraint */
-.container-70 {
-    width: 70%;
+#ctaSection .container-70 {
+    width: 85%;
     max-width: 1400px;
     display: flex;
     gap: 80px;
@@ -19,12 +19,12 @@
 }
 
 /* --- LEFT: THE HOOK --- */
-.cta-text {
+#ctaSection .cta-text {
     flex: 1;
     color: var(--black);
 }
 
-.cta-text h2 {
+#ctaSection .cta-text h2 {
     font-size: clamp(40px, 6vw, 80px);
     font-family: var(--font-heading);
     font-style: italic;
@@ -32,37 +32,39 @@
     margin: 0;
 }
 
-.cta-text p {
+#ctaSection .cta-text p {
     font-size: 18px;
     margin-top: 30px;
-    opacity: 0.7;
     max-width: 400px;
+    color: var(--bg);
 }
 
 /* --- RIGHT: THE GLASS FORM --- */
-.cta-form-wrap {
+#ctaSection .cta-form-wrap {
     flex: 1.2;
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(25px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     padding: 60px;
     border-radius: 40px;
-    box-shadow: 0 40px 100px rgba(0,0,0,0.05);
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.05);
     position: relative;
 }
 
 /* Form Styling */
-.form-group {
+#ctaSection .form-group {
     position: relative;
     margin-bottom: 40px;
 }
 
-.form-group input, .form-group select, .form-group textarea {
+#ctaSection .form-group input,
+#ctaSection .form-group select,
+#ctaSection .form-group textarea {
     width: 100%;
     padding: 15px 0;
     background: transparent;
     border: none;
-    border-bottom: 2px solid rgba(0,0,0,0.1);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
     font-family: var(--font-main);
     font-size: 16px;
     outline: none;
@@ -70,7 +72,7 @@
     transition: 0.3s;
 }
 
-.liquid-line {
+#ctaSection .liquid-line {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -80,32 +82,32 @@
     transition: 0.4s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
-.form-group input:focus ~ .liquid-line,
-.form-group textarea:focus ~ .liquid-line {
+#ctaSection .form-group input:focus ~ .liquid-line,
+#ctaSection .form-group textarea:focus ~ .liquid-line {
     width: 100%;
 }
 
-.form-group label {
+#ctaSection .form-group label {
     position: absolute;
     top: 15px;
     left: 0;
-    color: #999;
     pointer-events: none;
     transition: 0.3s;
+    color: lightgrey;
 }
 
-.form-group input:focus + label,
-.form-group input:valid + label,
-.form-group textarea:focus + label,
-.form-group textarea:valid + label {
+#ctaSection .form-group input:focus + label,
+#ctaSection .form-group input:valid + label,
+#ctaSection .form-group textarea:focus + label,
+#ctaSection .form-group textarea:valid + label {
     top: -15px;
     font-size: 12px;
-    color: var(--primary);
+    color: var(--white);
     font-weight: 700;
 }
 
-/* Magnetic Submit Button */
-.submit-btn {
+/* Button */
+#ctaSection .submit-btn {
     background: var(--black);
     color: white;
     border: none;
@@ -119,32 +121,48 @@
     transition: 0.4s;
 }
 
-.submit-btn:hover {
-    background: var(--primary);
+#ctaSection .submit-btn:hover {
+    background: var(--secondary);
     transform: translateY(-5px);
     box-shadow: 0 15px 30px rgba(1, 149, 75, 0.3);
 }
 
-/* --- PARALLAX FRUIT --- */
-.parallax-fruit {
+/* Parallax */
+#ctaSection .parallax-fruit {
     position: absolute;
     width: 300px;
     z-index: 1;
-    filter: drop-shadow(0 30px 60px rgba(0,0,0,0.1));
+    filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.1));
     pointer-events: none;
 }
 
-/* --- THE VIBE: DARK MODE TRANSITION --- */
-.dark-vibe {
-    background: var(--black) !important;
+/* Dark mode */
+#ctaSection.dark-vibe {
+    background: var(--primary) !important;
 }
-.dark-vibe .cta-text { color: white; }
-.dark-vibe .cta-text p { opacity: 0.5; }
-.dark-vibe .cta-form-wrap { border-color: rgba(255,255,255,0.05); }
-.dark-vibe .form-group input { border-bottom-color: rgba(255,255,255,0.1); color: white; }
 
+#ctaSection.dark-vibe .cta-form-wrap {
+    border-color: rgba(255, 255, 255, 0.05);
+}
+
+#ctaSection.dark-vibe .form-group input {
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+/* Responsive */
 @media (max-width: 1024px) {
-    .container-70 { width: 90%; flex-direction: column; text-align: center; }
-    .cta-text p { margin: 30px auto; }
-    .cta-form-wrap { padding: 40px 20px; }
+    #ctaSection .container-70 {
+        width: 90%;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    #ctaSection .cta-text p {
+        margin: 30px auto;
+    }
+
+    #ctaSection .cta-form-wrap {
+        padding: 40px 20px;
+    }
 }

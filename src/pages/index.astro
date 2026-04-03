@@ -2,6 +2,7 @@
 import Slider from "../components/home/slider.astro";
 import About from "../components/home/about.astro";
 import Navbar from "../components/navbar.astro";
+import Footer from "../components/footer.astro";
 import SectionTitle from "../components/section-title.astro";
 import ProductsDisplay from "../components/products-display.astro";
 import Certifications from "../components/home/certifications.astro";
@@ -30,13 +31,16 @@ const t = useTranslations(lang);
     <About lang={lang} t={t} />
     <br />
     <br />
-    <SectionTitle title="The Global<br>Fruit Selection" />
-    <br /><br />
-    <ProductsDisplay />
+    <SectionTitle
+        title={t("products.headline")}
+        subtitle={t("products.text")}
+    />
     <br />
+    <br />
+    <ProductsDisplay lang={lang} t={t} />
     <br />
     <SectionTitle title="Certifications" />
-    <br /><br />
-    <Certifications/>
-    <CTA/>
+    <Certifications />
+    <CTA />
+    <Footer />
 </Layout>

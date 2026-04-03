@@ -1,7 +1,7 @@
 body {
     margin: 0;
     background: var(--bg);
-    font-family: 'Poppins', sans-serif;
+    font-family: var(--font-main);
     color: var(--white);
 }
 
