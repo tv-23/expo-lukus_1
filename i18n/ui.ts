@@ -25,6 +25,22 @@ export const ui = {
     'products.filter.fresh-vegetables': 'Fresh Vegetables',
     'products.filter.fresh-fruits': 'Fresh Fruits',
     'products.filter.all': 'All Produce',
+    // Certifications
+    'certifications.headline': 'Certifications',
+    'certifications.text': "International Quality Standards",
+    'cta': {
+      tag: "Partnership",
+      title: "Ready to grow<br>your <i>harvest</i>?",
+      description:
+        "From Larache to the world. Reach out today to secure your direct bridge to high-end Moroccan produce.",
+
+      form: {
+        name: "Full Name",
+        email: "Business Email",
+        message: "Tell us about your needs...",
+        submit: "Submit Inquiry",
+      },
+    },
   },
   es: {
     // Navigation
@@ -44,5 +60,21 @@ export const ui = {
     'products.filter.fresh-vegetables': 'Verduras Frescas',
     'products.filter.fresh-fruits': 'Frutas Frescas',
     'products.filter.all': 'Todos los Productos',
+    // Certifications
+    'certifications.headline': 'Certificaciones',
+    'certifications.text': "Estándares Internacionales de Calidad",
+    'cta': {
+      tag: "Asociación",
+      title: "¿Listo para hacer crecer<br>tu <i>cosecha</i>?",
+      description:
+        "Desde Larache hacia el mundo. Contáctanos hoy para asegurar tu acceso directo a productos marroquíes de alta calidad.",
+
+      form: {
+        name: "Nombre completo",
+        email: "Correo empresarial",
+        message: "Cuéntanos tus necesidades...",
+        submit: "Enviar consulta",
+      },
+    },
   },
 } as const;

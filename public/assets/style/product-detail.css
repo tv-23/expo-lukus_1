@@ -1,6 +1,6 @@
- /* Layout Constraint */
- .detail-wrapper {
-    width: 70%; /* Constraint to 70% */
+/* Layout Constraint */
+#ExpoLukusProdcutDeatils {
+    width: 70%;
     margin: 0 auto;
     min-height: 100vh;
     display: flex;
@@ -10,7 +10,7 @@
 }
 
 /* --- LEFT: GALLERY PANE --- */
-.gallery-pane {
+#ExpoLukusProdcutDeatils .gallery-pane {
     flex: 1;
     height: 80vh;
     position: sticky;
@@ -21,7 +21,7 @@
     z-index: 5;
 }
 
-.main-fruit-wrap {
+#ExpoLukusProdcutDeatils .main-fruit-wrap {
     position: relative;
     width: 100%;
     height: 100%;
@@ -30,15 +30,15 @@
     justify-content: center;
 }
 
-.fruit-img {
-    width: 110%; /* Makes it pop out of the "frame" */
+#ExpoLukusProdcutDeatils .fruit-img {
+    width: 110%;
     height: auto;
     object-fit: contain;
     filter: drop-shadow(0 30px 60px rgba(0, 150, 75, 0.2));
     z-index: 10;
 }
 
-.bg-circle {
+#ExpoLukusProdcutDeatils .bg-circle {
     position: absolute;
     width: 400px;
     height: 400px;
@@ -48,13 +48,13 @@
 }
 
 /* --- RIGHT: INFO PANE --- */
-.info-pane {
+#ExpoLukusProdcutDeatils .info-pane {
     flex: 1;
     position: relative;
     z-index: 10;
 }
 
-.ghost-bg {
+#ExpoLukusProdcutDeatils .ghost-bg {
     position: absolute;
     top: -50px;
     left: -20px;
@@ -66,7 +66,7 @@
     pointer-events: none;
 }
 
-.category-label {
+#ExpoLukusProdcutDeatils .category-label {
     color: var(--primary);
     font-weight: 700;
     text-transform: uppercase;
@@ -76,7 +76,7 @@
     display: block;
 }
 
-h1 {
+#ExpoLukusProdcutDeatils h1 {
     font-size: clamp(60px, 8vw, 90px);
     font-weight: 900;
     margin: 0 0 30px 0;
@@ -84,7 +84,7 @@ h1 {
     color: var(--bg);
 }
 
-.description {
+#ExpoLukusProdcutDeatils .description {
     font-size: 18px;
     line-height: 1.8;
     color: #555;
@@ -93,7 +93,7 @@ h1 {
 }
 
 /* --- PACKAGING GRID --- */
-.packaging-section h4 {
+#ExpoLukusProdcutDeatils .packaging-section h4 {
     text-transform: uppercase;
     letter-spacing: 2px;
     font-size: 14px;
@@ -101,14 +101,14 @@ h1 {
     color: #999;
 }
 
-.packaging-grid {
+#ExpoLukusProdcutDeatils .packaging-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: 20px;
     margin-bottom: 60px;
 }
 
-.pack-item {
+#ExpoLukusProdcutDeatils .pack-item {
     background: var(--soft-gray);
     padding: 25px 35px;
     border-radius: 25px;
@@ -119,18 +119,27 @@ h1 {
     border: 1px solid transparent;
 }
 
-.pack-item:hover {
+#ExpoLukusProdcutDeatils .pack-item:hover {
     background: #fff;
     border-color: var(--primary);
     transform: scale(1.05) translateX(15px);
     box-shadow: 0 20px 40px rgba(0,150,75,0.1);
 }
 
-.pack-weight { font-size: 24px; font-weight: 800; color: var(--primary); }
-.pack-detail { font-size: 14px; font-weight: 600; color: #666; }
+#ExpoLukusProdcutDeatils .pack-weight {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--primary);
+}
+
+#ExpoLukusProdcutDeatils .pack-detail {
+    font-size: 14px;
+    font-weight: 600;
+    color: #666;
+}
 
 /* --- CONTACT BUTTON --- */
-.contact-trigger {
+#ExpoLukusProdcutDeatils .contact-trigger {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -148,14 +157,29 @@ h1 {
     overflow: hidden;
 }
 
-.contact-trigger:hover {
+#ExpoLukusProdcutDeatils .contact-trigger:hover {
     background: var(--primary);
 }
 
 /* --- MOBILE --- */
 @media (max-width: 1024px) {
-    .detail-wrapper { width: 90%; flex-direction: column; padding: 50px 0; }
-    .gallery-pane { position: relative; height: 400px; top: 0; }
-    .fruit-img { width: 80%; }
-    .ghost-bg { font-size: 80px; }
+    #ExpoLukusProdcutDeatils {
+        width: 90%;
+        flex-direction: column;
+        padding: 50px 0;
+    }
+
+    #ExpoLukusProdcutDeatils .gallery-pane {
+        position: relative;
+        height: 400px;
+        top: 0;
+    }
+
+    #ExpoLukusProdcutDeatils .fruit-img {
+        width: 80%;
+    }
+
+    #ExpoLukusProdcutDeatils .ghost-bg {
+        font-size: 80px;
+    }
 }

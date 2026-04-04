@@ -66,10 +66,10 @@ header {
     color: var(--black);
 }
 
-.nav-item  a{
+.nav-item a {
     color: var(--black);
-text-decoration: none;
-padding: 0;
+    text-decoration: none;
+    padding: 0;
 }
 
 /* This creates the space for the logo in the middle of the list */
@@ -116,7 +116,8 @@ padding: 0;
 .nav-item.active,
 .nav-item:hover {
     opacity: 1;
-    font-weight: 800; /* Recommended for readability on yellow */
+    font-weight: 800;
+    /* Recommended for readability on yellow */
 }
 
 /* Normal state: Dimmed white for better contrast */
@@ -249,7 +250,7 @@ padding: 0;
 /* Top Bar */
 .top-bar {
     max-width: 100%;
-    background: var(--primary);
+    background: var(--black);
     color: white;
     font-size: 13px;
     padding: 8px 20px;
@@ -323,7 +324,7 @@ padding: 0;
 .lang-switcher {
     display: flex;
     gap: 6px;
-    background: rgba(255,255,255,0.1);
+    background: rgba(255, 255, 255, 0.1);
     padding: 4px;
     border-radius: 999px;
 }

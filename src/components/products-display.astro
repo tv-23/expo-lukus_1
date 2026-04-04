@@ -1,6 +1,13 @@
 ---
 import "../../public/assets/style/products-display.css";
 const { lang, t } = Astro.props;
+import { products } from "../../data/products";
+
+const categoryLabels = {
+    "fresh-herbs": t("products.filter.fresh-herbs"),
+    "fresh-vegetables": t("products.filter.fresh-vegetables"),
+    "fresh-fruits": t("products.filter.fresh-fruits"),
+};
 ---
 
 <section class="products-section">
@@ -23,141 +30,46 @@ const { lang, t } = Astro.props;
         </div>
 
         <div class="product-grid" id="productGrid">
-            <!-- 12 PRODUCTS -->
-            <div class="product-card" data-category="fresh-vegetables">
-                <div class="card-inner">
-                    <div class="image-box">
-                        <span class="badge">Year-round</span>
-                        <img
-                            src="https://pngimg.com/uploads/apple/apple_PNG12439.png"
-                            class="fruit-img"
-                        />
-                    </div>
-                    <div class="card-content">
-                        <p class="origin">USA</p>
-                        <h3>Royal Gala</h3>
-                        <p>Premium grade apples with exceptional sweetness.</p>
-                        <a href="/product-detail"
-                            ><button class="enquiry-btn">Bulk Enquiry</button
-                            ></a
+            {
+                products
+                    .filter((p) => p.category === p.category)
+                    .map((product) => (
+                        <div
+                            class="product-card"
+                            data-category={product.category}
                         >
-                    </div>
-                </div>
-            </div>
+                            <div class="card-inner">
+                                <div class="image-box">
+                                    <span class="badge">{product.badge}</span>
+                                    <span class="badge seasonal">
+                                        {categoryLabels[product.category]}
+                                    </span>
 
-            <div class="product-card" data-category="fresh-herbs">
-                <div class="card-inner">
-                    <div class="image-box">
-                        <span class="badge">Apr - Jun</span>
-                        <span class="badge seasonal">Seasonal</span>
-                        <img
-                            src="https://pngimg.com/uploads/mango/mango_PNG9176.png"
-                            class="fruit-img"
-                        />
-                    </div>
-                    <div class="card-content">
-                        <p class="origin">India</p>
-                        <h3>Alphonso</h3>
-                        <p>
-                            Hand-picked "King of Mangoes" from the Ratnagiri
-                            belt.
-                        </p>
-                        <a href="/product-detail"
-                            ><button class="enquiry-btn">Bulk Enquiry</button
-                            ></a
-                        >
-                    </div>
-                </div>
-            </div>
+                                    <img
+                                        src={product.image}
+                                        class="fruit-img"
+                                    />
+                                </div>
 
-            <div class="product-card" data-category="fresh-vegetables">
-                <div class="card-inner">
-                    <div class="image-box">
-                        <span class="badge">Year-round</span>
-                        <img
-                            src="https://pngimg.com/uploads/banana/banana_PNG843.png"
-                            class="fruit-img"
-                        />
-                    </div>
-                    <div class="card-content">
-                        <p class="origin">Ecuador</p>
-                        <h3>Cavendish</h3>
-                        <p>
-                            Export-ready bananas harvested for maximum shelf
-                            life.
-                        </p>
-                        <a href="/product-detail"
-                            ><button class="enquiry-btn">Bulk Enquiry</button
-                            ></a
-                        >
-                    </div>
-                </div>
-            </div>
+                                <div class="card-content">
+                                    <p class="origin">{product.origin}</p>
+                                    <h3>{product.title[lang]}</h3>
+                                    <p>{product.description[lang]}</p>
 
-            <div class="product-card" data-category="fresh-herbs">
-                <div class="card-inner">
-                    <div class="image-box">
-                        <span class="badge">Nov - Mar</span>
-                        <span class="badge seasonal">Seasonal</span>
-                        <img
-                            src="https://pngimg.com/uploads/orange/orange_PNG780.png"
-                            class="fruit-img"
-                        />
-                    </div>
-                    <div class="card-content">
-                        <p class="origin">Spain</p>
-                        <h3>Valencia Orange</h3>
-                        <p>Vibrant citrus, high in juice and natural sugars.</p>
-                        <a href="/product-detail"
-                            ><button class="enquiry-btn">Bulk Enquiry</button
-                            ></a
-                        >
-                    </div>
-                </div>
-            </div>
-
-            <div class="product-card" data-category="fresh-vegetables">
-                <div class="card-inner">
-                    <div class="image-box">
-                        <span class="badge">Year-round</span>
-                        <img
-                            src="https://pngimg.com/uploads/lemon/lemon_PNG38.png"
-                            class="fruit-img"
-                        />
-                    </div>
-                    <div class="card-content">
-                        <p class="origin">Turkey</p>
-                        <h3>Eureka Lemon</h3>
-                        <p>High-acidity lemons, perfect for commercial use.</p>
-                        <a href="/product-detail"
-                            ><button class="enquiry-btn">Bulk Enquiry</button
-                            ></a
-                        >
-                    </div>
-                </div>
-            </div>
-
-            <div class="product-card" data-category="fresh-herbs">
-                <div class="card-inner">
-                    <div class="image-box">
-                        <span class="badge">Jun - Aug</span>
-                        <span class="badge seasonal">Seasonal</span>
-                        <img
-                            src="https://pngimg.com/uploads/strawberry/strawberry_PNG2595.png"
-                            class="fruit-img"
-                        />
-                    </div>
-                    <div class="card-content">
-                        <p class="origin">Mexico</p>
-                        <h3>Red Diamond</h3>
-                        <p>Succulent strawberries grown in volcanic soil.</p>
-                        <a href="/product-detail"
-                            ><button class="enquiry-btn">Bulk Enquiry</button
-                            ></a
-                        >
-                    </div>
-                </div>
-            </div>
+                                    <a
+                                        href={`${lang === "es" ? "" : "/en"}/product-detail/${product.id}`}
+                                    >
+                                        <button class="enquiry-btn">
+                                            {lang === "en"
+                                                ? "Bulk Enquiry"
+                                                : "Consulta Mayorista"}
+                                        </button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    ))
+            }
         </div>
     </div>
 </section>

@@ -6,7 +6,7 @@ const { title } = Astro.props;
     <div class="hero-bg"></div>
 
     <!-- BOTTOM LAYER: WHITE TEXT -->
-    <div class="text-container layer-base" set:html={title}/>
+    <div class="text-container layer-base" set:html={title}>
 
     <!-- TOP LAYER: MASKED CONTENT (GREEN BG + BLACK TEXT) -->
     <div class="layer-mask" id="maskLayer">

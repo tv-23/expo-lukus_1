@@ -39,8 +39,12 @@ const t = useTranslations(lang);
     <br />
     <ProductsDisplay lang={lang} t={t} />
     <br />
-    <SectionTitle title="Certifications" />
+    <br />
+    <SectionTitle
+        title={t("certifications.headline")}
+        subtitle={t("certifications.text")}
+    />
     <Certifications />
-    <CTA />
+    <CTA lang={lang} t={t} />
     <Footer />
 </Layout>
