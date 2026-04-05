@@ -1,8 +1,14 @@
 ---
 import "../../public/assets/style/navbar.css";
 const { lang, t } = Astro.props;
-const l = (path) => `/${lang}${path}`;
+const isDefaultLang = lang === "es";
+
+const l = (path: string) => {
+    if (isDefaultLang) return path;
+    return `/en${path}`;
+};
 const currentPath = Astro.url.pathname.replace(/^\/(en|es)/, "");
+const pathname = new URL(Astro.url).pathname;
 ---
 
 <svg class="svg-filters">
@@ -25,10 +31,10 @@ const currentPath = Astro.url.pathname.replace(/^\/(en|es)/, "");
         <!-- Left: Contact Info -->
         <div class="top-left">
             <a href="mailto:info@expolukus.com">Email: info@expolukus.com</a>
-            <a href="tel:+123456789">Phone: +1 234 567 89</a>
+            <a href="tel:+212662361174">Phone: +212 662 361 174</a>
         </div>
 
-        <!-- Right: Social + CTA -->
+        <!-- Right: Social -->
         <div class="top-right">
             <div class="socials">
                 <a href="#" aria-label="Facebook">
@@ -44,7 +50,7 @@ const currentPath = Astro.url.pathname.replace(/^\/(en|es)/, "");
 
             <div class="lang-switcher">
                 <a
-                    href="/"
+                    href={`${currentPath}`}
                     class={`lang-btn ${lang === "es" ? "active" : ""}`}
                     data-lang="es">ES</a
                 >
@@ -54,21 +60,18 @@ const currentPath = Astro.url.pathname.replace(/^\/(en|es)/, "");
                     data-lang="en">EN</a
                 >
             </div>
-
-            <a href="/contact" class="cta-button"> Solicitar presupuesto. </a>
         </div>
     </div>
 </div>
 
 <header id="expo-lukus-header">
-    <!-- Centered Logo -->
+    <!-- 1. Logo moved to Left -->
     <div class="logo">
-        <a href="/">
+        <a href={l("/")}>
             <img src="/assets/images/logo expo.svg" alt="Expo Lukus" />
         </a>
     </div>
 
-    <!-- Desktop Nav with Spacer -->
     <div class="desktop-nav" id="desktopNav">
         <div class="goo-wrapper">
             <div class="pill" id="activePill" style="height:100%;"></div>
@@ -76,80 +79,146 @@ const currentPath = Astro.url.pathname.replace(/^\/(en|es)/, "");
         </div>
 
         <ul class="nav-list white-layer">
-            <li class="nav-item active">
-                <a href="/">{t("nav.home")}</a>
+            <li
+                class={`nav-item ${pathname === l("/") ? "active" : ""}`}
+                onclick={l("/")}
+            >
+                <a href={l("/")}>{t("nav.home")}</a>
             </li>
-            <li class="nav-item"><a href="/about-us">{t("nav.about")}</a></li>
-            <li class="nav-spacer"></li>
-            <li class="nav-item">
-                <a href="/products">{t("nav.products")}</a>
+
+            <li
+                class={`nav-item ${pathname === l("/about-us/") ? "active" : ""}`}
+                onclick={l("/about-us")}
+            >
+                <a href={l("/about-us")}>{t("nav.about")}</a>
             </li>
-            <li class="nav-item">
-                <a href="/contact-us">{t("nav.contact")}</a>
+
+            <li
+                class={`nav-item ${pathname === l("/products/") ? "active" : ""}`}
+                onclick={l("/products")}
+            >
+                <a href={l("/products")}>{t("nav.products")}</a>
+            </li>
+
+            <li
+                class={`nav-item ${pathname === l("/contact-us/") ? "active" : ""}`}
+                onclick={l("/contact-us")}
+            >
+                <a href={l("/contact-us")}>{t("nav.contact")}</a>
             </li>
         </ul>
 
         <div class="black-mask" id="desktopMask">
             <ul class="nav-list">
-                <li class="nav-item active">
-                    <a href="/">{t("nav.home")}</a>
-                </li>
-                <li class="nav-item">
-                    <a href="/about">{t("nav.about")}</a>
-                </li>
-                <li class="nav-spacer"></li>
-                <li class="nav-item">
-                    <a href="/products">{t("nav.products")}</a>
-                </li>
-                <li class="nav-item">
-                    <a href="/contact">{t("nav.contact")}</a>
-                </li>
+                <li
+                class={`nav-item ${pathname === l("/") ? "active" : ""}`}
+                onclick={l("/")}
+            >
+                <a href={l("/")}>{t("nav.home")}</a>
+            </li>
+
+            <li
+                class={`nav-item ${pathname === l("/about-us/") ? "active" : ""}`}
+                onclick={l("/about-us")}
+            >
+                <a href={l("/about-us")}>{t("nav.about")}</a>
+            </li>
+
+            <li
+                class={`nav-item ${pathname === l("/products/") ? "active" : ""}`}
+                onclick={l("/products")}
+            >
+                <a href={l("/products")}>{t("nav.products")}</a>
+            </li>
+
+            <li
+                class={`nav-item ${pathname === l("/contact-us/") ? "active" : ""}`}
+                onclick={l("/contact-us")}
+            >
+                <a href={l("/contact-us")}>{t("nav.contact")}</a>
+            </li>
             </ul>
         </div>
     </div>
 
-    <!-- Burger Icon -->
-    <div class="burger" id="burger">
-        <div class="line"></div>
-        <div class="line"></div>
-        <div class="line"></div>
+    <!-- 3. New Right Column for CTA and Burger -->
+    <div class="header-right">
+        <a href={l("/contact-us")} class="cta-button-nav">{t("nav.cta")}</a>
+
+        <div class="burger" id="burger">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
     </div>
 </header>
 
-<!-- Mobile Overlay -->
+<!-- Mobile Overlay (No changes needed) -->
 <div class="mobile-overlay" id="mobileOverlay">
     <div class="desktop-nav" id="mobileNav" style="display: block;">
         <div class="goo-wrapper">
             <div class="pill" id="mobilePill" style="width: 100%;"></div>
         </div>
+
         <ul class="nav-list white-layer">
-            <li class="nav-item active">
+            <li
+                class={`nav-item ${pathname === l("/") ? "active" : ""}`}
+                onclick={l("/")}
+            >
                 <a href={l("/")}>{t("nav.home")}</a>
             </li>
-            <li class="nav-item">
-                <a href={l("/about")}>{t("nav.about")}</a>
+
+            <li
+                class={`nav-item ${pathname === l("/about-us/") ? "active" : ""}`}
+                onclick={l("/about-us")}
+            >
+                <a href={l("/about-us")}>{t("nav.about")}</a>
             </li>
-            <li class="nav-item">
+
+            <li
+                class={`nav-item ${pathname === l("/products/") ? "active" : ""}`}
+                onclick={l("/products")}
+            >
                 <a href={l("/products")}>{t("nav.products")}</a>
             </li>
-            <li class="nav-item">
-                <a href={l("/contact")}>{t("nav.contact")}</a>
+
+            <li
+                class={`nav-item ${pathname === l("/contact-us/") ? "active" : ""}`}
+                onclick={l("/contact-us")}
+            >
+                <a href={l("/contact-us")}>{t("nav.contact")}</a>
             </li>
         </ul>
+
         <div class="black-mask" id="mobileMask">
             <ul class="nav-list">
-                <li class="nav-item active">
-                    <a href={l("/")}>{t("nav.home")}</a>
-                </li>
-                <li class="nav-item">
-                    <a href={l("/about")}>{t("nav.about")}</a>
-                </li>
-                <li class="nav-item">
-                    <a href={l("/products")}>{t("nav.products")}</a>
-                </li>
-                <li class="nav-item">
-                    <a href={l("/contact")}>{t("nav.contact")}</a>
-                </li>
+               <li
+                class={`nav-item ${pathname === l("/") ? "active" : ""}`}
+                onclick={l("/")}
+            >
+                <a href={l("/")}>{t("nav.home")}</a>
+            </li>
+
+            <li
+                class={`nav-item ${pathname === l("/about-us/") ? "active" : ""}`}
+                onclick={l("/about-us")}
+            >
+                <a href={l("/about-us")}>{t("nav.about")}</a>
+            </li>
+
+            <li
+                class={`nav-item ${pathname === l("/products/") ? "active" : ""}`}
+                onclick={l("/products")}
+            >
+                <a href={l("/products")}>{t("nav.products")}</a>
+            </li>
+
+            <li
+                class={`nav-item ${pathname === l("/contact-us/") ? "active" : ""}`}
+                onclick={l("/contact-us")}
+            >
+                <a href={l("/contact-us")}>{t("nav.contact")}</a>
+            </li>
             </ul>
         </div>
     </div>

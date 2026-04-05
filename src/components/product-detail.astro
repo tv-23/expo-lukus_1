@@ -1,5 +1,5 @@
 ---
-const { product, lang } = Astro.props;
+const { product, lang,href } = Astro.props;
 import "../../public/assets/style/product-detail.css";
 
 export async function getStaticPaths() {
@@ -53,11 +53,12 @@ export async function getStaticPaths() {
             </div>
         </div>
 
-        <a href="/contact" class="contact-trigger" id="magneticBtn">
+        <a href={href("/contact-us")} class="contact-trigger" id="magneticBtn">
             {lang === "en" ? "Place Enquiry" : "Solicitar Pedido"}
         </a>
     </div>
 </div>
+
 
 <script>
     gsap.registerPlugin(ScrollTrigger);

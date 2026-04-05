@@ -1,0 +1,67 @@
+---
+import { productDetails } from "../../../../data/productDetails";
+import { getLangFromUrl, useTranslations } from "../../../../i18n/utils";
+import Navbar from "../../../components/navbar.astro";
+import Footer from "../../../components/footer.astro";
+import Layout from "../../../layouts/Layout.astro";
+import ProductDetail from "../../../components/product-detail.astro";
+import PageHeadline from "../../../components/page-headline.astro";
+import ExportJourney from "../../../components/export-journey.astro";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const prefix = lang === "es" ? "" : "/en";
+const href = (path: string) => `${prefix}${path}`;
+const { id } = Astro.params;
+
+const product = productDetails[id];
+
+export async function getStaticPaths() {
+    const products = [
+        "mint",
+        "coriander",
+        "parsley",
+        "potato",
+        "tomato",
+        "onion",
+        "blueberry",
+        "strawberry",
+        "avocado",
+        "raspberry",
+        "blackberry",
+    ];
+    const langs = ["en", "es"];
+
+    return langs.flatMap((lang) =>
+        products.map((id) => ({
+            params: { lang, id },
+        })),
+    );
+}
+---
+
+<Layout>
+    <script
+        is:inline
+        src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"
+    ></script>
+
+    <script
+        is:inline
+        src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"
+    ></script>
+
+    <Navbar lang={lang} t={t} />
+
+    <PageHeadline
+        title={`<h1 class="main-title">${product.headline.title[lang]}</h1>
+  <p class="tagline">${product.headline.subtitle[lang]}</p>`}
+        image={product.backgroundimage}
+    />
+
+    <ProductDetail product={product} lang={lang} href={href} />
+
+    {["mint", "coriander", "parsley"].includes(id) ? <ExportJourney /> : null}
+
+    <Footer lang={lang} t={t} />
+</Layout>

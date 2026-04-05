@@ -1,6 +1,7 @@
 ---
 import Slider from "../components/home/slider.astro";
 import About from "../components/home/about.astro";
+import EuropeanGateway from "../components/home/european-gateway.astro";
 import Navbar from "../components/navbar.astro";
 import Footer from "../components/footer.astro";
 import SectionTitle from "../components/section-title.astro";
@@ -40,11 +41,12 @@ const t = useTranslations(lang);
     <ProductsDisplay lang={lang} t={t} />
     <br />
     <br />
+    <EuropeanGateway lang={lang} t={t} />
     <SectionTitle
         title={t("certifications.headline")}
         subtitle={t("certifications.text")}
     />
     <Certifications />
     <CTA lang={lang} t={t} />
-    <Footer />
+    <Footer lang={lang} t={t} />
 </Layout>

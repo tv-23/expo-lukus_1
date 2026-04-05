@@ -12,8 +12,7 @@
 .hero-bg {
     position: absolute;
     inset: 0;
-    background: url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=2000') no-repeat center/cover;
-    filter: grayscale(1) brightness(0.4);
+    filter: grayscale(0.05) brightness(0.4);
     z-index: 1;
 }
 

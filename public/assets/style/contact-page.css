@@ -1,4 +1,4 @@
-.container-70 {
+#contactSection .container-70 {
     width: 70%;
     max-width: 1400px;
     margin: 0 auto;
@@ -6,7 +6,7 @@
 }
 
 /* --- SECTION 1: THE SPLIT HERO --- */
-.contact-hero {
+#contactSection .contact-hero {
     height: 100vh;
     display: flex;
     align-items: center;
@@ -15,19 +15,19 @@
     position: relative;
 }
 
-.hero-title {
+#contactSection .hero-title {
     z-index: 10;
     pointer-events: none;
 }
 
-.hero-title h1 {
+#contactSection .hero-title h1 {
     font-family: var(--font-main);
     font-size: clamp(40px, 8vw, 110px);
     line-height: 0.8;
     margin: 0;
 }
 
-.coordinates {
+#contactSection .coordinates {
     position: absolute;
     font-size: 12px;
     letter-spacing: 5px;
@@ -37,7 +37,7 @@
 }
 
 /* --- SECTION 2: THE INTERACTIVE FORM --- */
-.main-contact-area {
+#contactSection .main-contact-area {
     padding: 100px 0;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -45,14 +45,14 @@
     align-items: start;
 }
 
-.larache-info h2 {
-    font-family: var(--font-main);
-    font-size: 50px;
+#contactSection .larache-info h2 {
+    font-family: var(--font-headings);
+    font-size: var(--font-size-heading);
     color: var(--primary);
     margin: 0 0 20px 0;
 }
 
-.larache-info p {
+#contactSection .larache-info p {
     font-size: 18px;
     line-height: 1.8;
     opacity: 0.7;
@@ -60,7 +60,7 @@
     color: var(--bg);
 }
 
-.contact-card-wrap {
+#contactSection .contact-card-wrap {
     background: var(--soft-gray);
     padding: 50px;
     border-radius: 40px;
@@ -69,12 +69,13 @@
     overflow: hidden;
 }
 
-.form-group {
+#contactSection .form-group {
     position: relative;
     margin-bottom: 40px;
 }
 
-.form-group input, .form-group textarea {
+#contactSection .form-group input,
+#contactSection .form-group textarea {
     width: 100%;
     padding: 15px 0;
     background: transparent;
@@ -83,9 +84,15 @@
     color: var(--bg);
     font-size: 16px;
     outline: none;
+    border-radius: 0;
 }
 
-.focus-border {
+#contactSection .form-group input:focus,
+#contactSection .form-group textarea:focus {
+    box-shadow: none !important;
+}
+
+/* #contactSection .focus-border {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -93,13 +100,14 @@
     height: 2px;
     background: var(--primary);
     transition: 0.4s;
-}
+} */
 
-.form-group input:focus~.focus-border {
+/* #contactSection .form-group input:focus ~ .focus-border {
     width: 100%;
-}
+    
+} */
 
-.form-group label {
+#contactSection .form-group label {
     position: absolute;
     top: 15px;
     left: 0;
@@ -109,14 +117,15 @@
     color: var(--bg);
 }
 
-.form-group input:focus+label, .form-group input:valid+label {
+#contactSection .form-group input:focus + label,
+#contactSection .form-group input:valid + label {
     top: -15px;
     font-size: 12px;
     opacity: 1;
     color: var(--primary);
 }
 
-.submit-btn {
+#contactSection .submit-btn {
     background: var(--primary);
     color: var(--white);
     border: none;
@@ -130,12 +139,12 @@
 }
 
 /* --- SECTION 3: THE MAP PORTAL --- */
-.map-section {
+#contactSection .map-section {
     padding: 100px 0;
     text-align: center;
 }
 
-.map-portal {
+#contactSection .map-portal {
     width: 100%;
     height: 600px;
     border-radius: 50px;
@@ -147,7 +156,7 @@
 }
 
 /* --- FOOTER INFO --- */
-.hub-footer {
+#contactSection .hub-footer {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
@@ -155,30 +164,31 @@
     border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.hub-item h4 {
+#contactSection .hub-item h4 {
     color: var(--primary);
     margin: 0;
     text-transform: uppercase;
     letter-spacing: 2px;
 }
 
-.hub-item p {
+#contactSection .hub-item p {
     margin: 10px 0 0 0;
     opacity: 0.6;
     color: var(--bg);
 }
 
 @media (max-width: 1024px) {
-    .container-70 {
+    #contactSection .container-70 {
         width: 90%;
     }
 
-    .main-contact-area, .hub-footer {
+    #contactSection .main-contact-area,
+    #contactSection .hub-footer {
         grid-template-columns: 1fr;
         gap: 50px;
     }
 
-    .hero-title h1 {
+    #contactSection .hero-title h1 {
         font-size: 60px;
     }
 }

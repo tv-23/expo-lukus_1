@@ -1,0 +1,222 @@
+---
+import "../../public/assets/style/chat-boot.css";
+// Detect language from URL
+const lang = Astro.url.pathname.startsWith("/es") ? "es" : "en";
+
+const t = {
+  es: {
+    tagline: "Expo Lukus | Exportación Premium",
+    welcome: "Hola 👋 Bienvenido a <strong>Expo Lukus</strong><br><br>Exportamos productos marroquíes frescos con calidad premium al mundo 🌍<br><br>¿Cómo podemos ayudarte hoy?",
+    btn_products: "📦 Nuestros Productos",
+    btn_process: "🌍 Proceso de Exportación",
+    btn_quote: "💰 Solicitar Presupuesto",
+    btn_contact: "📞 Contáctanos",
+    placeholder: "Escribe aquí...",
+  },
+  en: {
+    tagline: "Expo Lukus | Premium Export",
+    welcome: "Hello 👋 Welcome to <strong>Expo Lukus</strong><br><br>We export fresh Moroccan products with premium quality to the world 🌍<br><br>How can we help you today?",
+    btn_products: "📦 Our Products",
+    btn_process: "🌍 Export Process",
+    btn_quote: "💰 Request a Quote",
+    btn_contact: "📞 Contact Us",
+    placeholder: "Type here...",
+  }
+}[lang];
+---
+
+<div class="chat-container hidden" id="chatContainer">
+  <!-- HEADER -->
+  <div class="chat-header">
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <div class="online-status-dot"></div>
+      <div style="text-align: left;">
+        <strong style="display: block; font-size: 14px;">Expo Lukus Connect</strong>
+        <small style="font-size: 9px; opacity: 0.8;">{t.tagline}</small>
+      </div>
+    </div>
+    <button class="close-btn" id="closeChatBtn">✕</button>
+  </div>
+
+  <!-- CHAT BODY -->
+  <div class="chat-body" id="chatBody">
+    <div class="message-row receiver">
+      <div class="message-bubble" set:html={t.welcome} />
+    </div>
+
+    <div class="quick-replies" id="initialActions">
+      <div class="quick-reply" onclick="window.startFlow('PRODUCTS')">{t.btn_products}</div>
+      <div class="quick-reply" onclick="window.startFlow('PROCESS')">{t.btn_process}</div>
+      <div class="quick-reply" onclick="window.startFlow('QUOTE')">{t.btn_quote}</div>
+      <div class="quick-reply" onclick="window.startFlow('CONTACT')">{t.btn_contact}</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const lang = window.location.pathname.startsWith("/es") ? "es" : "en";
+
+    const t = {
+      es: {
+        prod_intro: "Ofrecemos una amplia gama de productos de calidad de exportación:<br><br>🌿 <strong>Hierbas:</strong> Menta, Cilantro, Perejil<br>🥔 <strong>Verduras:</strong> Patata, Tomate, Cebolla<br>🫐 <strong>Bayas:</strong> Mora, Arándano, Frambuesa, Fresa<br>🥑 <strong>Frutas:</strong> Aguacate<br><br>¿Deseas precios o más detalles?",
+        proc_intro: "Nuestro proceso garantiza calidad y fiabilidad:<br><br>✅ Control de Calidad<br>📦 Embalaje Personalizado<br>❄️ Logística de Cadena de Frío<br>✈️ Entrega Internacional Rápida",
+        q_step1: "Por favor, comparte tus datos para preparar una cotización:",
+        btn_prices: "📊 Lista de Precios",
+        btn_sales: "📞 Contactar Ventas",
+        btn_wa: "👉 Chat en WhatsApp",
+        success: "¡Gracias! Nuestro equipo se pondrá en contacto contigo pronto.",
+        err: "Por favor, completa los campos obligatorios."
+      },
+      en: {
+        prod_intro: "We offer a wide range of export-quality products:<br><br>🌿 <strong>Herbs:</strong> Mint, Coriander, Parsley<br>🥔 <strong>Vegetables:</strong> Potato, Tomato, Onion<br>🫐 <strong>Berries:</strong> Blackberry, Blueberry, Raspberry, Strawberry<br>🥑 <strong>Fruits:</strong> Avocado<br><br>Would you like pricing or more details?",
+        proc_intro: "Our export process ensures quality and reliability:<br><br>✅ Quality Control<br>📦 Custom Packaging<br>❄️ Cold Chain Logistics<br>✈️ Fast International Delivery",
+        q_step1: "Please share your details to prepare a quote:",
+        btn_prices: "📊 Request Price List",
+        btn_sales: "📞 Contact Sales",
+        btn_wa: "👉 Chat on WhatsApp",
+        success: "Thank you! Our team will contact you shortly.",
+        err: "Please fill in the required fields."
+      }
+    }[lang];
+
+    window.leadData = {};
+
+    window.addBotMsg = (html) => {
+      const b = document.getElementById("chatBody");
+      const r = document.createElement("div");
+      r.className = "message-row receiver";
+      r.innerHTML = `<div class="message-bubble">${html}</div>`;
+      b.appendChild(r);
+      b.scrollTop = b.scrollHeight;
+    };
+
+    window.addUserMsg = (text) => {
+      const b = document.getElementById("chatBody");
+      const r = document.createElement("div");
+      r.className = "message-row sender";
+      r.innerHTML = `<div class="message-bubble">${text}</div>`;
+      b.appendChild(r);
+      b.scrollTop = b.scrollHeight;
+    };
+
+    window.renderButtons = (labels, callback) => {
+      const b = document.getElementById("chatBody");
+      const c = document.createElement("div");
+      c.className = "quick-replies";
+      labels.forEach(l => {
+        const btn = document.createElement("div");
+        btn.className = "quick-reply";
+        btn.textContent = l;
+        btn.onclick = () => { c.remove(); window.addUserMsg(l); callback(l); };
+        c.appendChild(btn);
+      });
+      b.appendChild(c);
+      b.scrollTop = b.scrollHeight;
+    };
+
+    window.startFlow = (flow) => {
+      document.getElementById("initialActions")?.remove();
+
+      if (flow === 'PRODUCTS') {
+        window.addBotMsg(t.prod_intro);
+        window.renderButtons([t.btn_prices, t.btn_sales], (choice) => {
+            if(choice === t.btn_prices) window.startFlow('QUOTE');
+            else window.startFlow('CONTACT');
+        });
+      } 
+
+      else if (flow === 'PROCESS') {
+        window.addBotMsg(t.proc_intro);
+        window.renderButtons(["Packaging", "Shipping", "Certifications"], (choice) => {
+            window.addBotMsg(`Our ${choice} standards follow international regulations. Would you like a quote?`);
+            window.renderButtons([t.btn_prices, "Main Menu"], (next) => {
+                if(next === t.btn_prices) window.startFlow('QUOTE');
+                else window.location.reload();
+            });
+        });
+      }
+
+      else if (flow === 'QUOTE') {
+        window.renderLeadForm();
+      }
+
+      else if (flow === 'CONTACT') {
+          window.addBotMsg("📱 WhatsApp: +34 604 19 53 54<br>📧 Email: info@expolukus.com<br>☎️ Phone: +34 604 19 53 54");
+          const waLink = document.createElement("div");
+          waLink.className = "quick-replies";
+          waLink.innerHTML = `
+            <a href="https://wa.me/34604195354" target="_blank" class="quick-reply" style="text-decoration:none; background:#25D366; color:white;">${t.btn_wa}</a>
+            <div class="quick-reply" onclick="window.location.reload()">🏠 Menu</div>
+          `;
+          document.getElementById("chatBody").appendChild(waLink);
+      }
+    };
+
+    window.renderLeadForm = () => {
+        window.addBotMsg(t.q_step1);
+        const b = document.getElementById("chatBody");
+        const f = document.createElement("div");
+        f.className = "chat-form";
+        f.innerHTML = `
+            <input type="text" id="f_name" placeholder="${lang === 'es' ? 'Nombre completo' : 'Full Name'}" required>
+            <input type="text" id="f_company" placeholder="${lang === 'es' ? 'Empresa' : 'Company Name'}">
+            <input type="text" id="f_country" placeholder="${lang === 'es' ? 'País' : 'Country'}">
+            <input type="text" id="f_products" placeholder="${lang === 'es' ? 'Producto(s)' : 'Product(s)'}">
+            <input type="text" id="f_qty" placeholder="${lang === 'es' ? 'Cantidad' : 'Quantity'}">
+            <select id="f_method">
+                <option value="Email">Email</option>
+                <option value="WhatsApp">WhatsApp</option>
+                <option value="Phone">Phone</option>
+            </select>
+            <button class="submit-btn" style="background:var(--primary)" onclick="window.submitLeadForm()">Submit Request</button>
+        `;
+        b.appendChild(f);
+        b.scrollTop = b.scrollHeight;
+    };
+
+    window.submitLeadForm = () => {
+        const n = (document.getElementById("f_name") as HTMLInputElement).value;
+        if(!n) return alert(t.err);
+        
+        // Collect all data into the object
+        window.leadData = {
+            name: n,
+            company: (document.getElementById("f_company") as HTMLInputElement).value,
+            country: (document.getElementById("f_country") as HTMLInputElement).value,
+            products: (document.getElementById("f_products") as HTMLInputElement).value,
+            qty: (document.getElementById("f_qty") as HTMLInputElement).value,
+            method: (document.getElementById("f_method") as HTMLSelectElement).value
+        };
+
+        document.querySelector(".chat-form").remove();
+        window.addUserMsg("Form submitted ✅");
+        window.addBotMsg(t.success);
+        
+        // Final options
+        window.renderButtons(["Main Menu"], () => window.location.reload());
+        console.log("EXPO LUKUS LEAD:", window.leadData);
+    };
+
+    // Chat Toggle
+    document.getElementById("chat-button").onclick = () => {
+      document.getElementById("chatContainer").classList.toggle("hidden");
+    };
+    document.getElementById("closeChatBtn").onclick = () => {
+      document.getElementById("chatContainer").classList.add("hidden");
+    };
+  });
+</script>
+
+<style>
+    /* Add this for the Select dropdown inside chat */
+    .chat-form select {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 8px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-family: inherit;
+        background: white;
+    }
+</style>

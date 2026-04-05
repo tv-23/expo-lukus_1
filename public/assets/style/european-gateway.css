@@ -1,0 +1,133 @@
+#revealSection.shutter-section {
+    height: 150vh;
+    position: relative;
+    background: var(--white);
+}
+
+#revealSection .sticky-container {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* --- THE 70% CANVAS --- */
+#revealSection .container-70 {
+    width: 70%;
+    height: 70vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--soft-gray);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.05);
+}
+
+/* --- SHUTTER --- */
+#revealSection .shutter-pillar {
+    position: absolute;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--secondary);
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#revealSection .shutter-label {
+    font-family: var(--font-heading);
+    font-size: 6vw;
+    color: rgba(255, 255, 255, 0.1);
+    font-weight: 900;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+/* --- CONTENT LAYERS --- */
+#revealSection .content-wrap {
+    position: absolute;
+    inset: 0;
+    padding: 80px;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+/* Layer 1 */
+#revealSection .layer-larache {
+    display: initial;
+   z-index: 10;
+    background: var(--primary);
+}
+
+/* Layer 2 */
+#revealSection .layer-madrid {
+    z-index: 5;
+    background: var(--black);
+    color: var(--white);
+    opacity: 0;
+}
+
+/* --- TEXT --- */
+#revealSection .info-box h2 {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-heading);
+    font-style: italic;
+    line-height: 1;
+    margin: 0 0 20px 0;
+}
+
+#revealSection .info-box p {
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+/* --- LOGO --- */
+#revealSection .logo-display {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 1000px;
+}
+
+#revealSection .logo-slate {
+    width: 300px;
+    height: 350px;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform-style: preserve-3d;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+}
+
+#revealSection .logo-slate img {
+    width: 80%;
+    height: auto;
+    filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.3));
+}
+
+/* --- COORDS --- */
+#revealSection .coords {
+    position: absolute;
+    bottom: 30px;
+    font-size: 10px;
+    letter-spacing: 4px;
+    font-weight: 800;
+    opacity: 0.4;
+}

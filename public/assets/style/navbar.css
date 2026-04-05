@@ -1,273 +1,29 @@
-body {
-    margin: 0;
-    background: var(--bg);
-    font-family: var(--font-main);
-    color: var(--white);
-}
-
-/* --- HEADER --- */
-header {
-    position: initial;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--white);
-    /* Center everything */
-    padding: 0 40px;
-    box-sizing: border-box;
-    z-index: 2000;
-}
-
-/* --- LOGO --- */
-.logo {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-62%);
-    z-index: 3000;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-}
-
-.logo img {
-    height: auto;
-    width: 200px;
-    transition: 0.3s;
-}
-
-/* --- DESKTOP NAV --- */
-.desktop-nav {
-    position: relative;
-    display: flex;
-    align-items: center;
-}
-
-.nav-list {
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    align-items: center;
-    gap: 20px;
-}
-
-.nav-item {
-    padding: 12px 28px;
-    cursor: pointer;
-    font-size: 13px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    white-space: nowrap;
-    color: var(--black);
-}
-
-.nav-item a {
-    color: var(--black);
-    text-decoration: none;
-    padding: 0;
-}
-
-/* This creates the space for the logo in the middle of the list */
-.nav-spacer {
-    width: 180px;
-    /* Adjust this to fit your logo width */
-    pointer-events: none;
-}
-
-/* Liquid Logic */
-.goo-wrapper {
-    position: absolute;
-    inset: 0;
-    filter: url('#gooey-filter');
-    z-index: 1;
-}
-
-.pill {
-    position: absolute;
-    background: var(--primary);
-    border-radius: 30px;
-    transform-origin: center;
-}
-
-/* Make inactive items slightly transparent */
-.white-layer .nav-item {
-    transition: opacity 0.3s;
-}
-
-/* Keep the hover pill hidden until mouse enters */
-#hoverPill {
-    opacity: 0;
-    pointer-events: none;
-}
-
-/* Dim all text to 50% */
-.nav-item {
-    transition: opacity 0.3s ease;
-    color: #fff;
-    z-index: 10;
-}
-
-/* Brighten Active or Hovered items to 100% */
-.nav-item.active,
-.nav-item:hover {
-    opacity: 1;
-    font-weight: 800;
-    /* Recommended for readability on yellow */
-}
-
-/* Normal state: Dimmed white for better contrast */
-.nav-item {
-    color: var(--black);
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    z-index: 5;
-    font-family: var(--font-main);
-}
-
-/* Hover or Active state: Bright white */
-.nav-item:hover a,
-.nav-item.active a {
-    color: var(--white);
-    font-weight: 800;
-}
 
 
-
-/* Make Hovered or Active items full White */
-.white-layer .nav-item:hover,
-.white-layer .nav-item.active {
-    opacity: 1;
-}
-
-/* The text inside the pill (Black layer) should always be full opacity */
-.black-mask .nav-item {
-    opacity: 1;
-}
-
-.white-layer {
-    position: relative;
-    z-index: 2;
-    color: var(--white);
-}
-
-.black-mask {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 10;
-    color: var(--black);
-    pointer-events: none;
-    clip-path: inset(0 100% 0 0);
-}
-
-/* --- MOBILE --- */
-.burger {
-    position: absolute;
-    right: 40px;
-    width: 30px;
-    height: 18px;
-    display: none;
-    flex-direction: column;
-    justify-content: space-between;
-    cursor: pointer;
-    z-index: 3000;
-}
-
-.line {
-    width: 100%;
-    height: 3px;
-    background: var(--primary);
-    border-radius: 2px;
-}
-
-.mobile-overlay {
-    position: fixed;
-    inset: 0;
-    background: var(--white);
-    z-index: 2500;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    clip-path: circle(0% at 90% 5%);
-}
-
-.mobile-overlay .nav-list {
-    flex-direction: column;
-    gap: 25px;
-}
-
-.mobile-overlay .nav-item {
-    font-size: 24px;
-}
-
-.mobile-overlay .nav-spacer {
-    display: none;
-}
-
-/* No spacer on mobile */
-
-/* SVG FILTERS */
-.svg-filters {
-    position: absolute;
-    visibility: hidden;
-    width: 0;
-    height: 0;
-}
-
-
-@media (max-width: 1024px) {
-    .desktop-nav {
-        display: none;
-    }
-
-    .burger {
-        display: flex;
-    }
-
-    .mobile-overlay {
-        display: flex;
-    }
-
-    .logo {
-        left: 40px;
-        transform: none;
-    }
-
-    /* Logo to the left on mobile */
-    .logo img {
-        height: 45px;
-    }
-}
-
-
-
-/* Top Bar */
+/* ==========================================================================
+   2. TOP INFO BAR
+   ========================================================================== */
 .top-bar {
     max-width: 100%;
     background: var(--black);
     color: white;
     font-size: 13px;
     padding: 8px 20px;
+    z-index: 2001;
+    position: relative;
 }
 
 .top-bar-inner {
-    max-width: 1200px;
+   padding: 5px 40px;
     margin: auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-/* Left side */
 .top-left {
     display: flex;
-    gap: 20px;
+    gap: 45px;
 }
 
 .top-left a {
@@ -276,18 +32,12 @@ header {
     opacity: 1;
 }
 
-/* .top-left a:hover {
-    color: 1;
-} */
-
-/* Right side */
 .top-right {
     display: flex;
     align-items: center;
     gap: 15px;
 }
 
-/* Socials */
 .socials {
     display: flex;
     gap: 10px;
@@ -296,29 +46,10 @@ header {
 .socials a {
     color: white;
     text-decoration: none;
-    opacity: 1;
 }
 
 .socials a:hover {
     color: var(--secondary);
-}
-
-/* CTA Button */
-.cta-button {
-    background: #ffffff;
-    color: var(--black);
-    padding: 6px 12px;
-    border-radius: 999px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: 0.3s ease;
-}
-
-.cta-button:hover {
-    transform: translateY(-1px);
-    opacity: 0.9;
-    background-color: var(--secondary);
-    color: var(--white);
 }
 
 .lang-switcher {
@@ -342,69 +73,225 @@ header {
     border-radius: 999px;
 }
 
-.lang-btn:hover {
-    opacity: 1;
-}
-
 .lang-btn.active {
     background: white;
     color: black;
     opacity: 1;
 }
 
-@media (max-width: 768px) {
+/* ==========================================================================
+   3. HEADER MAIN NAVIGATION
+   ========================================================================== */
+header {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* This creates the Left-Center-Right layout */
+    background-color: var(--white);
+    padding: 0 40px;
+    box-sizing: border-box;
+    position: initial;
+    top: 0;
+    z-index: 2000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
 
-    .top-bar-inner {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0 10px;
+/* --- LOGO (LEFT) --- */
+.logo {
+    display: flex;
+    align-items: center;
+    z-index: 3000;
+    cursor: pointer;
+    flex: 0 0 220px; /* Fixed width to help center the nav */
+}
+
+.logo img {
+    height: 75px;
+    width: auto;
+    transition: 0.3s;
+}
+
+/* --- DESKTOP NAV (CENTER) --- */
+.desktop-nav {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1; /* Takes middle space */
+}
+
+.nav-list {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-item {
+    padding: 12px 25px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    white-space: nowrap;
+    position: relative;
+    z-index: 5;
+    transition: opacity 0.3s ease;
+}
+
+.nav-item a {
+    color: var(--black);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+/* Hover or Active state: Text inside pill becomes white */
+.nav-item:hover a,
+.nav-item.active a {
+    color: var(--white) !important;
+}
+
+/* --- LIQUID / GOOEY EFFECT LOGIC --- */
+.goo-wrapper {
+    position: absolute;
+    inset: 0;
+    filter: url('#gooey-filter');
+    z-index: 1;
+}
+
+.pill {
+    position: absolute;
+    background: var(--primary);
+    border-radius: 30px;
+    height: 100%;
+    top: 0;
+}
+
+.white-layer {
+    position: relative;
+    z-index: 2;
+}
+
+.black-mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    color: var(--white); /* This makes the text white inside the mask */
+    pointer-events: none;
+    clip-path: inset(0 100% 0 0); /* Controlled by GSAP */
+}
+
+/* --- HEADER RIGHT (CTA + BURGER) --- */
+.header-right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 20px;
+    flex: 0 0 220px; /* Match logo width for perfect center-alignment */
+}
+
+.cta-button-nav {
+    background: var(--primary);
+    color: white !important;
+    padding: 10px 22px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 13px;
+    text-decoration: none;
+    transition: 0.3s ease;
+    white-space: nowrap;
+}
+
+.cta-button-nav:hover {
+    background: var(--black);
+    transform: translateY(-2px);
+}
+
+.burger {
+    position: relative;
+    width: 30px;
+    height: 18px;
+    display: none; /* Desktop hidden */
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    z-index: 3000;
+}
+
+.line {
+    width: 100%;
+    height: 3px;
+    background: var(--primary);
+    border-radius: 2px;
+}
+
+/* ==========================================================================
+   4. MOBILE OVERLAY & RESPONSIVENESS
+   ========================================================================== */
+.mobile-overlay {
+    position: fixed;
+    inset: 0;
+    background: var(--white);
+    z-index: 2500;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    clip-path: circle(0% at 90% 5%);
+}
+
+.mobile-overlay .nav-list {
+    flex-direction: column;
+    gap: 25px;
+}
+
+.mobile-overlay .nav-item {
+    font-size: 24px;
+}
+
+/* SVG FILTERS (Utility) */
+.svg-filters {
+    position: absolute;
+    visibility: hidden;
+    width: 0;
+    height: 0;
+}
+
+/* RESPONSIVE BREAKPOINTS */
+@media (max-width: 1024px) {
+    header {
+        padding: 0 20px;
+        height: 80px;
     }
+    .desktop-nav, .cta-button-nav {
+        display: none;
+    }
+    .burger {
+        display: flex;
+    }
+    .mobile-overlay {
+        display: flex;
+    }
+    .logo {
+        flex: 1;
+    }
+    .header-right {
+        flex: 0;
+    }
+}
 
-    /* hide email/phone */
+@media (max-width: 768px) {
     .top-left {
         display: none;
     }
-
     .top-right {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
         width: 100%;
-        gap: 8px;
-        min-width: 0;
-    }
-
-    /* SOCIALS */
-    .socials {
-        display: flex;
-        gap: 8px;
-        flex-shrink: 0;
-    }
-
-    /* LANGUAGE */
-    .lang-switcher {
-        display: flex;
-        gap: 4px;
-        flex-shrink: 0;
-    }
-
-    .lang-btn {
-        font-size: 11px;
-        padding: 3px 7px;
-        white-space: nowrap;
-    }
-
-    /* CTA FIX (IMPORTANT) */
-    .cta-button {
-        flex-shrink: 0;
-        white-space: nowrap;
-        padding: 6px 10px;
-        font-size: 12px;
-
-        /* prevent cut */
-        max-width: 45%;
-        overflow: hidden;
-        text-overflow: ellipsis;
+        justify-content: space-between;
     }
 }

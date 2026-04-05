@@ -37,10 +37,12 @@ const categoryLabels = {
                         <div
                             class="product-card"
                             data-category={product.category}
+                            data-id={product.id}
+                            style="cursor: pointer;"
                         >
                             <div class="card-inner">
                                 <div class="image-box">
-                                    <span class="badge">{product.badge}</span>
+                                    {/* <span class="badge">{product.badge}</span> */}
                                     <span class="badge seasonal">
                                         {categoryLabels[product.category]}
                                     </span>
@@ -171,4 +173,12 @@ const categoryLabels = {
     });
 
     window.addEventListener("load", initEntrance);
+
+    document.querySelectorAll(".product-card").forEach((card) => {
+        const id = card.dataset.id;
+
+        card.addEventListener("click", () => {
+            window.location.href = `/product-detail/${id}`;
+        });
+    });
 </script>

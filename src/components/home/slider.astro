@@ -37,49 +37,49 @@ import "../../../public/assets/style/slider.css";
 
         // If URL starts with /en or /en/...
         const lang = path === "/en" || path.startsWith("/en/") ? "EN" : "ES";
-        console.log("Detected language:", lang);
-       const translations = {
-    EN: [
-        {
-            top: "Premium Quality",
-            main: "Fresh Herbs",
-            sub: "Aromatic fresh herbs exported by Expo Lukus for premium global markets.",
-            img: "/assets/images/slider/1.png",
-        },
-        {
-            top: "Carefully Selected",
-            main: "Fresh Vegetables",
-            sub: "Fresh vegetables carefully selected and exported by Expo Lukus.",
-            img: "/assets/images/slider/2.png",
-        },
-        {
-            top: "Export Excellence",
-            main: "Fresh Fruits",
-            sub: "Premium fresh fruits exported by Expo Lukus with top export quality standards.",
-            img: "/assets/images/slider/3.png",
-        },
-    ],
-    ES: [
-        {
-            top: "Calidad Premium",
-            main: "Hierbas Frescas",
-            sub: "Hierbas frescas aromáticas exportadas por Expo Lukus para mercados globales premium.",
-            img: "/assets/images/slider/1.png",
-        },
-        {
-            top: "Selección Cuidadosa",
-            main: "Verduras Frescas",
-            sub: "Verduras frescas cuidadosamente seleccionadas y exportadas por Expo Lukus.",
-            img: "/assets/images/slider/2.png",
-        },
-        {
-            top: "Excelencia en Exportación",
-            main: "Frutas Frescas",
-            sub: "Frutas frescas de alta calidad exportadas por Expo Lukus con estándares internacionales.",
-            img: "/assets/images/slider/3.png",
-        },
-    ],
-};
+
+        const translations = {
+            EN: [
+                {
+                    top: "Premium Quality",
+                    main: "Fresh Herbs",
+                    sub: "Aromatic fresh herbs exported by Expo Lukus for premium global markets.",
+                    img: "/assets/images/slider/1.webp",
+                },
+                {
+                    top: "Carefully Selected",
+                    main: "Fresh Vegetables",
+                    sub: "Fresh vegetables carefully selected and exported by Expo Lukus.",
+                    img: "/assets/images/slider/2.webp",
+                },
+                {
+                    top: "Export Excellence",
+                    main: "Fresh Fruits",
+                    sub: "Premium fresh fruits exported by Expo Lukus with top export quality standards.",
+                    img: "/assets/images/slider/3.webp",
+                },
+            ],
+            ES: [
+                {
+                    top: "Calidad Premium",
+                    main: "Hierbas Frescas",
+                    sub: "Hierbas frescas aromáticas exportadas por Expo Lukus para mercados globales premium.",
+                    img: "/assets/images/slider/1.webp",
+                },
+                {
+                    top: "Selección Cuidadosa",
+                    main: "Verduras Frescas",
+                    sub: "Verduras frescas cuidadosamente seleccionadas y exportadas por Expo Lukus.",
+                    img: "/assets/images/slider/2.webp",
+                },
+                {
+                    top: "Excelencia en Exportación",
+                    main: "Frutas Frescas",
+                    sub: "Frutas frescas de alta calidad exportadas por Expo Lukus con estándares internacionales.",
+                    img: "/assets/images/slider/3.webp",
+                },
+            ],
+        };
 
         // fallback safety
         const slides = translations[lang] || translations["ES"];

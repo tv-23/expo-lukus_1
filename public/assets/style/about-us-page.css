@@ -67,8 +67,11 @@
      font-size: clamp(32px, 4vw, 55px);
      font-weight: 900;
      margin: 0 0 15px 0;
-     line-height: 1;
-     letter-spacing: -2px;
+     /* letter-spacing: -2px; */
+     font-family: var(--font-heading);
+     color: var(--primary);
+     text-transform: uppercase;
+     font-size: var(--font-size-heading);
  }
 
  .story-block p {
@@ -76,6 +79,14 @@
      line-height: 1.8;
      color: #444;
      max-width: 550px;
+     font-weight: 600;
+ }
+
+ div.story-block span {
+     color: var(--secondary);
+     font-weight: 800;
+     letter-spacing: 4px;
+     font-size: 12px;
  }
 
  .mini-grid {

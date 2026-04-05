@@ -140,7 +140,14 @@
     z-index: 1;
     line-height: 1;
 }
+#expo-footer span.tt-copyright-year a {
+    text-decoration: none;
+    color: var(--white);
+}
 
+span.tt-copyright-year a:hover {
+    color: var(--primary) !important;
+}
 /* --- MOBILE --- */
 @media (max-width: 1024px) {
     #expo-footer .container-70 { width: 90%; }

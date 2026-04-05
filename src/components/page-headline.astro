@@ -1,9 +1,20 @@
 ---
 import "../../public/assets/style/page-headline.css";
-const { title } = Astro.props;
+const { title,image } = Astro.props;
+
+const bgImage =
+  image && image.trim() !== ""
+    ? image
+    : "https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=2000";
 ---
+
+
+
 <section class="hero-wrapper" id="hero">
-    <div class="hero-bg"></div>
+    <div
+  class="hero-bg"
+  style={`background: url(${bgImage}) no-repeat center/cover;`}
+/>
 
     <!-- BOTTOM LAYER: WHITE TEXT -->
     <div class="text-container layer-base" set:html={title}>

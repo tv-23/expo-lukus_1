@@ -1,0 +1,126 @@
+.architectural-journey .container-70 {
+    width: 70%;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    gap: 100px;
+    position: relative;
+}
+
+.architectural-journey .journey-section {
+    padding: 150px 0;
+}
+
+/* --- LEFT SIDE: STICKY INFO --- */
+.architectural-journey .sidebar {
+    flex: 1;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.architectural-journey .sidebar span {
+    color: var(--primary);
+    font-weight: 800;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    font-size: 12px;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.architectural-journey .sidebar h2 {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-heading);
+    font-style: italic;
+    margin: 0;
+    line-height: 1;
+}
+
+/* The Visual Progress Line */
+.architectural-journey .progress-wrap {
+    margin-top: 50px;
+    width: 100%;
+    height: 4px;
+    background: #eee;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.architectural-journey .progress-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background: var(--primary);
+}
+
+/* --- RIGHT SIDE: THE STEPS --- */
+.architectural-journey .steps-col {
+    flex: 1.5;
+    padding: 100px 0;
+}
+
+.architectural-journey .step-item {
+    margin-bottom: 120px;
+    opacity: 0.15;
+    transform: translateX(30px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.architectural-journey .step-item.is-active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.architectural-journey .step-item:last-child {
+    margin-bottom: 0;
+}
+
+.architectural-journey .step-num {
+    font-size: 14px;
+    font-weight: 900;
+    color: var(--primary);
+    display: block;
+    margin-bottom: 10px;
+}
+
+.architectural-journey .step-item h3 {
+    font-size: 32px;
+    font-weight: 800;
+    margin: 0 0 20px 0;
+    letter-spacing: -1px;
+}
+
+.architectural-journey .step-item p {
+    font-size: 17px;
+    line-height: 1.8;
+    color: #555;
+    margin: 0;
+}
+
+/* --- MOBILE --- */
+@media (max-width: 1024px) {
+    .architectural-journey .container-70 {
+        width: 90%;
+        flex-direction: column;
+        gap: 50px;
+    }
+
+    .architectural-journey .sidebar {
+        height: auto;
+        position: relative;
+        top: 0;
+    }
+
+    .architectural-journey .step-item {
+        opacity: 1;
+        transform: none;
+        margin-bottom: 60px;
+    }
+}

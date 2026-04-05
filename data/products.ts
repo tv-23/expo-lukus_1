@@ -2,7 +2,7 @@ export const products = [
     {
         id: "mint",
         category: "fresh-herbs",
-        image: "https://pngimg.com/uploads/mango/mango_PNG9176.png",
+        image: "/assets/images/products/mint.webp",
         badge: "Apr - Jun",
         title: {
             en: "Mint",
@@ -12,13 +12,13 @@ export const products = [
             en: "Exported fresh with natural aroma preserved.",
             es: "Exportado fresco con aroma natural preservado.",
         },
-        origin: "India",
+        origin: "Morocco",
     },
 
     {
         id: "coriander",
         category: "fresh-herbs",
-        image: "https://pngimg.com/uploads/mango/mango_PNG9176.png",
+        image: "/assets/images/products/Coriander.webp",
         badge: "Year-round",
         title: {
             en: "Coriander",
@@ -28,13 +28,13 @@ export const products = [
             en: "High-quality coriander exported for global markets.",
             es: "Cilantro de alta calidad exportado para mercados globales.",
         },
-        origin: "India",
+        origin: "Morocco",
     },
 
     {
         id: "parsley",
         category: "fresh-herbs",
-        image: "https://pngimg.com/uploads/mango/mango_PNG9176.png",
+        image: "/assets/images/products/Parsley.webp",
         badge: "Year-round",
         title: {
             en: "Parsley",
@@ -44,13 +44,13 @@ export const products = [
             en: "Fresh parsley supplied with premium care.",
             es: "Perejil fresco suministrado con cuidado premium.",
         },
-        origin: "India",
+        origin: "Morocco",
     },
 
     {
         id: "potato",
         category: "fresh-vegetables",
-        image: "https://pngimg.com/uploads/potato/potato_PNG7079.png",
+        image: "/assets/images/products/Potato.webp",
         badge: "Year-round",
         title: {
             en: "Potato",
@@ -60,13 +60,13 @@ export const products = [
             en: "Export-grade potatoes selected and shipped.",
             es: "Patatas de exportación seleccionadas y enviadas.",
         },
-        origin: "India",
+        origin: "Morocco",
     },
 
     {
         id: "tomato",
         category: "fresh-vegetables",
-        image: "https://pngimg.com/uploads/tomato/tomato_PNG12596.png",
+        image: "/assets/images/products/tomato.webp",
         badge: "Year-round",
         title: {
             en: "Tomato",
@@ -82,7 +82,7 @@ export const products = [
     {
         id: "onion",
         category: "fresh-vegetables",
-        image: "https://pngimg.com/uploads/onion/onion_PNG99212.png",
+        image: "/assets/images/products/Onion.webp",
         badge: "Year-round",
         title: {
             en: "Onion",
@@ -98,7 +98,7 @@ export const products = [
     {
         id: "blueberry",
         category: "fresh-fruits",
-        image: "https://pngimg.com/uploads/blueberry/blueberry_PNG402.png",
+        image: "/assets/images/products/Blueberry.webp",
         badge: "Seasonal",
         title: {
             en: "Blueberry",
@@ -108,13 +108,13 @@ export const products = [
             en: "High-quality blueberries with freshness preserved.",
             es: "Arándanos de alta calidad con frescura preservada.",
         },
-        origin: "USA",
+        origin: "Spain",
     },
 
     {
         id: "strawberry",
         category: "fresh-fruits",
-        image: "https://pngimg.com/uploads/strawberry/strawberry_PNG2595.png",
+        image: "/assets/images/products/strawberry.webp",
         badge: "Seasonal",
         title: {
             en: "Strawberry",
@@ -130,7 +130,7 @@ export const products = [
     {
         id: "avocado",
         category: "fresh-fruits",
-        image: "https://pngimg.com/uploads/avocado/avocado_PNG15550.png",
+        image: "/assets/images/products/Avocado.webp",
         badge: "Year-round",
         title: {
             en: "Avocado",
@@ -140,12 +140,12 @@ export const products = [
             en: "Ripe avocados exported worldwide.",
             es: "Aguacates maduros exportados a todo el mundo.",
         },
-        origin: "Mexico",
+        origin: "Morocco",
     },
     {
         id: "raspberry",
         category: "fresh-fruits",
-        image: "https://pngimg.com/uploads/raspberry/raspberry_PNG52.png",
+        image: "/assets/images/products/Raspberry.webp",
         badge: "Seasonal",
         title: {
             en: "Raspberry",
@@ -161,7 +161,7 @@ export const products = [
     {
         id: "blackberry",
         category: "fresh-fruits",
-        image: "https://pngimg.com/uploads/blackberry/blackberry_PNG44.png",
+        image: "/assets/images/products/Blackberry.webp",
         badge: "Seasonal",
         title: {
             en: "Blackberry",

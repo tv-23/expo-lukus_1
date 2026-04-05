@@ -1,0 +1,111 @@
+---
+import "../../../public/assets/style/european-gateway.css";
+const { lang, t } = Astro.props;
+---
+
+<section class="shutter-section" id="revealSection">
+    <div class="sticky-container">
+        <div class="container-70">
+            <!-- THE SHUTTER PILLAR (Moves right to left) -->
+            <div class="shutter-pillar" id="shutter">
+                <div class="shutter-label">Chetouan Export Import</div>
+            </div>
+
+            <!-- LAYER 1: LARACHE (The Starting View) -->
+            <div class="content-wrap layer-larache" id="laracheLayer">
+                <div class="info-box">
+                    <span
+                        style="color:var(--bg); font-weight:800; letter-spacing:5px;"
+                        >{t("european_gateway").morocco.hub}</span
+                    >
+                    <h2 set:html={t("european_gateway").morocco.title} />
+                    <p>{t("european_gateway").morocco.description}</p>
+                </div>
+            </div>
+
+            <!-- LAYER 2: MADRID (The Revealed View) -->
+            <div class="content-wrap layer-madrid" id="madridLayer">
+                <div class="info-box">
+                    <span
+                        style="color:var(--primary); font-weight:800; letter-spacing:5px;"
+                        >{t("european_gateway").spain.hub}</span
+                    >
+                    <h2 set:html={t("european_gateway").spain.title} />
+
+                    <p>{t("european_gateway").spain.description}</p>
+                </div>
+                <div class="logo-display">
+                    <div class="logo-slate" id="glassSlate">
+                        <!-- SPAIN LOGO -->
+                        <img
+                            src="/assets/images/chetouan-logo.jpg"
+                            alt="Expo Lukus Spain"
+                            id="hubLogo"
+                        />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    const shutter = document.getElementById("shutter");
+    const madrid = document.getElementById("madridLayer");
+    const larache = document.getElementById("laracheLayer");
+
+    // 1. THE SHUTTER ANIMATION
+    let tl = gsap.timeline({
+        scrollTrigger: {
+            trigger: "#revealSection",
+            start: "top top",
+            end: "bottom bottom",
+            scrub: 1,
+            pin: true,
+        },
+    });
+
+    tl.to(shutter, { right: "0%", duration: 1, ease: "power2.inOut" }) // Pillar covers screen
+        .set(madrid, { opacity: 1 }) // Swap layers behind the pillar
+        .set(larache, { opacity: 0 })
+        .to(shutter, { right: "100%", duration: 1, ease: "power2.inOut" }); // Pillar moves off to reveal Madrid
+
+    // 2. 3D INTERACTION (The WOW Mouse Effect)
+    const slate = document.getElementById("glassSlate");
+    const logo = document.getElementById("hubLogo");
+
+    if (window.innerWidth > 1024) {
+        document.addEventListener("mousemove", (e) => {
+            const rect = slate.getBoundingClientRect();
+            const x = (e.clientX - rect.left) / rect.width - 0.5;
+            const y = (e.clientY - rect.top) / rect.height - 0.5;
+
+            gsap.to(slate, {
+                rotationY: x * 25,
+                rotationX: -y * 25,
+                duration: 0.8,
+                ease: "power2.out",
+            });
+
+            gsap.to(logo, {
+                x: x * 30,
+                y: y * 30,
+                duration: 0.6,
+                ease: "power2.out",
+            });
+        });
+
+        slate.addEventListener("mouseleave", () => {
+            gsap.to([slate, logo], {
+                rotationX: 0,
+                rotationY: 0,
+                x: 0,
+                y: 0,
+                duration: 1.5,
+                ease: "elastic.out(1, 0.5)",
+            });
+        });
+    }
+</script>

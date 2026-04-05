@@ -1,6 +1,6 @@
 ---
 import { getLangFromUrl } from "../../i18n/utils";
-const lang = getLangFromUrl(Astro.url);
+import Message from "../components/chat-boot.astro";
 ---
 
 <!doctype html>
@@ -8,11 +8,11 @@ const lang = getLangFromUrl(Astro.url);
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
+		<link rel="icon" type="image/svg+xml" href="/assets/images/Expo Lukus favicon.png" />
+		<link rel="icon" href="/assets/images/Expo Lukus favicon.png" />
 		<meta charset="UTF-8" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>Expo Lukus</title>
 		<link
 			rel="stylesheet"
 			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
@@ -21,16 +21,19 @@ const lang = getLangFromUrl(Astro.url);
 			referrerpolicy="no-referrer"
 		/>
 
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders:opsz,wght@10..72,100..900&display=swap" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Big+Shoulders:opsz,wght@10..72,100..900&display=swap"
+			rel="stylesheet"
+		/>
 
 		<style>
 			:root {
 				--primary: #01954b;
 				--secondary: #e02927;
 				--white: #ffffff;
-				--card-inner: #f9f9f9;
+				--card-inner: #e9e9e9;
 				--font-main: "Poppins", sans-serif;
 				--font-heading: "Big Shoulders", cursive;
 				--bg: #0a0a0a;
@@ -52,5 +55,14 @@ const lang = getLangFromUrl(Astro.url);
 	</head>
 	<body>
 		<slot />
+		<Message />
+
+		<a
+			id="chat-button"
+			class="chat-icon"
+			aria-label="Tellurys Boot Chat"
+		>
+			<i class="fa-solid fa-comment"></i>
+		</a>
 	</body>
 </html>

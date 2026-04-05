@@ -1,6 +1,7 @@
 ---
 import "../../public/assets/style/about-us-page.css";
 import Navbar from "../components/navbar.astro";
+import Footer from "../components/footer.astro";
 import Layout from "../layouts/Layout.astro";
 import PageHeadline from "../components/page-headline.astro";
 
@@ -8,6 +9,7 @@ import { getLangFromUrl, useTranslations } from "../../i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+const blocks = t("story").blocks;
 ---
 
 <Layout>
@@ -23,144 +25,49 @@ const t = useTranslations(lang);
     <Navbar lang={lang} t={t} />
 
     <PageHeadline
-        title='<h1 class="main-title">ROOTED.<br>GLOBAL.</h1><p class="tagline">Tells the story of the origin (Morocco) and the destination (Global) in one short, massive sentence.</p>'
+    title={t("about-us.headline")}
+
     />
 
     <section class="story-section" id="storyPin">
         <div class="sticky-wrapper">
-            <div class="container-70">
-                <div class="content-flex">
-                    <div class="text-column">
-                        <!-- CHAPTER 1 -->
-                        <div class="story-block" id="block1">
-                            <span
-                                style="color:var(--primary); font-weight:800; letter-spacing:4px; font-size: 12px;"
-                                >HISTORY // 01</span
-                            >
-                            <h2>The Chetouan<br />Foundation.</h2>
-                            <p>
-                                Founded by the Chetouan family, Expo Lukus is
-                                built on decades of hands-on experience in
-                                supply and cold storage, preserving nature's
-                                quality from the start.
-                            </p>
-                            <p>
-                                Founded by the Chetouan family, Expo Lukus is
-                                built on decades of hands-on experience in
-                                supply and cold storage, preserving nature's
-                                quality from the start.
-                            </p>
-                            <p>
-                                We established a specialized company for
-                                international export, leveraging robust
-                                logistical resources to ensure compliance with
-                                the most rigorous global standards.
-                            </p>
+         <div class="container-70">
+  <div class="content-flex">
+    <div class="text-column">
+      {blocks.map((block, i) => (
+        <div class="story-block" id={`block${i + 1}`}>
+          <span>{block.tag}</span>
 
-                            <div class="mini-grid">
-                                <div class="mini-stat">
-                                    <h4>30+</h4><span>Years Experience</span>
-                                </div>
-                                <div class="mini-stat">
-                                    <h4>100%</h4><span>Family Legacy</span>
-                                </div>
-                            </div>
-                        </div>
+          <h2 set:html={block.title}></h2>
 
-                        <!-- CHAPTER 2 -->
-                        <div class="story-block" id="block2">
-                            <span
-                                style="color:var(--primary); font-weight:800; letter-spacing:4px; font-size: 12px;"
-                                >EXPANSION // 02</span
-                            >
-                            <h2>Going Global.</h2>
-                            <p>
-                                We established a specialized company for
-                                international export, leveraging robust
-                                logistical resources to ensure compliance with
-                                the most rigorous global standards.
-                            </p>
-                            <div class="mini-grid">
-                                <div class="mini-stat">
-                                    <h4>Global</h4><span>Logistics</span>
-                                </div>
-                                <div class="mini-stat">
-                                    <h4>ISO</h4><span>Standards</span>
-                                </div>
-                            </div>
-                        </div>
+          {block.paragraphs.map((p) => (
+            <p>{p}</p>
+          ))}
 
-                        <!-- CHAPTER 3 -->
-                        <div class="story-block" id="block3">
-                            <span
-                                style="color:var(--primary); font-weight:800; letter-spacing:4px; font-size: 12px;"
-                                >MISSION // 03</span
-                            >
-                            <h2>Beyond Profit.</h2>
-                            <p>
-                                Agriculture is a responsibility toward the land
-                                and people. We build strong networks connecting
-                                local producers with international markets,
-                                maintaining trust at every stage.
-                            </p>
-                            <div class="mini-grid">
-                                <div class="mini-stat">
-                                    <h4>FairPay</h4><span>To Farmers</span>
-                                </div>
-                                <div class="mini-stat">
-                                    <h4>Ethics</h4><span>Driven</span>
-                                </div>
-                            </div>
-                        </div>
+          <div class="mini-grid">
+            {block.stats.map((s) => (
+              <div class="mini-stat">
+                <h4>{s.value}</h4>
+                <span>{s.label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
 
-                        <!-- CHAPTER 4 -->
-                        <div class="story-block" id="block4">
-                            <span
-                                style="color:var(--primary); font-weight:800; letter-spacing:4px; font-size: 12px;"
-                                >BRIDGE // 04</span
-                            >
-                            <h2>The Trade Bridge.</h2>
-                            <p>
-                                Chetouan (Morocco) and Expo Lukus (Spain) form
-                                an integrated trade bridge, facilitating smooth
-                                exchange across domestic and foreign markets.
-                            </p>
-                            <div class="mini-grid">
-                                <div class="mini-stat">
-                                    <h4>Two Hubs</h4><span
-                                        >Morocco & Spain</span>
-                                </div>
-                                <div class="mini-stat">
-                                    <h4>Agility</h4><span>Supply Chain</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="portal-column">
-                        <div class="portal-frame" id="portal">
-                            <div class="portal-img-wrap" id="portalTrack">
-                                <img
-                                    src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=1200"
-                                    alt="Legacy"
-                                />
-                                <img
-                                    src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1200"
-                                    alt="Expansion"
-                                />
-                                <img
-                                    src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?q=80&w=1200"
-                                    alt="Farmers"
-                                />
-                                <img
-                                    src="https://images.unsplash.com/photo-1494412519320-aa613dfb7738?q=80&w=1200"
-                                    alt="Bridge"
-                                />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="portal-column">
+      <div class="portal-frame" id="portal">
+        <div class="portal-img-wrap" id="portalTrack">
+          <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=1200" />
+          <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1200" />
+          <img src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?q=80&w=1200" />
+          <img src="https://images.unsplash.com/photo-1494412519320-aa613dfb7738?q=80&w=1200" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
         </div>
     </section>
 
@@ -226,4 +133,5 @@ const t = useTranslations(lang);
         // Refresh on load to ensure pinning height is calculated perfectly
         window.addEventListener("load", () => ScrollTrigger.refresh());
     </script>
+    <Footer lang={lang} t={t} />
 </Layout>

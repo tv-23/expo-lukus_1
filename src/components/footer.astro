@@ -1,55 +1,65 @@
 ---
 import "../../public/assets/style/footer.css";
+const { lang, t } = Astro.props;
 ---
 
 <footer id="expo-footer">
-    <div class="footer-watermark" id="watermark">EXPO LUKUS</div>
+    <div class="footer-watermark" id="watermark"></div>
 
     <div class="container-70" id="footerReveal">
         <div class="footer-top">
             <div class="footer-brand">
-                <h2>Expo Lukus</h2>
-                <p>
-                    Rooted in the fertile soil of Larache, bridging the gap to
-                    global excellence since the Chetouan Legacy.
-                </p>
+                <a href="/">
+                    <img src="/assets/images/logo white.svg" alt="Expo Lukus" />
+                </a>
+
+                <p>{t("footer").description}</p>
             </div>
+
             <div class="footer-socials">
-                <div class="social-circle">In</div>
-                <div class="social-circle">Ig</div>
-                <div class="social-circle">Wa</div>
+                <div class="social-circle">
+                    <a href=""><i class="fa-brands fa-facebook"></i></a>
+                </div>
+                <div class="social-circle">
+                    <a href=""><i class="fa-brands fa-instagram"></i></a>
+                </div>
+                <div class="social-circle">
+                    <a href=""><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
             </div>
         </div>
 
         <div class="footer-grid">
             <!-- Navigation -->
             <div class="footer-col">
-                <h4>Explore</h4>
+                <h4>{t("footer").explore}</h4>
                 <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/about">About Us</a></li>
-                    <li><a href="/products">Our Harvest</a></li>
-                    <li><a href="/contact">Contact</a></li>
+                    <li><a href="/">{t("footer").links.home}</a></li>
+                    <li><a href="/about">{t("footer").links.about}</a></li>
+                    <li>
+                        <a href="/products">{t("footer").links.products}</a>
+                    </li>
+                    <li><a href="/contact">{t("footer").links.contact}</a></li>
                 </ul>
             </div>
 
             <!-- Morocco Hub -->
             <div class="footer-col">
-                <h4>Morocco Hub</h4>
-                <span class="hub-tag">Sourcing & Packaging</span>
+                <h4>{t("footer").moroccoHub}</h4>
+                <span class="hub-tag">{t("footer").hub.sourcing}</span>
                 <ul>
-                    <li><a href="#">Chetouan Import Export</a></li>
+                    <li><a href="#">Expo Lukus</a></li>
                     <li><a href="#">Larache, Morocco</a></li>
-                    <li><a href="tel:+21200000000">+212 (0) 539 000 000</a></li>
+                    <li><a href="tel:+212662361174">+212 662 361 174</a></li>
                 </ul>
             </div>
 
             <!-- Spain Hub -->
             <div class="footer-col">
-                <h4>Spain Hub</h4>
-                <span class="hub-tag">Logistics & Distribution</span>
+                <h4>{t("footer").spainHub}</h4>
+                <span class="hub-tag">{t("footer").hub.logistics}</span>
                 <ul>
-                    <li><a href="#">Expo Lukus Spain</a></li>
+                    <li><a href="#">Chetouan Import Export</a></li>
                     <li><a href="#">Madrid, Spain</a></li>
                     <li><a href="tel:+3400000000">+34 91 000 000</a></li>
                 </ul>
@@ -57,20 +67,22 @@ import "../../public/assets/style/footer.css";
 
             <!-- Legal -->
             <div class="footer-col">
-                <h4>Legal</h4>
+                <h4>{t("footer").legal}</h4>
                 <ul>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Terms of Service</a></li>
-                    <li><a href="#">Export Licenses</a></li>
+                    <li><a href="#">{t("footer").links.privacy}</a></li>
+                    <li><a href="#">{t("footer").links.terms}</a></li>
+                    <li><a href="#">{t("footer").links.licenses}</a></li>
                 </ul>
             </div>
         </div>
 
         <div class="footer-bottom">
-            <div>© 2024 Expo Lukus. All Rights Reserved.</div>
-            <div style="text-transform: uppercase; letter-spacing: 2px;">
-                From Earth to the World
-            </div>
+            <div set:html={t("footer").copyright}/>
+                
+            <div
+                style="text-transform: uppercase; letter-spacing: 2px;"
+                set:html={t("footer").tagline}
+            />
         </div>
     </div>
 </footer>

@@ -1,0 +1,185 @@
+---
+import "../../public/assets/style/export-journey.css";
+// 1. Language Detection
+const lang = Astro.url.pathname.startsWith("/en") ? "en" : "es";
+
+// 2. Content Data
+const content = {
+    es: {
+        tagline: "La Hoja de Ruta",
+        title: "Nuestros Estándares de <i>Exportación</i>",
+        hint: "Deslice para trazar el viaje de calidad",
+        steps: [
+            {
+                num: "01",
+                title: "Cultivo Estratégico",
+                desc: "Preparación técnica de suelos con control estricto de pH y abonado orgánico para una base saludable.",
+            },
+            {
+                num: "02",
+                title: "Cosecha Manual",
+                desc: "Recolección selectiva realizada por manos expertas para garantizar que cada planta permanezca intacta.",
+            },
+            {
+                num: "03",
+                title: "Recolección",
+                desc: "Uso de cajas ventiladas de grado alimenticio para evitar la humedad y el daño solar directo.",
+            },
+            {
+                num: "04",
+                title: "Preenfriado",
+                desc: "Detenemos el envejecimiento del producto bajando la temperatura a 2°C en tiempo récord.",
+            },
+            {
+                num: "05",
+                title: "Sanitización",
+                desc: "Lavado profundo con sistemas certificados y agua potable para una seguridad alimentaria total.",
+            },
+            {
+                num: "06",
+                title: "Empaquetado",
+                desc: "Formatos boutique personalizados según las necesidades de los mercados internacionales exigentes.",
+            },
+            {
+                num: "07",
+                title: "Almacenaje",
+                desc: "Control constante de atmósfera y humedad para mantener el aroma y la textura original.",
+            },
+            {
+                num: "08",
+                title: "Logística",
+                desc: "Transporte intermodal optimizado que conecta el origen con el destino en tiempos mínimos.",
+            },
+            {
+                num: "09",
+                title: "Exportación",
+                desc: "Llegada al destino final con frescura garantizada y trazabilidad completa de cada lote.",
+            },
+        ],
+    },
+    en: {
+        tagline: "The Roadmap",
+        title: "Our Export <i>Standards</i>",
+        hint: "Scroll to trace the quality journey",
+        steps: [
+            {
+                num: "01",
+                title: "Strategic Cultivation",
+                desc: "Technical soil preparation with strict pH control and organic fertilization for a healthy base.",
+            },
+            {
+                num: "02",
+                title: "Manual Harvest",
+                desc: "Selective harvesting by expert hands to ensure each plant remains completely intact.",
+            },
+            {
+                num: "03",
+                title: "Collection",
+                desc: "Use of food-grade ventilated crates to avoid moisture build-up and direct solar damage.",
+            },
+            {
+                num: "04",
+                title: "Pre-cooling",
+                desc: "Stopping the product's aging process by lowering temperature to 2°C in record time.",
+            },
+            {
+                num: "05",
+                title: "Sanitization",
+                desc: "Deep washing with certified systems and potable water for total food safety.",
+            },
+            {
+                num: "06",
+                title: "Packaging",
+                desc: "Boutique customized formats according to the needs of demanding international markets.",
+            },
+            {
+                num: "07",
+                title: "Storage",
+                desc: "Constant control of atmosphere and humidity to maintain original aroma and texture.",
+            },
+            {
+                num: "08",
+                title: "Logistics",
+                desc: "Optimized intermodal transport connecting origin and destination in minimum time.",
+            },
+            {
+                num: "09",
+                title: "Export",
+                desc: "Arrival at the final destination with guaranteed freshness and full lot traceability.",
+            },
+        ],
+    },
+};
+
+const t = content[lang];
+---
+
+<section class="architectural-journey">
+    <div class="container-70">
+        <!-- Sidebar: Sticky Title + Dynamic Progress -->
+        <div class="sidebar">
+            <span class="sub-label">{t.tagline}</span>
+            <h2 set:html={t.title} />
+
+            <div class="progress-wrap">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+
+            <p class="scroll-hint">{t.hint}</p>
+        </div>
+
+        <!-- Content: The 9 Steps -->
+        <div class="steps-col" id="stepsCol">
+            {
+                t.steps.map((step) => (
+                    <div class="step-item">
+                        <span class="step-num">{step.num}</span>
+                        <h3>{step.title}</h3>
+                        <p>{step.desc}</p>
+                    </div>
+                ))
+            }
+        </div>
+    </div>
+</section>
+
+<script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    function initArchSteps() {
+        const steps = document.querySelectorAll(".step-item");
+        const progressBar = document.getElementById("progressBar");
+        const stepsCol = document.getElementById("stepsCol");
+
+        if (!stepsCol || !progressBar) return;
+
+        // 1. Progress Bar Logic
+        gsap.to(progressBar, {
+            width: "100%",
+            ease: "none",
+            scrollTrigger: {
+                trigger: stepsCol,
+                start: "top center",
+                end: "bottom center",
+                scrub: 0.5,
+            },
+        });
+
+        // 2. Step Activation Logic
+        steps.forEach((item) => {
+            ScrollTrigger.create({
+                trigger: item,
+                start: "top 70%",
+                end: "bottom 30%",
+                onEnter: () => item.classList.add("is-active"),
+                onLeave: () => item.classList.remove("is-active"),
+                onEnterBack: () => item.classList.add("is-active"),
+                onLeaveBack: () => item.classList.remove("is-active"),
+            });
+        });
+    }
+
+    // Astro Lifecycle handling
+    window.addEventListener("load", initArchSteps);
+    document.addEventListener("astro:page-load", initArchSteps);
+</script>

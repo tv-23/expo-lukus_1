@@ -1,6 +1,7 @@
 ---
 import "../../public/assets/style/contact-page.css";
 import Navbar from "../components/navbar.astro";
+import Footer from "../components/footer.astro";
 import Layout from "../layouts/Layout.astro";
 import ProductsDisplay from "../components/products-display.astro";
 import PageHeadline from "../components/page-headline.astro";
@@ -24,9 +25,14 @@ const t = useTranslations(lang);
     <Navbar lang={lang} t={t} />
 
     <PageHeadline
-        title='<h1 class="main-title">PURE<br>SELECTION.</h1><p class="tagline">Positions Expo Lukus not as a "mass wholesaler," but as a curated boutique where only the best fruit makes the cut.</p>'
+        title='<h1 class="main-title">SELECCIÓN<br>PURO.</h1>
+<p class="tagline">
+Posiciona a Expo Lukus no como un "mayorista masivo", sino como una boutique seleccionada donde solo la mejor fruta pasa el corte.
+</p>'
     />
     <br /><br />
 
-    <ProductsDisplay />
+    <ProductsDisplay lang={lang} t={t} />
+    <br /><br /><br />
+    <Footer lang={lang} t={t} />
 </Layout>

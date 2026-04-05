@@ -13,6 +13,7 @@ export const ui = {
     'nav.about': 'About Us',
     'nav.products': 'Products',
     'nav.contact': 'Contact Us',
+    'nav.cta': 'Request a quote',
     // About Section
     'about.headline': {
       'p1': "About", 'p2': "Us",
@@ -28,6 +29,7 @@ export const ui = {
     // Certifications
     'certifications.headline': 'Certifications',
     'certifications.text': "International Quality Standards",
+    // CTA
     'cta': {
       tag: "Partnership",
       title: "Ready to grow<br>your <i>harvest</i>?",
@@ -41,6 +43,145 @@ export const ui = {
         submit: "Submit Inquiry",
       },
     },
+    // Footer
+    "footer": {
+      description:
+        "The direct bridge between Moroccan soil and the global stage. We curate nature’s finest produce with a commitment to cold-chain excellence and family heritage.",
+
+      explore: "Explore",
+      moroccoHub: "Morocco Hub",
+      spainHub: "Spain Hub",
+      legal: "Legal",
+
+      hub: {
+        sourcing: "Sourcing & Packaging",
+        logistics: "Logistics & Distribution",
+      },
+
+      copyright:
+        '© <span class="tt-copyright-year">2026 Expo Luku <br /> Tous droits réservés. Créé & développé par <a href="https://brosmedia.ma/" target="_blank">Brosmedia</a >.</span>',
+      tagline: "From Earth to the World",
+
+      links: {
+        home: "Home",
+        about: "About Us",
+        products: "Products",
+        contact: "Contact",
+        privacy: "Privacy Policy",
+        terms: "Terms of Service",
+        licenses: "Export Licenses",
+      },
+    },
+    // About Page
+    "about-us.headline": '<h1 class="main-title">ROOTED.<br>GLOBAL.</h1><p class="tagline">Tells the story of the origin (Morocco) and the destination (Global) in one short, massive sentence.</p>',
+    "story": {
+      blocks: [
+        {
+          tag: "History // 01",
+          title: "Roots of<br />Expo Lukus.",
+          paragraphs: [
+            "Expo Lukus is one of the companies founded by the Chetouan family, which has built significant experience in the supply and distribution of fruits and vegetables, along with cold storage services to ensure product quality and safety.",
+            "Following strong success in this sector, the family expanded its activities by establishing a dedicated export company focused on delivering fresh fruits and vegetables to international markets.",
+          ],
+          stats: [
+            { value: "30+", label: "Years Experience" },
+            { value: "100%", label: "Family Legacy" },
+          ],
+        },
+
+        {
+          tag: "Operations // 02",
+          title: "Integrated<br />Supply Chain.",
+          paragraphs: [
+            "Expo Lukus relies on an integrated service chain supported by strong logistical resources developed through years of hands-on experience in the agricultural sector.",
+            "This allows the company to guarantee high-quality products while maintaining strict compliance with international export standards across all operations.",
+          ],
+          stats: [
+            { value: "Global", label: "Logistics" },
+            { value: "ISO", label: "Standards" },
+          ],
+        },
+
+        {
+          tag: "Commitment // 03",
+          title: "Quality &<br />Growth.",
+          paragraphs: [
+            "The company is committed to offering competitive pricing while building long-term, trust-based relationships with its international clients.",
+            "Beyond profit, Expo Lukus aims to support the development of the agricultural sector and create sustainable economic opportunities for local farmers and partners.",
+          ],
+          stats: [
+            { value: "FairPay", label: "To Farmers" },
+            { value: "Ethics", label: "Driven" },
+          ],
+        },
+
+        {
+          tag: "Vision // 04",
+          title: "Connecting<br />Markets.",
+          paragraphs: [
+            "At Expo Lukus, agriculture is seen not only as a business but as a responsibility toward both the land and the people who cultivate it.",
+            "The company, through Chetouan Import Export in Morocco and Expo Lukus in Spain, builds a strong trade bridge between both countries to facilitate exchange, improve supply chains, and open access to global markets.",
+          ],
+          stats: [
+            { value: "Two Hubs", label: "Morocco & Spain" },
+            { value: "Agility", label: "Supply Chain" },
+          ],
+        },
+      ],
+    },
+    // Contact Page
+    "contact": {
+      headline: '<h1 class="main-title">ROOTED.<br>GLOBAL.</h1><p class="tagline">Tells the story of the origin (Morocco) and the destination (Global) in one short, massive sentence.</p>',
+      title: "Our Heart <br>is in the South.",
+      description:
+        "Based in the fertile plains of Larache, we connect Morocco's agricultural heritage with the global demand for excellence.",
+
+      info: {
+        callTitle: "Direct Call",
+        addressTitle: "Headquarters",
+        address: "Avenue Mohamed V, <br>Larache, Morocco",
+      },
+
+      form: {
+        name: "Your Name",
+        email: "Email Address",
+        message: "Message",
+        submit: "Send Inquiry",
+      },
+      hub: [
+        {
+          title: "Sourcing",
+        },
+        {
+          title: "Logistics",
+        },
+        {
+          title: "Quality Control",
+        },
+      ],
+      section_title: "Find Us in the<br>Fields",
+    },
+    // European Gateway
+    "european_gateway": {
+      morocco: {
+        hub: "MOROCCO Hub",
+        title: "The Heart of the <i>Harvest</i>.",
+        description:
+          "Everything begins in Larache. Our production headquarters ensures that every fruit is hand-picked and prepped for its global journey.",
+      },
+
+      spain: {
+        hub: "MADRID Hub",
+        title: "The Gateway <br>to <i>Europe</i>.",
+        description:
+          "Strategically located in Spain, Chetouan Export Import serves as our logistical nexus, ensuring the cold-chain bridge remains unbroken across the continent.",
+      },
+
+      logo: {
+        src: "/assets/images/chetouan-logo.webp",
+        alt: "Chetouan Export Import Spain",
+      },
+    },
   },
   es: {
     // Navigation
@@ -48,6 +189,7 @@ export const ui = {
     'nav.about': 'Sobre Nosotros',
     'nav.products': 'Productos',
     'nav.contact': 'Contáctanos',
+    'nav.cta': 'Solicitud de presupuesto',
     // About Section
     'about.headline': {
       'p1': "Sobre", 'p2': "Nosotros",
@@ -63,6 +205,7 @@ export const ui = {
     // Certifications
     'certifications.headline': 'Certificaciones',
     'certifications.text': "Estándares Internacionales de Calidad",
+    // CTA
     'cta': {
       tag: "Asociación",
       title: "¿Listo para hacer crecer<br>tu <i>cosecha</i>?",
@@ -74,6 +217,145 @@ export const ui = {
         email: "Correo empresarial",
         message: "Cuéntanos tus necesidades...",
         submit: "Enviar consulta",
+      },
+    },
+    // Footer
+    "footer": {
+      description:
+        "El puente directo entre el suelo marroquí y el escenario global. Seleccionamos los mejores productos de la naturaleza con un compromiso de excelencia en cadena de frío y herencia familiar.",
+
+      explore: "Explorar",
+      moroccoHub: "Centro Marruecos",
+      spainHub: "Centro España",
+      legal: "Legal",
+
+      hub: {
+        sourcing: "Abastecimiento y Embalaje",
+        logistics: "Logística y Distribución",
+      },
+
+      copyright:
+        '© <span class="tt-copyright-year">2026 Expo Luku <br /> Todos los derechos reservados. Creado y desarrollado por <a href="https://brosmedia.ma/" target="_blank">Brosmedia</a>.</span>',
+      tagline: "De la Tierra al Mundo",
+
+      links: {
+        home: "Inicio",
+        about: "Sobre Nosotros",
+        products: "Productos",
+        contact: "Contacto",
+        privacy: "Política de Privacidad",
+        terms: "Términos de Servicio",
+        licenses: "Licencias de Exportación",
+      },
+    },
+    // About Page
+    "about-us.headline": '<h1 class="main-title">RAÍCES.<br>GLOBAL.</h1><p class="tagline">Cuenta la historia del origen (Marruecos) y el destino (Global) en una sola frase corta y poderosa.</p>',
+    "story": {
+      blocks: [
+        {
+          tag: "Historia // 01",
+          title: "Raíces de<br />Expo Lukus.",
+          paragraphs: [
+            "Expo Lukus es una de las empresas fundadas por la familia Chetouan, que ha desarrollado una gran experiencia en el suministro y distribución de frutas y verduras, junto con servicios de almacenamiento en frío para garantizar la calidad y seguridad del producto.",
+            "Tras un gran éxito en este sector, la familia amplió sus actividades estableciendo una empresa de exportación dedicada a llevar frutas y verduras frescas a los mercados internacionales.",
+          ],
+          stats: [
+            { value: "30+", label: "Años de experiencia" },
+            { value: "100%", label: "Legado familiar" },
+          ],
+        },
+
+        {
+          tag: "Operaciones // 02",
+          title: "Cadena de<br />Suministro.",
+          paragraphs: [
+            "Expo Lukus se basa en una cadena de servicios integrada apoyada por sólidos recursos logísticos desarrollados durante años de experiencia en el sector agrícola.",
+            "Esto permite garantizar productos de alta calidad cumpliendo estrictamente con los estándares internacionales de exportación en todas las operaciones.",
+          ],
+          stats: [
+            { value: "Global", label: "Logística" },
+            { value: "ISO", label: "Estándares" },
+          ],
+        },
+
+        {
+          tag: "Compromiso // 03",
+          title: "Calidad y<br />Crecimiento.",
+          paragraphs: [
+            "La empresa se compromete a ofrecer precios competitivos mientras construye relaciones a largo plazo basadas en la confianza con sus clientes internacionales.",
+            "Más allá del beneficio, Expo Lukus busca apoyar el desarrollo del sector agrícola y crear oportunidades económicas sostenibles para agricultores y socios locales.",
+          ],
+          stats: [
+            { value: "Pago Justo", label: "A Agricultores" },
+            { value: "Ética", label: "Impulsada" },
+          ],
+        },
+
+        {
+          tag: "Visión // 04",
+          title: "Conectando<br />Mercados.",
+          paragraphs: [
+            "En Expo Lukus, la agricultura no se ve solo como un negocio, sino como una responsabilidad hacia la tierra y las personas que la cultivan.",
+            "La empresa, a través de Chetouan Import Export en Marruecos y Expo Lukus en España, construye un fuerte puente comercial entre ambos países para facilitar el intercambio y el acceso a mercados globales.",
+          ],
+          stats: [
+            { value: "Dos Hubs", label: "Marruecos & España" },
+            { value: "Agilidad", label: "Cadena de suministro" },
+          ],
+        },
+      ],
+    },
+    // Contact Page
+    "contact": {
+      headline: '<h1 class="main-title">ACCESO<br>DIRECTO</h1><p class="tagline">El puente Chetouan entre la tierra y tu mercado.</p>',
+      title: "Nuestro corazón <br>está en el sur.",
+      description:
+        "Ubicados en las fértiles llanuras de Larache, conectamos la herencia agrícola de Marruecos con la demanda global de excelencia.",
+
+      info: {
+        callTitle: "Llamada directa",
+        addressTitle: "Sede central",
+        address: "Avenida Mohamed V, <br>Larache, Marruecos",
+      },
+
+      form: {
+        name: "Tu nombre",
+        email: "Correo electrónico",
+        message: "Mensaje",
+        submit: "Enviar consulta",
+      },
+      hub: [
+        {
+          title: "Abastecimiento",
+        },
+        {
+          title: "Logística",
+        },
+        {
+          title: "Control de Calidad",
+        },
+      ],
+      section_title: "Encuéntranos en los<br>Campos",
+    },
+    // European Gateway
+    "european_gateway": {
+      morocco: {
+        hub: "Hub de Marruecos",
+        title: "El corazón de la <i>cosecha</i>.",
+        description:
+          "Todo comienza en Larache. Nuestra sede de producción garantiza que cada fruta sea recolectada y preparada para su viaje global.",
+      },
+
+      spain: {
+        hub: "Hub de Madrid",
+        title: "La puerta de entrada <br>a <i>Europa</i>.",
+        description:
+          "Ubicada estratégicamente en España, Chetouan Export Import actúa como nuestro centro logístico, asegurando una cadena de frío ininterrumpida en toda Europa.",
+      },
+
+      logo: {
+        src: "/assets/images/chetouan-logo.webp",
+        alt: "Chetouan Export Import España",
       },
     },
   },
