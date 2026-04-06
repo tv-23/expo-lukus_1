@@ -18,18 +18,19 @@
 /* --- THE 70% CANVAS --- */
 #revealSection .container-70 {
     width: 70%;
-    height: 70vh;
+    height: 75vh;
+    min-height: 500px;
     position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
     background: var(--soft-gray);
-    border-radius: 15px;
+    border-radius: 40px;
     overflow: hidden;
     box-shadow: 0 40px 100px rgba(0, 0, 0, 0.05);
 }
 
-/* --- SHUTTER --- */
+/* --- THE SHUTTER --- */
 #revealSection .shutter-pillar {
     position: absolute;
     top: 0;
@@ -45,7 +46,7 @@
 
 #revealSection .shutter-label {
     font-family: var(--font-heading);
-    font-size: 6vw;
+    font-size: 90px;
     color: rgba(255, 255, 255, 0.1);
     font-weight: 900;
     text-transform: uppercase;
@@ -56,21 +57,20 @@
 #revealSection .content-wrap {
     position: absolute;
     inset: 0;
-    padding: 80px;
+    padding: 6vw;
     display: grid;
     grid-template-columns: 1.2fr 1fr;
-    gap: 60px;
+    gap: 10px;
     align-items: center;
+    box-sizing: border-box;
 }
 
-/* Layer 1 */
 #revealSection .layer-larache {
-    display: initial;
-   z-index: 10;
+    z-index: 10;
     background: var(--primary);
+    display: initial !important;
 }
 
-/* Layer 2 */
 #revealSection .layer-madrid {
     z-index: 5;
     background: var(--black);
@@ -78,7 +78,6 @@
     opacity: 0;
 }
 
-/* --- TEXT --- */
 #revealSection .info-box h2 {
     font-family: var(--font-heading);
     font-size: var(--font-size-heading);
@@ -88,11 +87,13 @@
 }
 
 #revealSection .info-box p {
-    font-size: 18px;
-    line-height: 1.8;
+    font-size: clamp(14px, 1.1vw, 17px);
+    line-height: 1.7;
+    opacity: 0.8;
+    max-width: 450px;
 }
 
-/* --- LOGO --- */
+/* --- LOGO GLASS CONTAINER --- */
 #revealSection .logo-display {
     width: 100%;
     height: 100%;
@@ -103,31 +104,111 @@
 }
 
 #revealSection .logo-slate {
-    width: 300px;
-    height: 350px;
+    width: clamp(200px, 20vw, 320px);
+    aspect-ratio: 4/5;
     background: rgba(255, 255, 255, 0.03);
     backdrop-filter: blur(20px);
-    border-radius: 10px;
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 30px;
     border: 1px solid rgba(255, 255, 255, 0.1);
     display: flex;
     align-items: center;
     justify-content: center;
     transform-style: preserve-3d;
     box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+    position: relative;
 }
 
 #revealSection .logo-slate img {
-    width: 80%;
+    width: 100%;
     height: auto;
     filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.3));
 }
 
-/* --- COORDS --- */
 #revealSection .coords {
     position: absolute;
-    bottom: 30px;
-    font-size: 10px;
-    letter-spacing: 4px;
+    bottom: 20px;
+    font-size: clamp(8px, 0.8vw, 10px);
+    letter-spacing: 2px;
     font-weight: 800;
-    opacity: 0.4;
+    opacity: 0.5;
+    width: 100%;
+    text-align: center;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 1200px) {
+    #revealSection .container-70 {
+        width: 85%;
+    }
+}
+
+@media (max-width: 992px) {
+    #revealSection .container-70 {
+        width: 92%;
+        height: 85vh;
+    }
+
+    #revealSection .content-wrap {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 10px;
+        padding: 40px 30px;
+        justify-items: center;
+    }
+
+    #revealSection .info-box p {
+        margin: 0 auto;
+    }
+
+    #revealSection .logo-display {
+        height: auto;
+    }
+
+    #revealSection .logo-slate {
+        width: 200px;
+    }
+
+    #revealSection .layer-larache .logo-display div {
+        font-size: 80px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    #revealSection .container-70 {
+        height: 90vh;
+        border-radius: 30px;
+    }
+
+    #revealSection .info-box h2 {
+        font-size: 32px;
+    }
+
+    #revealSection .info-box p {
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
+    #revealSection .logo-slate {
+        width: 160px;
+    }
+}
+
+@media (max-height: 500px) and (orientation: landscape) {
+    #revealSection .sticky-container {
+        height: auto;
+        padding: 50px 0;
+    }
+
+    #revealSection .shutter-section {
+        height: auto;
+    }
+
+    #revealSection .container-70 {
+        height: auto;
+        min-height: 100vh;
+    }
 }

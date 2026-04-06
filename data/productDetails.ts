@@ -155,7 +155,7 @@ export const productDetails = {
     title: { en: "Potato", es: "Patata" },
     category: { en: "Fresh Vegetables", es: "Verduras Frescas" },
     image: "/assets/images/products/Potato.webp",
-    backgroundimage: "",
+    backgroundimage: "/assets/images/products/background/Potato.webp",
     description: { en: "", es: "" },
     packaging: standardPackaging,
     headline: {
@@ -171,7 +171,7 @@ export const productDetails = {
     title: { en: "Tomato", es: "Tomate" },
     category: { en: "Fresh Vegetables", es: "Verduras Frescas" },
     image: "/assets/images/products/tomato.webp",
-    backgroundimage: "",
+    backgroundimage: "/assets/images/products/background/Tomato.webp",
     description: { en: "", es: "" },
     packaging: standardPackaging,
     headline: {
@@ -187,7 +187,7 @@ export const productDetails = {
     title: { en: "Onion", es: "Cebolla" },
     category: { en: "Fresh Vegetables", es: "Verduras Frescas" },
     image: "/assets/images/products/Onion.webp",
-    backgroundimage: "",
+    backgroundimage: "/assets/images/products/background/Onion.webp",
     description: { en: "", es: "" },
     packaging: standardPackaging,
     headline: {
@@ -203,7 +203,7 @@ export const productDetails = {
     title: { en: "Blueberry", es: "Arándano" },
     category: { en: "Fresh Fruits", es: "Frutas Frescas" },
     image: "/assets/images/products/Blueberry.webp",
-    backgroundimage: "",
+    backgroundimage: "/assets/images/products/background/Blueberry.webp",
     description: { en: "", es: "" },
     packaging: standardPackaging,
     headline: {
@@ -219,7 +219,7 @@ export const productDetails = {
     title: { en: "Strawberry", es: "Fresa" },
     category: { en: "Fresh Fruits", es: "Frutas Frescas" },
     image: "/assets/images/products/strawberry.webp",
-    backgroundimage: "",
+    backgroundimage: "/assets/images/products/background/Strawberry.webp",
     description: { en: "", es: "" },
     packaging: standardPackaging,
     headline: {
@@ -235,7 +235,7 @@ export const productDetails = {
     title: { en: "Avocado", es: "Aguacate" },
     category: { en: "Fresh Fruits", es: "Frutas Frescas" },
     image: "/assets/images/products/Avocado.webp",
-    backgroundimage: "",
+    backgroundimage: "/assets/images/products/background/Avocado.webp",
     description: { en: "", es: "" },
     packaging: standardPackaging,
     headline: {
@@ -251,7 +251,7 @@ export const productDetails = {
     title: { en: "Raspberry", es: "Frambuesa" },
     category: { en: "Fresh Fruits", es: "Frutas Frescas" },
     image: "/assets/images/products/Raspberry.webp",
-    backgroundimage: "",
+    backgroundimage: "/assets/images/products/background/Raspberry.webp",
     description: { en: "", es: "" },
     packaging: standardPackaging,
     headline: {
@@ -267,7 +267,7 @@ export const productDetails = {
     title: { en: "Blackberry", es: "Mora" },
     category: { en: "Fresh Fruits", es: "Frutas Frescas" },
     image: "/assets/images/products/Blackberry.webp",
-    backgroundimage: "",
+    backgroundimage: "/assets/images/products/background/Blackberry.webp",
     description: { en: "", es: "" },
     packaging: standardPackaging,
     headline: {

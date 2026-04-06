@@ -6,45 +6,39 @@ const { lang, t } = Astro.props;
 <section class="shutter-section" id="revealSection">
     <div class="sticky-container">
         <div class="container-70">
-            <!-- THE SHUTTER PILLAR (Moves right to left) -->
+            
+            <!-- THE BRIDGE PILLAR (Green Wipe) -->
             <div class="shutter-pillar" id="shutter">
-                <div class="shutter-label">Chetouan Export Import</div>
+                <div class="shutter-label">{t('bridge.shutter')}</div>
             </div>
 
-            <!-- LAYER 1: LARACHE (The Starting View) -->
+            <!-- LAYER 1: EXPO LUKUS SPAIN (Visible First) -->
+            <!-- We use 'laracheLayer' ID to match your existing JS which is active on load -->
             <div class="content-wrap layer-larache" id="laracheLayer">
                 <div class="info-box">
-                    <span
-                        style="color:var(--bg); font-weight:800; letter-spacing:5px;"
-                        >{t("european_gateway").morocco.hub}</span
-                    >
-                    <h2 set:html={t("european_gateway").morocco.title} />
-                    <p>{t("european_gateway").morocco.description}</p>
+                    <span>{t('bridge.spain.tag')}</span>
+                    <h2 set:html={t('bridge.spain.title')} />
+                    <p>{t('bridge.spain.desc')}</p>
                 </div>
+
             </div>
 
-            <!-- LAYER 2: MADRID (The Revealed View) -->
+            <!-- LAYER 2: CHETOUAN MOROCCO (Revealed after scroll) -->
+            <!-- We use 'madridLayer' ID to match your existing JS reveal logic -->
             <div class="content-wrap layer-madrid" id="madridLayer">
                 <div class="info-box">
-                    <span
-                        style="color:var(--primary); font-weight:800; letter-spacing:5px;"
-                        >{t("european_gateway").spain.hub}</span
-                    >
-                    <h2 set:html={t("european_gateway").spain.title} />
-
-                    <p>{t("european_gateway").spain.description}</p>
+                    <span>{t('bridge.morocco.tag')}</span>
+                    <h2 set:html={t('bridge.morocco.title')} />
+                    <p>{t('bridge.morocco.desc')}</p>
                 </div>
                 <div class="logo-display">
                     <div class="logo-slate" id="glassSlate">
-                        <!-- SPAIN LOGO -->
-                        <img
-                            src="/assets/images/chetouan-logo.jpg"
-                            alt="Expo Lukus Spain"
-                            id="hubLogo"
-                        />
+
+                    <img src="/assets/images/chetouan-logo.jpg" alt="chetouan export import" id="hubLogo">
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 </section>
