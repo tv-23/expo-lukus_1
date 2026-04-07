@@ -126,12 +126,12 @@ import "../../../public/assets/style/slider.css";
             img.decoding = "async";
 
             // ✅ LCP optimization
-            if (i === 0) {
-                img.loading = "eager";
-                img.fetchPriority = "high";
-            } else {
-                img.loading = "lazy";
-            }
+            // if (i === 0) {
+            //     img.loading = "eager";
+            //     img.fetchPriority = "high";
+            // } else {
+            //     img.loading = "lazy";
+            // }
 
             div.appendChild(img);
             bgContainer.appendChild(div);
