@@ -116,6 +116,7 @@ import "../../../public/assets/style/slider.css";
         const bgContainer = document.getElementById("bgContainer");
         const dotsContainer = document.getElementById("dots");
         slides.forEach((s, i) => {
+            
             const div = document.createElement("div");
             div.className = `slide-bg ${i === 0 ? "active" : ""}`;
             div.style.backgroundImage = `url(${s.img})`;
