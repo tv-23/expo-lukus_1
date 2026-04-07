@@ -58,7 +58,6 @@ const lang = getLangFromUrl(Astro.url);
 <script>
 	window.addEventListener("load", () => {
     const images = document.querySelectorAll(".lazy-img");
-	setTimeout(() => {
 		
 		const observer = new IntersectionObserver((entries, obs) => {
 			entries.forEach((entry) => {
@@ -71,7 +70,6 @@ const lang = getLangFromUrl(Astro.url);
         });
     });
 	images.forEach((img) => observer.observe(img));
-}, 30);
 
 });
 </script>
