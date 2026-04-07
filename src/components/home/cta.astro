@@ -43,22 +43,22 @@ const { lang, t } = Astro.props;
       <form>
         <div class="form-group">
           <input type="text" id="name" required />
-          <label>{t("cta").form.name}</label>
+          <label for="name">{t("cta").form.name}</label>
           <div class="liquid-line"></div>
         </div>
-
+      
         <div class="form-group">
           <input type="email" id="email" required />
-          <label>{t("cta").form.email}</label>
+          <label for="email">{t("cta").form.email}</label>
           <div class="liquid-line"></div>
         </div>
-
+      
         <div class="form-group">
           <textarea id="message" rows="3" required></textarea>
-          <label>{t("cta").form.message}</label>
+          <label for="message">{t("cta").form.message}</label>
           <div class="liquid-line"></div>
         </div>
-
+      
         <div style="text-align: right;">
           <button type="submit" class="submit-btn" id="magBtn">
             {t("cta").form.submit}
