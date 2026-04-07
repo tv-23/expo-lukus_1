@@ -32,13 +32,10 @@ import "../../../public/assets/style/slider.css";
 </div>
 
 <script>
-window.addEventListener("load", () => {
-    // Run when browser is idle (better performance)
-    requestIdleCallback(() => {
-
+    window.addEventListener("DOMContentLoaded", () => {
         const path = window.location.pathname.toLowerCase();
 
-        // Language detection
+        // If URL starts with /en or /en/...
         const lang = path === "/en" || path.startsWith("/en/") ? "EN" : "ES";
 
         const translations = {
@@ -84,19 +81,20 @@ window.addEventListener("load", () => {
             ],
         };
 
+        // fallback safety
         const slides = translations[lang] || translations["ES"];
 
-        // Navigation buttons
-        document.querySelector(".prev-btn")
+        document
+            .querySelector(".prev-btn")
             .addEventListener("click", () => handleNav(-1));
-
-        document.querySelector(".next-btn")
+        document
+            .querySelector(".next-btn")
             .addEventListener("click", () => handleNav(1));
 
         let currentIndex = 0;
         let isAnimating = false;
         let autoPlayTimer;
-        const slideDuration = 8000;
+        const slideDuration = 8000; // Total time per slide (includes slow animation)
 
         const strokeWidth = 7.5;
         const W = 450 - strokeWidth;
@@ -106,7 +104,6 @@ window.addEventListener("load", () => {
         function setPathDirection(mode) {
             const pA = document.getElementById("pathA");
             const pB = document.getElementById("pathB");
-
             if (mode === "next") {
                 pA.setAttribute("d", `M ${S},${S} H ${W} V ${H}`);
                 pB.setAttribute("d", `M ${S},${S} V ${H} H ${W}`);
@@ -118,57 +115,56 @@ window.addEventListener("load", () => {
 
         const bgContainer = document.getElementById("bgContainer");
         const dotsContainer = document.getElementById("dots");
+        slides.forEach((s, i) => {
+            const div = document.createElement("div");
+            div.className = `slide-bg ${i === 0 ? "active" : ""}`;
 
-        // Slides + dots
-        // slides.forEach((s, i) => {
-        //     const div = document.createElement("div");
-        //     div.className = `slide-bg ${i === 0 ? "active" : ""}`;
+            // ✅ Create image instead of background-image
+            const img = document.createElement("img");
+            img.dataset.src = s.img;
+            img.className = "slide-img lazy-img";
+            img.decoding = "async";
 
-        //     const img = document.createElement("img");
-        //     img.src = s.img;
-        //     img.className = "slide-img";
-        //     img.decoding = "async";
+            // ✅ LCP optimization
+            if (i === 0) {
+                img.loading = "eager";
+                img.fetchPriority = "high";
+            } else {
+                img.loading = "lazy";
+            }
 
-        //     if (i === 0) {
-        //         img.loading = "eager";
-        //         img.fetchPriority = "high";
-        //     } else {
-        //         img.loading = "lazy";
-        //     }
+            div.appendChild(img);
+            bgContainer.appendChild(div);
 
-        //     div.appendChild(img);
-        //     bgContainer.appendChild(div);
+            // ✅ KEEP DOTS (unchanged logic)
+            const dot = document.createElement("div");
+            dot.className = `dot ${i === 0 ? "active" : ""}`;
 
-        //     const dot = document.createElement("div");
-        //     dot.className = `dot ${i === 0 ? "active" : ""}`;
+            dot.onclick = () => {
+                if (!isAnimating && i !== currentIndex) {
+                    animateTo(i, i > currentIndex ? 1 : -1);
+                }
+            };
 
-        //     dot.onclick = () => {
-        //         if (!isAnimating && i !== currentIndex) {
-        //             animateTo(i, i > currentIndex ? 1 : -1);
-        //         }
-        //     };
-
-        //     dotsContainer.appendChild(dot);
-        // });
+            dotsContainer.appendChild(dot);
+        });
 
         function updateDOM(index) {
             document.getElementById("topTitle").innerText = slides[index].top;
             document.getElementById("mainTitle").innerHTML = slides[index].main;
             document.getElementById("subtitle").innerText = slides[index].sub;
-
-            document.querySelectorAll(".dot")
+            document
+                .querySelectorAll(".dot")
                 .forEach((d, i) => d.classList.toggle("active", i === index));
-
-            document.querySelectorAll(".slide-bg")
+            document
+                .querySelectorAll(".slide-bg")
                 .forEach((b, i) => b.classList.toggle("active", i === index));
         }
 
         function animateTo(nextIndex, step) {
             isAnimating = true;
             resetTimer();
-
             const dir = step > 0 ? "next" : "prev";
-
             const tl = gsap.timeline({
                 onComplete: () => {
                     currentIndex = nextIndex;
@@ -176,47 +172,47 @@ window.addEventListener("load", () => {
                 },
             });
 
-            // EXIT
+            // EXIT PHASE (Increased by 40%)
             tl.to("#topTitle", {
                 yPercent: dir === "next" ? 100 : -100,
                 opacity: 0,
                 duration: 0.56,
             });
+            tl.to(
+                "#mainTitle",
+                {
+                    xPercent: dir === "next" ? 100 : -100,
+                    opacity: 0,
+                    duration: 0.56,
+                },
+                "-=0.42",
+            );
+            tl.to(
+                ".painting-line",
+                {
+                    strokeDashoffset: 1200,
+                    duration: 0.84,
+                    ease: "power2.inOut",
+                },
+                "-=0.56",
+            );
+            tl.to("#subtitle", { opacity: 0, duration: 0.28 }, "-=0.7");
 
-            tl.to("#mainTitle", {
-                xPercent: dir === "next" ? 100 : -100,
-                opacity: 0,
-                duration: 0.56,
-            }, "-=0.42");
-
-            tl.to(".painting-line", {
-                strokeDashoffset: 1200,
-                duration: 0.84,
-                ease: "power2.inOut",
-            }, "-=0.56");
-
-            tl.to("#subtitle", {
-                opacity: 0,
-                duration: 0.28,
-            }, "-=0.7");
-
-            // SWAP
+            // SWAP DATA
             tl.call(() => {
                 updateDOM(nextIndex);
                 setPathDirection(dir);
             });
 
-            // ENTER
+            // ENTRANCE PHASE (Painting now 1.4s, Titles increased by 40%)
             tl.set("#topTitle", {
                 yPercent: dir === "next" ? -100 : 100,
                 opacity: 0,
             });
-
             tl.set("#mainTitle", {
                 xPercent: dir === "next" ? -100 : 100,
                 opacity: 0,
             });
-
             tl.set(".painting-line", { strokeDashoffset: 1200 });
 
             tl.to(".painting-line", {
@@ -224,35 +220,24 @@ window.addEventListener("load", () => {
                 duration: 1.4,
                 ease: "power2.inOut",
             });
-
-            tl.to("#topTitle", {
-                yPercent: 0,
-                opacity: 1,
-                duration: 0.84,
-                ease: "power2.out",
-            }, "-=0.98");
-
-            tl.to("#mainTitle", {
-                xPercent: 0,
-                opacity: 1,
-                duration: 0.98,
-                ease: "power2.out",
-            }, "-=0.7");
-
-            tl.to("#subtitle", {
-                opacity: 1,
-                duration: 0.56,
-            }, "-=0.42");
+            tl.to(
+                "#topTitle",
+                { yPercent: 0, opacity: 1, duration: 0.84, ease: "power2.out" },
+                "-=0.98",
+            );
+            tl.to(
+                "#mainTitle",
+                { xPercent: 0, opacity: 1, duration: 0.98, ease: "power2.out" },
+                "-=0.7",
+            );
+            tl.to("#subtitle", { opacity: 1, duration: 0.56 }, "-=0.42");
         }
 
         function handleNav(step) {
             if (isAnimating) return;
-
             let next = currentIndex + step;
-
             if (next >= slides.length) next = 0;
             if (next < 0) next = slides.length - 1;
-
             animateTo(next, step);
         }
 
@@ -268,39 +253,32 @@ window.addEventListener("load", () => {
         }
 
         const mainSlider = document.getElementById("mainSlider");
-
         mainSlider.addEventListener("mouseenter", () =>
-            clearInterval(autoPlayTimer)
+            clearInterval(autoPlayTimer),
         );
+        mainSlider.addEventListener("mouseleave", () => startTimer());
 
-        mainSlider.addEventListener("mouseleave", () =>
-            startTimer()
-        );
-
-        // INIT
-        updateDOM(0);
-        setPathDirection("next");
-
-        gsap.to(".painting-line", {
-            strokeDashoffset: 0,
-            duration: 2.1
-        });
-
-        gsap.from("#topTitle", {
-            yPercent: -100,
-            opacity: 0,
-            duration: 1.4,
-        });
-
-        gsap.from("#mainTitle", {
-            xPercent: -100,
-            opacity: 0,
-            duration: 1.4,
-            delay: 0.42,
-        });
-
-        setTimeout(startTimer, 50);
-
+        window.onload = () => {
+            updateDOM(0);
+            setPathDirection("next");
+            // Initial Entry (Slower)
+            gsap.to(".painting-line", { strokeDashoffset: 0, duration: 2.1 });
+            gsap.from("#topTitle", {
+                yPercent: -100,
+                opacity: 0,
+                duration: 1.4,
+            });
+            gsap.from("#mainTitle", {
+                xPercent: -100,
+                opacity: 0,
+                duration: 1.4,
+                delay: 0.42,
+            });
+            setTimeout(() => {
+                startTimer();
+            }, 50);
+        };
     });
-});
+
+
 </script>
