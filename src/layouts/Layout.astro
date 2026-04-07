@@ -87,9 +87,9 @@ const lang = getLangFromUrl(Astro.url);
             }
         });
     });
+	images.forEach((img) => observer.observe(img));
 }, 50);
 
-    images.forEach((img) => observer.observe(img));
 });
 </script>
 
