@@ -71,7 +71,10 @@ const blocks = t("story").blocks;
         </div>
     </section>
 
+    <Footer lang={lang} t={t} />
+
     <script>
+      window.addEventListener("load", () => {
         gsap.registerPlugin(ScrollTrigger);
 
         // This timeline creates the pinning room and handles the transitions
@@ -132,6 +135,6 @@ const blocks = t("story").blocks;
 
         // Refresh on load to ensure pinning height is calculated perfectly
         window.addEventListener("load", () => ScrollTrigger.refresh());
+      });
     </script>
-    <Footer lang={lang} t={t} />
 </Layout>

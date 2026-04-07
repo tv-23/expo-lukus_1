@@ -70,6 +70,7 @@ const { lang, t } = Astro.props;
 </section>
 
 <script>
+  window.addEventListener("load", () => {
   gsap.registerPlugin(ScrollTrigger);
 
   const section = document.querySelector("#ctaSection");
@@ -124,4 +125,5 @@ const { lang, t } = Astro.props;
   btn.addEventListener("mouseleave", () => {
     gsap.to(btn, { x: 0, y: 0, duration: 0.6, ease: "elastic.out(1, 0.7)" });
   });
+});
 </script>

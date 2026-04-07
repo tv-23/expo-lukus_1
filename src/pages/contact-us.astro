@@ -116,7 +116,11 @@ const t = useTranslations(lang);
         </div>
     </div>
 </section>
+
+<Footer lang={lang} t={t} />
+
     <script>
+        window.addEventListener("load", () => {
         gsap.registerPlugin(ScrollTrigger);
 
         // 1. Hero Reveal Animation
@@ -178,7 +182,8 @@ const t = useTranslations(lang);
                 ease: "elastic.out(1, 0.7)",
             });
         });
+    });
     </script>
 
-    <Footer lang={lang} t={t} />
+   
 </Layout>

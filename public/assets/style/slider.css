@@ -171,7 +171,16 @@ html {
     background: var(--white);
     width: 70px;
 }
-
+.slide-bg {
+    position: absolute;
+    inset: 0;
+  }
+  
+  .slide-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 @media (max-width: 480px) {
     .frame-box {
         width: calc(100%*0.9);

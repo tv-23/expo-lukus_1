@@ -13,6 +13,7 @@ const subtitle = Astro.props.subtitle || "";
 </section>
 
 <script>
+    window.addEventListener("load", () => {
     gsap.registerPlugin(ScrollTrigger);
 
     gsap.utils.toArray(".section-title").forEach((section) => {
@@ -29,4 +30,5 @@ const subtitle = Astro.props.subtitle || "";
             },
         });
     });
+});
 </script>

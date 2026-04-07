@@ -79,6 +79,7 @@ const categoryLabels = {
 </section>
 
 <script>
+    window.addEventListener("load", () => {
     gsap.registerPlugin(ScrollTrigger);
 
     const allCards = document.querySelectorAll(".product-card");
@@ -183,5 +184,5 @@ const categoryLabels = {
             window.location.href = `/product-detail/${id}`;
         });
     });
-
+});
 </script>

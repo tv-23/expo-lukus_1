@@ -144,6 +144,7 @@ const t = content[lang];
 </section>
 
 <script>
+    window.addEventListener("load", () => {
     gsap.registerPlugin(ScrollTrigger);
 
     function initArchSteps() {
@@ -182,4 +183,5 @@ const t = content[lang];
     // Astro Lifecycle handling
     window.addEventListener("load", initArchSteps);
     document.addEventListener("astro:page-load", initArchSteps);
+});
 </script>

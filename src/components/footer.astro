@@ -88,6 +88,8 @@ const { lang, t } = Astro.props;
 </footer>
 
 <script>
+    window.addEventListener("load", () => {
+
     gsap.registerPlugin(ScrollTrigger);
 
     // 1. FOOTER CONTENT REVEAL
@@ -135,4 +137,5 @@ const { lang, t } = Astro.props;
             });
         });
     });
+});
 </script>

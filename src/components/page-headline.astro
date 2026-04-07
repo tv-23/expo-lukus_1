@@ -29,6 +29,8 @@ const bgImage =
 </section>
 
 <script>
+    window.addEventListener("load", () => {
+
     const maskLayer = document.getElementById('maskLayer');
     const hero = document.getElementById('hero');
 
@@ -65,4 +67,5 @@ const bgImage =
             clipPath: `circle(120px at 50% 50%)`
         });
     }
+});
 </script>

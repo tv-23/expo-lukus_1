@@ -44,6 +44,7 @@ const { lang, t } = Astro.props;
 </section>
 
 <script>
+    window.addEventListener("load", () => {
     gsap.registerPlugin(ScrollTrigger);
 
     const shutter = document.getElementById("shutter");
@@ -102,4 +103,5 @@ const { lang, t } = Astro.props;
             });
         });
     }
+});
 </script>

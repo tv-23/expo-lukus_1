@@ -61,6 +61,8 @@ export async function getStaticPaths() {
 
 
 <script>
+    window.addEventListener("load", () => {
+
     gsap.registerPlugin(ScrollTrigger);
 
     // 1. Entrance Animation
@@ -121,4 +123,5 @@ export async function getStaticPaths() {
             ease: "elastic.out(1, 0.75)",
         });
     });
+});
 </script>
