@@ -2,8 +2,6 @@
 .about-container {
     position: relative;
     width: 100%;
-    /* No height here, height is defined by the scroll distance in JS if needed, 
-               but we will trigger based on this element */
 }
 
 .about-content-inner {

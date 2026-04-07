@@ -48,8 +48,10 @@ const categoryLabels = {
                                     </span>
 
                                     <img
-                                        src={product.image}
-                                        class="fruit-img"
+                                        data-src={product.image}
+                                        class="fruit-img lazy-img"
+                                        alt={product.title[lang]}
+                                        width="300" height="300"
                                     />
                                 </div>
 
@@ -181,4 +183,5 @@ const categoryLabels = {
             window.location.href = `/product-detail/${id}`;
         });
     });
+
 </script>
