@@ -179,15 +179,15 @@ const categoryLabels = {
 
         window.addEventListener("load", initEntrance);
 
-        // document.querySelectorAll(".product-card").forEach((card) => {
-        //     const id = card.dataset.id;
+        document.querySelectorAll(".product-card").forEach((card) => {
+            const id = card.dataset.id;
 
-        //     card.addEventListener("click", () => {
-        //         const isEnglish = window.location.pathname.startsWith("/en");
-        //         const basePath = isEnglish ? "/en" : "";
-        //         console.log(`${basePath}/product-detail/${id}`);
-        //         window.location.href = `${basePath}/product-detail/${id}`;
-        //     });
-        // });
+            card.addEventListener("click", () => {
+                const isEnglish = window.location.pathname.startsWith("/en");
+                const basePath = isEnglish ? "/en" : "";
+                console.log(`${basePath}/product-detail/${id}`);
+                window.location.href = `${basePath}/product-detail/${id}`;
+            });
+        });
     });
 </script>

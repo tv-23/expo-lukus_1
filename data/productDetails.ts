@@ -283,7 +283,7 @@ export const productDetails = {
       title: { en: "Valvinosta Apple Italy 18", es: "manzana valvinosta Italia 18" },
       category: { en: "Fresh Fruits", es: "Frutas Frescas" },
       image: "/assets/images/products/manzana_valvinosta_Italia_18.webp",
-      backgroundimage: "/assets/images/products/background/manzana valvinosta Italia 18.webp",
+      backgroundimage: "/assets/images/products/background/manzana_valvinosta_Italia_18.webp",
       description: { en: "", es: "" },
       packaging: standardPackaging,
       headline: {
@@ -298,7 +298,7 @@ export const productDetails = {
       title: { en: "Roge Raviol Apple 18", es: "Manzana Roge raviol 18" },
       category: { en: "Fresh Fruits", es: "Frutas Frescas" },
       image: "/assets/images/products/Manzana_Roge_raviol_18.webp",
-      backgroundimage: "/assets/images/products/background/Manzana Roge raviol 18.webp",
+      backgroundimage: "/assets/images/products/background/Manzana_Roge_raviol_18.webp",
       description: { en: "", es: "" },
       packaging: standardPackaging,
       headline: {
@@ -313,7 +313,7 @@ export const productDetails = {
       title: { en: "Belgique Pear", es: "Pera Belgique" },
       category: { en: "Fresh Fruits", es: "Frutas Frescas" },
       image: "/assets/images/products/Pera_Belgique.webp",
-      backgroundimage: "/assets/images/products/background/Pera Belgique.webp",
+      backgroundimage: "/assets/images/products/background/Pera_Belgique.webp",
       description: { en: "", es: "" },
       packaging: standardPackaging,
       headline: {
@@ -328,7 +328,7 @@ export const productDetails = {
       title: { en: "Portugal Pear", es: "Pera Portugal" },
       category: { en: "Fresh Fruits", es: "Frutas Frescas" },
       image: "/assets/images/products/Pera_Portugal.webp",
-      backgroundimage: "/assets/images/products/background/Pera Portugal.webp",
+      backgroundimage: "/assets/images/products/background/Pera_Portugal.webp",
       description: { en: "", es: "" },
       packaging: standardPackaging,
       headline: {
@@ -343,7 +343,7 @@ export const productDetails = {
       title: { en: "Cheli Pineapple", es: "Piña cheli" },
       category: { en: "Fresh Fruits", es: "Frutas Frescas" },
       image: "/assets/images/products/Piña_chel.webp",
-      backgroundimage: "/assets/images/products/background/Piña cheli.webp",
+      backgroundimage: "/assets/images/products/background/Piña_cheli.webp",
       description: { en: "", es: "" },
       packaging: standardPackaging,
       headline: {
@@ -358,7 +358,7 @@ export const productDetails = {
       title: { en: "Golden Kiwi", es: "Kiwi Gold" },
       category: { en: "Fresh Fruits", es: "Frutas Frescas" },
       image: "/assets/images/products/kiwi_Gold.webp",
-      backgroundimage: "/assets/images/products/background/kiwi Gold.webp",
+      backgroundimage: "/assets/images/products/background/kiwi_Gold.webp",
       description: { en: "", es: "" },
       packaging: standardPackaging,
       headline: {
@@ -373,7 +373,7 @@ export const productDetails = {
       title: { en: "Green Kiwi", es: "Kiwi vert" },
       category: { en: "Fresh Fruits", es: "Frutas Frescas" },
       image: "/assets/images/products/Kiwi_vert.webp",
-      backgroundimage: "/assets/images/products/background/Kiwi vert.webp",
+      backgroundimage: "/assets/images/products/background/Kiwi_vert.webp",
       description: { en: "", es: "" },
       packaging: standardPackaging,
       headline: {

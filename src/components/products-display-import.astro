@@ -176,13 +176,5 @@ const categoryLabels = {
     });
 
     window.addEventListener("load", initEntrance);
-
-    document.querySelectorAll(".product-card").forEach((card) => {
-        const id = card.dataset.id;
-
-        card.addEventListener("click", () => {
-            window.location.href = `/product-detail/${id}`;
-        });
-    });
 });
 </script>
