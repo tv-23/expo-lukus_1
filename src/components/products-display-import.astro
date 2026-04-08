@@ -1,7 +1,7 @@
 ---
 import "../../public/assets/style/products-display.css";
 const { lang, t } = Astro.props;
-import { products } from "../../data/products";
+import { products } from "../../data/products-import";
 
 const categoryLabels = {
     "fresh-herbs": t("products.filter.fresh-herbs"),
@@ -12,7 +12,7 @@ const categoryLabels = {
 
 <section class="products-section">
     <div class="container">
-        <div class="section-header">
+        <!-- <div class="section-header">
             <div class="filter-wrapper">
                 <button class="filter-btn active" data-filter="all"
                     >{t("products.filter.all")}</button
@@ -27,7 +27,7 @@ const categoryLabels = {
                     >{t("products.filter.fresh-fruits")}</button
                 >
             </div>
-        </div>
+        </div> -->
 
         <div class="product-grid" id="productGrid">
             {

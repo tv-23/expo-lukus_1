@@ -121,17 +121,22 @@ import "../../../public/assets/style/slider.css";
 
             // ✅ Create image instead of background-image
             const img = document.createElement("img");
-            img.dataset.src = s.img;
-            img.className = "slide-img lazy-img";
             img.alt = "Expo Lukus - "+s.main;
-
+            let lazy = ""
             // ✅ LCP optimization
-            // if (i === 0) {
-            //     img.loading = "eager";
-            //     img.fetchPriority = "high";
-            // } else {
-            //     img.loading = "lazy";
-            // }
+            if (i === 0) {
+                img.loading = "eager";
+                img.fetchPriority = "high";
+            img.src = s.img;
+
+            } else {
+                img.loading = "lazy";
+            img.dataset.src = s.img;
+            lazy = "lazy-img"
+            }
+
+            img.className = "slide-img "+lazy;
+
 
             div.appendChild(img);
             bgContainer.appendChild(div);

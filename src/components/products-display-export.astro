@@ -1,0 +1,193 @@
+---
+import "../../public/assets/style/products-display.css";
+const { lang, t } = Astro.props;
+import { products } from "../../data/products-export";
+
+const categoryLabels = {
+    "fresh-herbs": t("products.filter.fresh-herbs"),
+    "fresh-vegetables": t("products.filter.fresh-vegetables"),
+    "fresh-fruits": t("products.filter.fresh-fruits"),
+};
+---
+
+<section class="products-section">
+    <div class="container">
+        <div class="section-header">
+            <div class="filter-wrapper">
+                <button class="filter-btn active" data-filter="all"
+                    >{t("products.filter.all")}</button
+                >
+                <button class="filter-btn" data-filter="fresh-herbs"
+                    >{t("products.filter.fresh-herbs")}</button
+                >
+                <button class="filter-btn" data-filter="fresh-vegetables"
+                    >{t("products.filter.fresh-vegetables")}</button
+                >
+                <button class="filter-btn" data-filter="fresh-fruits"
+                    >{t("products.filter.fresh-fruits")}</button
+                >
+            </div>
+        </div>
+
+        <div class="product-grid" id="productGrid">
+            {
+                products
+                    .filter((p) => p.category === p.category)
+                    .map((product) => (
+                        <div
+                            class="product-card"
+                            data-category={product.category}
+                            data-id={product.id}
+                            style="cursor: pointer;"
+                        >
+                            <div class="card-inner">
+                                <div class="image-box">
+                                    {/* <span class="badge">{product.badge}</span> */}
+                                    <span class="badge seasonal">
+                                        {categoryLabels[product.category]}
+                                    </span>
+
+                                    <img
+                                        data-src={product.image}
+                                        class="fruit-img lazy-img"
+                                        alt={product.title[lang]}
+                                        width="300"
+                                        height="300"
+                                    />
+                                </div>
+
+                                <div class="card-content">
+                                    <p class="origin">{product.origin}</p>
+                                    <h3>{product.title[lang]}</h3>
+                                    <p>{product.description[lang]}</p>
+
+                                    <a
+                                        href={`${lang === "es" ? "" : "/en"}/product-detail/${product.id}`}
+                                    >
+                                        <button class="enquiry-btn">
+                                            {lang === "en"
+                                                ? "Bulk Enquiry"
+                                                : "Consulta Mayorista"}
+                                        </button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    ))
+            }
+        </div>
+    </div>
+</section>
+
+<script>
+    window.addEventListener("load", () => {
+        gsap.registerPlugin(ScrollTrigger);
+
+        const allCards = document.querySelectorAll(".product-card");
+        const xxx = document.querySelector("#productGrid");
+        const filterBtns = document.querySelectorAll(".filter-btn");
+
+        /* Staircase */
+        function calculateStaircase(animate = true) {
+            let visibleIndex = 0;
+
+            allCards.forEach((card) => {
+                if (window.getComputedStyle(card).display !== "none") {
+                    const offset = visibleIndex * 20;
+
+                    // 1. Visual animation
+                    gsap.to(card, {
+                        y: offset,
+                        duration: animate ? 0.8 : 0,
+                        ease: "power3.out",
+                        overwrite: true,
+                    });
+
+                    // 2. Real spacing
+                    xxx.style.marginBottom = offset + "px";
+
+                    visibleIndex++;
+                } else {
+                    xxx.style.marginBottom = "0px";
+                }
+            });
+
+            setTimeout(() => ScrollTrigger.refresh(), 100);
+        }
+
+        /* Entrance */
+        function initEntrance() {
+            gsap.from(allCards, {
+                opacity: 0,
+                scale: 0.8,
+                y: 100,
+                stagger: 0.1,
+                duration: 1.2,
+                ease: "expo.out",
+                onComplete: () => calculateStaircase(true),
+                scrollTrigger: {
+                    trigger: ".product-grid",
+                    start: "top 85%",
+                },
+            });
+        }
+
+        /* Filter */
+        filterBtns.forEach((btn) => {
+            btn.addEventListener("click", () => {
+                const filter = btn.dataset.filter;
+
+                filterBtns.forEach((b) => b.classList.remove("active"));
+                btn.classList.add("active");
+
+                gsap.to(allCards, {
+                    scale: 0.5,
+                    opacity: 0,
+                    duration: 0.3,
+                    stagger: 0.02,
+                    onComplete: () => {
+                        allCards.forEach((card) => {
+                            if (
+                                filter === "all" ||
+                                card.dataset.category === filter
+                            ) {
+                                gsap.set(card, { display: "block" });
+                            } else {
+                                gsap.set(card, { display: "none" });
+                            }
+                        });
+
+                        calculateStaircase(false);
+
+                        const visibleCards = Array.from(allCards).filter(
+                            (c) =>
+                                window.getComputedStyle(c).display !== "none",
+                        );
+
+                        gsap.to(visibleCards, {
+                            scale: 1,
+                            opacity: 1,
+                            duration: 0.6,
+                            stagger: 0.08,
+                            ease: "back.out(1.2)",
+                            onComplete: () => calculateStaircase(true),
+                        });
+                    },
+                });
+            });
+        });
+
+        window.addEventListener("load", initEntrance);
+
+        // document.querySelectorAll(".product-card").forEach((card) => {
+        //     const id = card.dataset.id;
+
+        //     card.addEventListener("click", () => {
+        //         const isEnglish = window.location.pathname.startsWith("/en");
+        //         const basePath = isEnglish ? "/en" : "";
+        //         console.log(`${basePath}/product-detail/${id}`);
+        //         window.location.href = `${basePath}/product-detail/${id}`;
+        //     });
+        // });
+    });
+</script>

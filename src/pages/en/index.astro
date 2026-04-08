@@ -4,7 +4,8 @@ import About from "../../components/home/about.astro";
 import Navbar from "../../components/navbar.astro";
 import Footer from "../../components/footer.astro";
 import SectionTitle from "../../components/section-title.astro";
-import ProductsDisplay from "../../components/products-display.astro";
+import ProductsDisplayExport from "../../components/products-display-export.astro";
+import ProductsDisplayImport from "../../components/products-display-import.astro";
 import Certifications from "../../components/home/certifications.astro";
 import CTA from "../../components/home/cta.astro";
 import Layout from "../../layouts/Layout.astro";
@@ -38,7 +39,16 @@ const t = useTranslations(lang);
     />
     <br />
     <br />
-    <ProductsDisplay lang={lang} t={t} />
+    <ProductsDisplayExport lang={lang} t={t} />
+    <br />
+    <br />
+    <SectionTitle
+        title={t("productsI.headline")}
+        subtitle={t("productsI.text")}
+    />
+    <br />
+    <br />
+    <ProductsDisplayImport lang={lang} t={t} />
     <br />
     <br />
     <EuropeanGateway lang={lang} t={t} />

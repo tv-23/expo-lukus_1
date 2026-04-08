@@ -278,5 +278,111 @@ export const productDetails = {
       },
     },
   },
+  // Import
+    "manzana-valvinosta-italia-18": {
+      title: { en: "Valvinosta Apple Italy 18", es: "manzana valvinosta Italia 18" },
+      category: { en: "Fresh Fruits", es: "Frutas Frescas" },
+      image: "/assets/images/products/manzana_valvinosta_Italia_18.webp",
+      backgroundimage: "/assets/images/products/background/manzana valvinosta Italia 18.webp",
+      description: { en: "", es: "" },
+      packaging: "standardPackaging",
+      headline: {
+        title: { en: "FRESH<br>VALVINOSTA APPLE", es: "MANZANA<br>VALVINOSTA FRESCA" },
+        subtitle: {
+          en: "Premium Valvinosta apples exported with care.",
+          es: "Manzanas Valvinosta de primera calidad exportadas con cuidado.",
+        },
+      },
+    },
+    "manzana-roge-raviol-18": {
+      title: { en: "Roge Raviol Apple 18", es: "Manzana Roge raviol 18" },
+      category: { en: "Fresh Fruits", es: "Frutas Frescas" },
+      image: "/assets/images/products/Manzana_Roge_raviol_18.webp",
+      backgroundimage: "/assets/images/products/background/Manzana Roge raviol 18.webp",
+      description: { en: "", es: "" },
+      packaging: "standardPackaging",
+      headline: {
+        title: { en: "FRESH<br>ROGE RAVIOL APPLE", es: "MANZANA<br>ROGE RAVIOL FRESCA" },
+        subtitle: {
+          en: "High-quality Roge Raviol apples for export.",
+          es: "Manzanas Roge Raviol de alta calidad para exportación.",
+        },
+      },
+    },
+    "pera-belgique": {
+      title: { en: "Belgique Pear", es: "Pera Belgique" },
+      category: { en: "Fresh Fruits", es: "Frutas Frescas" },
+      image: "/assets/images/products/Pera_Belgique.webp",
+      backgroundimage: "/assets/images/products/background/Pera Belgique.webp",
+      description: { en: "", es: "" },
+      packaging: "standardPackaging",
+      headline: {
+        title: { en: "FRESH<br>BELGIQUE PEAR", es: "PERA<br>BELGIQUE FRESCA" },
+        subtitle: {
+          en: "Carefully selected Belgique pears for export.",
+          es: "Peras Belgique cuidadosamente seleccionadas para exportación.",
+        },
+      },
+    },
+    "pera-portugal": {
+      title: { en: "Portugal Pear", es: "Pera Portugal" },
+      category: { en: "Fresh Fruits", es: "Frutas Frescas" },
+      image: "/assets/images/products/Pera_Portugal.webp",
+      backgroundimage: "/assets/images/products/background/Pera Portugal.webp",
+      description: { en: "", es: "" },
+      packaging: "standardPackaging",
+      headline: {
+        title: { en: "FRESH<br>PORTUGAL PEAR", es: "PERA<br>PORTUGAL FRESCA" },
+        subtitle: {
+          en: "High-quality Portugal pears exported worldwide.",
+          es: "Peras Portugal de alta calidad exportadas mundialmente.",
+        },
+      },
+    },
+    "pina-cheli": {
+      title: { en: "Cheli Pineapple", es: "Piña cheli" },
+      category: { en: "Fresh Fruits", es: "Frutas Frescas" },
+      image: "/assets/images/products/Piña_chel.webp",
+      backgroundimage: "/assets/images/products/background/Piña cheli.webp",
+      description: { en: "", es: "" },
+      packaging: "standardPackaging",
+      headline: {
+        title: { en: "FRESH<br>CHELI PINEAPPLE", es: "PIÑA<br>CHELI FRESCA" },
+        subtitle: {
+          en: "Sweet Cheli pineapples carefully exported.",
+          es: "Piñas Cheli dulces cuidadosamente exportadas.",
+        },
+      },
+    },
+    "kiwi-gold": {
+      title: { en: "Golden Kiwi", es: "Kiwi Gold" },
+      category: { en: "Fresh Fruits", es: "Frutas Frescas" },
+      image: "/assets/images/products/kiwi_Gold.webp",
+      backgroundimage: "/assets/images/products/background/kiwi Gold.webp",
+      description: { en: "", es: "" },
+      packaging: "standardPackaging",
+      headline: {
+        title: { en: "FRESH<br>GOLDEN KIWI", es: "KIWI<br>GOLD FRESCO" },
+        subtitle: {
+          en: "Premium Golden Kiwi exported fresh.",
+          es: "Kiwi Gold premium exportado fresco.",
+        },
+      },
+    },
+    "kiwi-vert": {
+      title: { en: "Green Kiwi", es: "Kiwi vert" },
+      category: { en: "Fresh Fruits", es: "Frutas Frescas" },
+      image: "/assets/images/products/Kiwi_vert.webp",
+      backgroundimage: "/assets/images/products/background/Kiwi vert.webp",
+      description: { en: "", es: "" },
+      packaging: "standardPackaging",
+      headline: {
+        title: { en: "FRESH<br>GREEN KIWI", es: "KIWI<br>VERT FRESCO" },
+        subtitle: {
+          en: "Fresh Green Kiwi carefully exported.",
+          es: "Kiwi vert fresco cuidadosamente exportado.",
+        },
+      },
+    },
 };
 
