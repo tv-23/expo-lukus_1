@@ -285,7 +285,7 @@ export const productDetails = {
       image: "/assets/images/products/manzana_valvinosta_Italia_18.webp",
       backgroundimage: "/assets/images/products/background/manzana valvinosta Italia 18.webp",
       description: { en: "", es: "" },
-      packaging: "standardPackaging",
+      packaging: standardPackaging,
       headline: {
         title: { en: "FRESH<br>VALVINOSTA APPLE", es: "MANZANA<br>VALVINOSTA FRESCA" },
         subtitle: {
@@ -300,7 +300,7 @@ export const productDetails = {
       image: "/assets/images/products/Manzana_Roge_raviol_18.webp",
       backgroundimage: "/assets/images/products/background/Manzana Roge raviol 18.webp",
       description: { en: "", es: "" },
-      packaging: "standardPackaging",
+      packaging: standardPackaging,
       headline: {
         title: { en: "FRESH<br>ROGE RAVIOL APPLE", es: "MANZANA<br>ROGE RAVIOL FRESCA" },
         subtitle: {
@@ -315,7 +315,7 @@ export const productDetails = {
       image: "/assets/images/products/Pera_Belgique.webp",
       backgroundimage: "/assets/images/products/background/Pera Belgique.webp",
       description: { en: "", es: "" },
-      packaging: "standardPackaging",
+      packaging: standardPackaging,
       headline: {
         title: { en: "FRESH<br>BELGIQUE PEAR", es: "PERA<br>BELGIQUE FRESCA" },
         subtitle: {
@@ -330,7 +330,7 @@ export const productDetails = {
       image: "/assets/images/products/Pera_Portugal.webp",
       backgroundimage: "/assets/images/products/background/Pera Portugal.webp",
       description: { en: "", es: "" },
-      packaging: "standardPackaging",
+      packaging: standardPackaging,
       headline: {
         title: { en: "FRESH<br>PORTUGAL PEAR", es: "PERA<br>PORTUGAL FRESCA" },
         subtitle: {
@@ -345,7 +345,7 @@ export const productDetails = {
       image: "/assets/images/products/Piña_chel.webp",
       backgroundimage: "/assets/images/products/background/Piña cheli.webp",
       description: { en: "", es: "" },
-      packaging: "standardPackaging",
+      packaging: standardPackaging,
       headline: {
         title: { en: "FRESH<br>CHELI PINEAPPLE", es: "PIÑA<br>CHELI FRESCA" },
         subtitle: {
@@ -360,7 +360,7 @@ export const productDetails = {
       image: "/assets/images/products/kiwi_Gold.webp",
       backgroundimage: "/assets/images/products/background/kiwi Gold.webp",
       description: { en: "", es: "" },
-      packaging: "standardPackaging",
+      packaging: standardPackaging,
       headline: {
         title: { en: "FRESH<br>GOLDEN KIWI", es: "KIWI<br>GOLD FRESCO" },
         subtitle: {
@@ -375,7 +375,7 @@ export const productDetails = {
       image: "/assets/images/products/Kiwi_vert.webp",
       backgroundimage: "/assets/images/products/background/Kiwi vert.webp",
       description: { en: "", es: "" },
-      packaging: "standardPackaging",
+      packaging: standardPackaging,
       headline: {
         title: { en: "FRESH<br>GREEN KIWI", es: "KIWI<br>VERT FRESCO" },
         subtitle: {
