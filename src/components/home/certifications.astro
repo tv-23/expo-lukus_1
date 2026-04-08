@@ -3,39 +3,43 @@ import "../../../public/assets/style/certifications.css";
 ---
 
 <section class="trust-section" id="trustSection">
-
     <div class="container">
-
         <div class="cert-stage" id="certStage">
             <!-- Card 1 -->
             <div class="cert-card" id="card1">
-                <img src="https://isbofrutas.com/wp-content/uploads/2025/11/smeta.png" alt="Smeta">
-                <h4>SMETA</h4>
-                <p>Social Audit</p>
+                <img src="/assets/images/certifications/BRS.png" alt="Smeta" />
+                <h4>BRS</h4>
+                <p>Quality standard</p>
             </div>
 
             <!-- Card 2 -->
             <div class="cert-card" id="card2">
-                <img src="https://isbofrutas.com/wp-content/uploads/2025/11/global-g-a-p-seeklogo-4-150x150-1.png"
-                    alt="GAP">
-                <h4>GLOBAL G.A.P.</h4>
-                <p>Food Safety</p>
+                <img
+                    src="/assets/images/certifications/GGN_FullLogo.svg"
+                    alt="GAP"
+                />
+                <h4>GGN</h4>
+                <p>Farm traceability</p>
             </div>
 
             <!-- Card 3 -->
             <div class="cert-card" id="card3">
-                <img src="https://isbofrutas.com/wp-content/uploads/2025/11/global-g-a-p-seeklogo-2-150x150-1.png"
-                    alt="GAP">
-                <h4>GLOBAL G.A.P.</h4>
-                <p>Chain of Custody</p>
+                <img
+                    src="/assets/images/certifications/grasp-acerta-maroc.png"
+                    alt="GAP"
+                />
+                <h4>GRASP</h4>
+                <p>Social compliance</p>
             </div>
 
             <!-- Card 4 -->
             <div class="cert-card" id="card4">
-                <img src="https://isbofrutas.com/wp-content/uploads/2025/11/global-g-a-p-seeklogo-3-150x150-1.png"
-                    alt="GAP">
-                <h4>GLOBAL G.A.P.</h4>
-                <p>GRASP Module</p>
+                <img
+                    src="/assets/images/certifications/ifs_food-1.svg"
+                    alt="GAP"
+                />
+                <h4>IFC</h4>
+                <p>Food safety</p>
             </div>
         </div>
     </div>
@@ -44,79 +48,133 @@ import "../../../public/assets/style/certifications.css";
 <!-- Scroll Space -->
 <div style="height: 0vh;"></div>
 
-
 <script>
     window.addEventListener("load", () => {
+        gsap.registerPlugin(ScrollTrigger);
 
-    gsap.registerPlugin(ScrollTrigger);
+        const cards = document.querySelectorAll(".cert-card");
+        let mm = gsap.matchMedia();
 
-    const cards = document.querySelectorAll('.cert-card');
-    let mm = gsap.matchMedia();
-
-    // Initial Stack State
-    gsap.set(cards, { x: 0, y: 0, opacity: 0, scale: 0.8, rotation: (i) => i * 4 - 8 });
-
-    mm.add({
-        // DESKTOP LOGIC
-        isDesktop: "(min-width: 1025px)",
-        // MOBILE/TABLET LOGIC
-        isMobile: "(max-width: 1024px)"
-    }, (context) => {
-        let { isDesktop } = context.conditions;
-
-        let tl = gsap.timeline({
-            scrollTrigger: {
-                trigger: "#trustSection",
-                start: "top 20%",
-                end: "bottom center",
-                scrub: 1.5,
-                pin: true,
-            }
+        // Initial Stack State
+        gsap.set(cards, {
+            x: 0,
+            y: 0,
+            opacity: 0,
+            scale: 0.8,
+            rotation: (i) => i * 4 - 8,
         });
 
-        tl.to(cards, { opacity: 1, scale: 1, stagger: 0.1, duration: 1 });
+        mm.add(
+            {
+                // DESKTOP LOGIC
+                isDesktop: "(min-width: 1025px)",
+                // MOBILE/TABLET LOGIC
+                isMobile: "(max-width: 1024px)",
+            },
+            (context) => {
+                let { isDesktop } = context.conditions;
 
-        if (isDesktop) {
-            // Horizontal Fan Out for 70% width
-            tl.to("#card1", { x: "-120%", y: "-10%", rotation: -12, duration: 2 }, "fan")
-                .to("#card2", { x: "-40%", y: "10%", rotation: -4, duration: 2 }, "fan")
-                .to("#card3", { x: "40%", y: "-10%", rotation: 6, duration: 2 }, "fan")
-                .to("#card4", { x: "120%", y: "10%", rotation: 15, duration: 2 }, "fan");
-        } else {
-            // Vertical Cascade for Mobile (Ensures readability)
-            tl.to("#card1", { y: "-130%", x: "-10%", rotation: -5, duration: 2 }, "fan")
-                .to("#card2", { y: "-40%", x: "10%", rotation: 3, duration: 2 }, "fan")
-                .to("#card3", { y: "50%", x: "-8%", rotation: -2, duration: 2 }, "fan")
-                .to("#card4", { y: "140%", x: "12%", rotation: 6, duration: 2 }, "fan");
+                let tl = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: "#trustSection",
+                        start: "top 20%",
+                        end: "bottom center",
+                        scrub: 1.5,
+                        pin: true,
+                    },
+                });
+
+                tl.to(cards, {
+                    opacity: 1,
+                    scale: 1,
+                    stagger: 0.1,
+                    duration: 1,
+                });
+
+                if (isDesktop) {
+                    // Horizontal Fan Out for 70% width
+                    tl.to(
+                        "#card1",
+                        { x: "-120%", y: "-10%", rotation: -12, duration: 2 },
+                        "fan",
+                    )
+                        .to(
+                            "#card2",
+                            { x: "-40%", y: "10%", rotation: -4, duration: 2 },
+                            "fan",
+                        )
+                        .to(
+                            "#card3",
+                            { x: "40%", y: "-10%", rotation: 6, duration: 2 },
+                            "fan",
+                        )
+                        .to(
+                            "#card4",
+                            { x: "120%", y: "10%", rotation: 15, duration: 2 },
+                            "fan",
+                        );
+                } else {
+                    // Vertical Cascade for Mobile (Ensures readability)
+                    tl.to(
+                        "#card1",
+                        { y: "-130%", x: "-10%", rotation: -5, duration: 2 },
+                        "fan",
+                    )
+                        .to(
+                            "#card2",
+                            { y: "-40%", x: "10%", rotation: 3, duration: 2 },
+                            "fan",
+                        )
+                        .to(
+                            "#card3",
+                            { y: "50%", x: "-8%", rotation: -2, duration: 2 },
+                            "fan",
+                        )
+                        .to(
+                            "#card4",
+                            { y: "140%", x: "12%", rotation: 6, duration: 2 },
+                            "fan",
+                        );
+                }
+
+                return () => {
+                    /* cleanup */
+                };
+            },
+        );
+
+        // Suble Floating Parallax (Always Active)
+        cards.forEach((card, i) => {
+            gsap.to(card, {
+                y: "+=10",
+                repeat: -1,
+                yoyo: true,
+                duration: 2 + i * 0.5,
+                ease: "sine.inOut",
+            });
+        });
+
+        // Individual Mouse Follow Tilt (Desktop Only)
+        if (window.innerWidth > 1024) {
+            cards.forEach((card) => {
+                card.addEventListener("mousemove", (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = (e.clientX - rect.left) / rect.width - 0.5;
+                    const y = (e.clientY - rect.top) / rect.height - 0.5;
+                    gsap.to(card, {
+                        rotationY: x * 15,
+                        rotationX: -y * 15,
+                        duration: 0.5,
+                    });
+                });
+                card.addEventListener("mouseleave", () => {
+                    gsap.to(card, {
+                        rotationY: 0,
+                        rotationX: 0,
+                        duration: 0.5,
+                    });
+                });
+            });
         }
-
-        return () => { /* cleanup */ };
     });
-
-    // Suble Floating Parallax (Always Active)
-    cards.forEach((card, i) => {
-        gsap.to(card, {
-            y: "+=10",
-            repeat: -1,
-            yoyo: true,
-            duration: 2 + i * 0.5,
-            ease: "sine.inOut"
-        });
-    });
-
-    // Individual Mouse Follow Tilt (Desktop Only)
-    if (window.innerWidth > 1024) {
-        cards.forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = (e.clientX - rect.left) / rect.width - 0.5;
-                const y = (e.clientY - rect.top) / rect.height - 0.5;
-                gsap.to(card, { rotationY: x * 15, rotationX: -y * 15, duration: 0.5 });
-            });
-            card.addEventListener('mouseleave', () => {
-                gsap.to(card, { rotationY: 0, rotationX: 0, duration: 0.5 });
-            });
-        });
-    }
-});
 </script>

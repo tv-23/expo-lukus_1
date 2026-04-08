@@ -12,7 +12,7 @@ export const products = [
             en: "Exported fresh with natural aroma preserved.",
             es: "Exportado fresco con aroma natural preservado.",
         },
-        origin: "Morocco",
+        origin: "Morocco,Benrchid",
     },
 
     {
@@ -28,7 +28,7 @@ export const products = [
             en: "High-quality coriander exported for global markets.",
             es: "Cilantro de alta calidad exportado para mercados globales.",
         },
-        origin: "Morocco",
+        origin: "Morocco,Benrchid",
     },
 
     {
@@ -44,7 +44,7 @@ export const products = [
             en: "Fresh parsley supplied with premium care.",
             es: "Perejil fresco suministrado con cuidado premium.",
         },
-        origin: "Morocco",
+        origin: "Morocco,Benrchid",
     },
 
     {
@@ -76,7 +76,7 @@ export const products = [
             en: "Fresh tomatoes exported with excellent taste.",
             es: "Tomates frescos exportados con excelente sabor.",
         },
-        origin: "Spain",
+        origin: "Morocco,Agadir",
     },
 
     {

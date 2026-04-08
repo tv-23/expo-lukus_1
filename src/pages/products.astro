@@ -6,6 +6,7 @@ import Layout from "../layouts/Layout.astro";
 import ProductsDisplayExport from "../components/products-display-export.astro";
 import ProductsDisplayImport from "../components/products-display-import.astro";
 import PageHeadline from "../components/page-headline.astro";
+import SectionTitle from "../components/section-title.astro";
 
 import { getLangFromUrl, useTranslations } from "../../i18n/utils";
 
@@ -33,8 +34,23 @@ Posiciona a Expo Lukus no como un "mayorista masivo", sino como una boutique sel
     />
     <br /><br />
 
+    <SectionTitle
+        title={t("products.headline")}
+        subtitle={t("products.text")}
+    />
+    <br />
+    <br />
     <ProductsDisplayExport lang={lang} t={t} />
+    <br />
+    <br />
+    <SectionTitle
+        title={t("productsI.headline")}
+        subtitle={t("productsI.text")}
+    />
+    <br />
+    <br />
     <ProductsDisplayImport lang={lang} t={t} />
+    
     <br /><br /><br />
     <Footer lang={lang} t={t} />
 </Layout>
